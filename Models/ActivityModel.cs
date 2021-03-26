@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjectManagerCore.Models
+﻿namespace ProjectManagerCore.Models
 {
 	public class ActivityModel
 	{
