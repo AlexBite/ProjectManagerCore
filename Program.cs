@@ -21,15 +21,16 @@ namespace ProjectManagerCore
 
 		private static void InitializeDataBases()
 		{
-			//using (var db = new CoreDbContext())
-			//{
-			//	var someActivity = new ActivityModel()
-			//	{
-			//		Description = "Some Activity"
-			//	};
-			//	db.Activities.Add(someActivity);
-			//	db.SaveChanges();
-			//}
+			using (var db = new CoreDbContext())
+			{
+				var someTask = new TaskModel()
+				{
+					Description = "Some Task",
+					ProjectId = 1
+				};
+				db.Tasks.Add(someTask);
+				db.SaveChanges();
+			}
 		}
 	}
 }
