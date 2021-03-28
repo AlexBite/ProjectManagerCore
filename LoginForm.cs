@@ -31,7 +31,7 @@ namespace Курсовая
 
 			if (userIsRegistered)
 			{
-				var mainForm = new MainForm();
+				var mainForm = new MainForm(authenticatedUser);
 				mainForm.Show();
 				this.Hide();
 			}

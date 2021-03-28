@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-
+using ProjectManagerCore.Models;
 
 namespace WorkingTimeTracker
 {
@@ -17,16 +17,18 @@ namespace WorkingTimeTracker
 
     public partial class MainForm : Form
     {
+        private readonly EmployeeModel _employeeModel;
+
         private readonly UsersDataBase _usersDataBase;
         private readonly UserInfo _authenricatedUser;
         private readonly ProjectsDataBase _projectsDataBase;
         private readonly WorkingDataBase _workingDataBase;
 
-        public MainForm()
-            //public MainForm(UsersDataBase usersDataBase, UserInfo authenricatedUser,
-            //ProjectsDataBase projectsDataBase, WorkingDataBase workingDataBase)
-        {
-            InitializeComponent();
+		public MainForm(EmployeeModel employeeModel)
+		//public MainForm(UsersDataBase usersDataBase, UserInfo authenricatedUser,
+		//ProjectsDataBase projectsDataBase, WorkingDataBase workingDataBase)
+		{
+            _employeeModel = employeeModel;
             //_usersDataBase = usersDataBase;
             //_authenricatedUser = authenricatedUser;
             //_projectsDataBase = projectsDataBase;
@@ -34,14 +36,21 @@ namespace WorkingTimeTracker
 
 
             //panelReports.Visible = false;
-            MainPanel.Visible = true;
             //fioLabel.Text = _authenricatedUser.Fio;
             //InitializeUi();
             //ShowUserWorkingSessionsInfo();
             //ShowAllUsersWorkingSessionsInfo();
+            InitializeComponent();
+            SetNameLabel();
+            MainPanel.Visible = true;
         }
 
-        private void InitializeUi()
+        private void SetNameLabel()
+		{
+            fioLabel.Text = $"{_employeeModel.Surname} {_employeeModel.Name} {_employeeModel.MiddleName}";
+		}
+
+		private void InitializeUi()
         { 
             if (_authenricatedUser.Role != UserInfo.UserRole.Leader)
             {
