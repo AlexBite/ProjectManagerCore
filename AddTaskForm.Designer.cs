@@ -1,0 +1,276 @@
+﻿namespace WorkingTimeTracker
+{
+    partial class AddProjectForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panelTask = new System.Windows.Forms.Panel();
+            this.PrOnTaskcombo = new System.Windows.Forms.ComboBox();
+            this.PersTaskButt = new System.Windows.Forms.Button();
+            this.DeleteTaskButt = new System.Windows.Forms.Button();
+            this.SaveTaskButt = new System.Windows.Forms.Button();
+            this.TaskNameBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TaskReviewBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaskAddButt = new System.Windows.Forms.Button();
+            this.EndTaskDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.StartTaskDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.panelTask.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // panelTask
+            // 
+            this.panelTask.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelTask.Controls.Add(this.PrOnTaskcombo);
+            this.panelTask.Controls.Add(this.PersTaskButt);
+            this.panelTask.Controls.Add(this.DeleteTaskButt);
+            this.panelTask.Controls.Add(this.SaveTaskButt);
+            this.panelTask.Controls.Add(this.TaskNameBox);
+            this.panelTask.Controls.Add(this.label2);
+            this.panelTask.Controls.Add(this.TaskReviewBox);
+            this.panelTask.Controls.Add(this.label1);
+            this.panelTask.Controls.Add(this.dataGridView2);
+            this.panelTask.Controls.Add(this.TaskAddButt);
+            this.panelTask.Controls.Add(this.EndTaskDateTimePicker);
+            this.panelTask.Controls.Add(this.StartTaskDateTimePicker);
+            this.panelTask.Controls.Add(this.label17);
+            this.panelTask.Controls.Add(this.label16);
+            this.panelTask.Controls.Add(this.label15);
+            this.panelTask.Location = new System.Drawing.Point(0, 2);
+            this.panelTask.Name = "panelTask";
+            this.panelTask.Size = new System.Drawing.Size(1142, 536);
+            this.panelTask.TabIndex = 8;
+            // 
+            // PrOnTaskcombo
+            // 
+            this.PrOnTaskcombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PrOnTaskcombo.FormattingEnabled = true;
+            this.PrOnTaskcombo.Location = new System.Drawing.Point(234, 31);
+            this.PrOnTaskcombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PrOnTaskcombo.Name = "PrOnTaskcombo";
+            this.PrOnTaskcombo.Size = new System.Drawing.Size(216, 28);
+            this.PrOnTaskcombo.TabIndex = 51;
+            // 
+            // PersTaskButt
+            // 
+            this.PersTaskButt.Location = new System.Drawing.Point(211, 449);
+            this.PersTaskButt.Name = "PersTaskButt";
+            this.PersTaskButt.Size = new System.Drawing.Size(154, 49);
+            this.PersTaskButt.TabIndex = 27;
+            this.PersTaskButt.Text = "Сотрудники задачи";
+            this.PersTaskButt.UseVisualStyleBackColor = true;
+            // 
+            // DeleteTaskButt
+            // 
+            this.DeleteTaskButt.Location = new System.Drawing.Point(396, 348);
+            this.DeleteTaskButt.Name = "DeleteTaskButt";
+            this.DeleteTaskButt.Size = new System.Drawing.Size(154, 49);
+            this.DeleteTaskButt.TabIndex = 26;
+            this.DeleteTaskButt.Text = "Удалить задачу";
+            this.DeleteTaskButt.UseVisualStyleBackColor = true;
+            // 
+            // SaveTaskButt
+            // 
+            this.SaveTaskButt.Location = new System.Drawing.Point(32, 348);
+            this.SaveTaskButt.Name = "SaveTaskButt";
+            this.SaveTaskButt.Size = new System.Drawing.Size(154, 49);
+            this.SaveTaskButt.TabIndex = 25;
+            this.SaveTaskButt.Text = "Сохранить изменения";
+            this.SaveTaskButt.UseVisualStyleBackColor = true;
+            // 
+            // TaskNameBox
+            // 
+            this.TaskNameBox.Location = new System.Drawing.Point(234, 84);
+            this.TaskNameBox.Name = "TaskNameBox";
+            this.TaskNameBox.Size = new System.Drawing.Size(214, 26);
+            this.TaskNameBox.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 20);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Название задачи";
+            // 
+            // TaskReviewBox
+            // 
+            this.TaskReviewBox.Location = new System.Drawing.Point(234, 134);
+            this.TaskReviewBox.Name = "TaskReviewBox";
+            this.TaskReviewBox.Size = new System.Drawing.Size(214, 26);
+            this.TaskReviewBox.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Описание задачи";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.Turquoise;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column6,
+            this.Column7});
+            this.dataGridView2.Location = new System.Drawing.Point(556, 18);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 28;
+            this.dataGridView2.Size = new System.Drawing.Size(534, 480);
+            this.dataGridView2.TabIndex = 20;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Задача";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Дата начала";
+            this.Column6.MinimumWidth = 8;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 150;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Дата окончания";
+            this.Column7.MinimumWidth = 8;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 150;
+            // 
+            // TaskAddButt
+            // 
+            this.TaskAddButt.Location = new System.Drawing.Point(211, 348);
+            this.TaskAddButt.Name = "TaskAddButt";
+            this.TaskAddButt.Size = new System.Drawing.Size(154, 49);
+            this.TaskAddButt.TabIndex = 14;
+            this.TaskAddButt.Text = "Добавить";
+            this.TaskAddButt.UseVisualStyleBackColor = true;
+            this.TaskAddButt.Click += new System.EventHandler(this.PrAddButton_Click);
+            // 
+            // EndTaskDateTimePicker
+            // 
+            this.EndTaskDateTimePicker.Location = new System.Drawing.Point(234, 267);
+            this.EndTaskDateTimePicker.Name = "EndTaskDateTimePicker";
+            this.EndTaskDateTimePicker.Size = new System.Drawing.Size(216, 26);
+            this.EndTaskDateTimePicker.TabIndex = 19;
+            // 
+            // StartTaskDateTimePicker
+            // 
+            this.StartTaskDateTimePicker.Location = new System.Drawing.Point(234, 205);
+            this.StartTaskDateTimePicker.Name = "StartTaskDateTimePicker";
+            this.StartTaskDateTimePicker.Size = new System.Drawing.Size(216, 26);
+            this.StartTaskDateTimePicker.TabIndex = 18;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(28, 267);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(191, 20);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Дата окончания задачи";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(28, 205);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(166, 20);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "Дата начала задачи";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(28, 39);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(149, 20);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Название проекта";
+            // 
+            // AddProjectForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1140, 534);
+            this.Controls.Add(this.panelTask);
+            this.Name = "AddProjectForm";
+            this.Text = "Добавление Задачи";
+            this.panelTask.ResumeLayout(false);
+            this.panelTask.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panelTask;
+        private System.Windows.Forms.Button TaskAddButt;
+        private System.Windows.Forms.DateTimePicker EndTaskDateTimePicker;
+        private System.Windows.Forms.DateTimePicker StartTaskDateTimePicker;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button PersTaskButt;
+        private System.Windows.Forms.Button DeleteTaskButt;
+        private System.Windows.Forms.Button SaveTaskButt;
+        private System.Windows.Forms.TextBox TaskNameBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TaskReviewBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.ComboBox PrOnTaskcombo;
+    }
+}
