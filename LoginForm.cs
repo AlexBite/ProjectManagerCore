@@ -1,46 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProjectManagerCore.Services;
+using System;
 using System.Windows.Forms;
+using WorkingTimeTracker;
 
 namespace Курсовая
 {
-    [Serializable]
-    public partial class LoginForm : Form
-    {
-        
-        public LoginForm()
-        {
-            InitializeComponent();
-        }
+	[Serializable]
+	public partial class LoginForm : Form
+	{
+		private readonly IAuthenticationService authService;
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoginProcess();
-        }
+		public LoginForm()
+		{
+			authService = new AuthenticationService();
+			InitializeComponent();
+		}
 
-        private void LoginProcess()
-        {
-            string login = loginTb.Text;
-            string password = passwordTb.Text;
+		private void button1_Click(object sender, EventArgs e)
+		{
+			LoginProcess();
+		}
 
-            //UserInfo authenticatedUser = _usersDataBase.GetAuthenticatedUser(login, password);
-            //bool userIsRegistered = authenticatedUser != null;
-            if (login =="1" && password =="1")
-            {
-                WorkingTimeTracker.MainForm mainForm = new WorkingTimeTracker.MainForm();
-                mainForm.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Неправильный логин или пароль!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-    }
+		private void LoginProcess()
+		{
+			var login = loginTb.Text;
+			var password = passwordTb.Text;
+
+			var authenticatedUser = authService.AuthenticateUser(login, password);
+			bool userIsRegistered = authenticatedUser != null;
+
+			if (userIsRegistered)
+			{
+				var mainForm = new MainForm();
+				mainForm.Show();
+				this.Hide();
+			}
+			else
+			{
+				MessageBox.Show("Неправильный логин или пароль!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+	}
 }

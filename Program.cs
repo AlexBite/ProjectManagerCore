@@ -1,6 +1,7 @@
 using ProjectManagerCore.Models;
 using System;
 using System.Windows.Forms;
+using WorkingTimeTracker;
 
 namespace ProjectManagerCore
 {
@@ -16,21 +17,21 @@ namespace ProjectManagerCore
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			InitializeDataBases();
-			Application.Run(new Form1());
+			Application.Run(new MainForm());
 		}
 
 		private static void InitializeDataBases()
 		{
-			using (var db = new CoreDbContext())
-			{
-				var someTask = new TaskModel()
-				{
-					Description = "Some Task",
-					ProjectId = 1
-				};
-				db.Tasks.Add(someTask);
-				db.SaveChanges();
-			}
+			//using (var db = new CoreDbContext())
+			//{
+			//	var someTask = new TaskModel()
+			//	{
+			//		Description = "Some Task",
+			//		ProjectId = 1
+			//	};
+			//	db.Tasks.Add(someTask);
+			//	db.SaveChanges();
+			//}
 		}
 	}
 }

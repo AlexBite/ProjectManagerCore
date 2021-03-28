@@ -2,7 +2,7 @@
 
 namespace ProjectManagerCore.Migrations
 {
-    public partial class EntsDeps : Migration
+    public partial class BaseEntsDeps : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,43 +10,37 @@ namespace ProjectManagerCore.Migrations
                 name: "ActivityId",
                 table: "TimeRecords",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "EmployeeId",
                 table: "TimeRecords",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "TaskId",
                 table: "TimeRecords",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "ProjectId",
                 table: "Tasks",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "ProjectTypeId",
                 table: "Projects",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "EmployeeId",
                 table: "EmployeeTasks",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "TaskId",
@@ -59,43 +53,37 @@ namespace ProjectManagerCore.Migrations
                 name: "EmployeeId",
                 table: "EmployeeProjects",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "ProjectId",
                 table: "EmployeeProjects",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "RoleId",
                 table: "EmployeeProjects",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "DepartmentId",
                 table: "EmployeeDepartments",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "EmployeeId",
                 table: "EmployeeDepartments",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "PositionId",
                 table: "EmployeeDepartments",
                 type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TimeRecords_ActivityId",
@@ -168,7 +156,7 @@ namespace ProjectManagerCore.Migrations
                 column: "DepartmentId",
                 principalTable: "DepartmentModels",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeDepartments_Employees_EmployeeId",
@@ -176,7 +164,7 @@ namespace ProjectManagerCore.Migrations
                 column: "EmployeeId",
                 principalTable: "Employees",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeDepartments_Positions_PositionId",
@@ -184,7 +172,7 @@ namespace ProjectManagerCore.Migrations
                 column: "PositionId",
                 principalTable: "Positions",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeProjects_Employees_EmployeeId",
@@ -192,7 +180,7 @@ namespace ProjectManagerCore.Migrations
                 column: "EmployeeId",
                 principalTable: "Employees",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeProjects_Projects_ProjectId",
@@ -200,7 +188,7 @@ namespace ProjectManagerCore.Migrations
                 column: "ProjectId",
                 principalTable: "Projects",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeProjects_Roles_RoleId",
@@ -208,7 +196,7 @@ namespace ProjectManagerCore.Migrations
                 column: "RoleId",
                 principalTable: "Roles",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeTasks_Employees_EmployeeId",
@@ -216,7 +204,7 @@ namespace ProjectManagerCore.Migrations
                 column: "EmployeeId",
                 principalTable: "Employees",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EmployeeTasks_Tasks_TaskId",
@@ -232,7 +220,7 @@ namespace ProjectManagerCore.Migrations
                 column: "ProjectTypeId",
                 principalTable: "ProjectTypes",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Tasks_Projects_ProjectId",
@@ -240,7 +228,7 @@ namespace ProjectManagerCore.Migrations
                 column: "ProjectId",
                 principalTable: "Projects",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_TimeRecords_Activities_ActivityId",
@@ -248,7 +236,7 @@ namespace ProjectManagerCore.Migrations
                 column: "ActivityId",
                 principalTable: "Activities",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_TimeRecords_Employees_EmployeeId",
@@ -256,7 +244,7 @@ namespace ProjectManagerCore.Migrations
                 column: "EmployeeId",
                 principalTable: "Employees",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_TimeRecords_Tasks_TaskId",
@@ -264,7 +252,7 @@ namespace ProjectManagerCore.Migrations
                 column: "TaskId",
                 principalTable: "Tasks",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -523,8 +523,8 @@ namespace WorkingTimeTracker
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Курсовая.ProgectEdit progectEdit = new Курсовая.ProgectEdit();
-            progectEdit.Show();
+            //Курсовая.ProgectEdit progectEdit = new Курсовая.ProgectEdit();
+            //progectEdit.Show();
         }
     }
 }

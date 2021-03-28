@@ -50,16 +50,16 @@ namespace ProjectManagerCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("EndWorkingDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PositionId")
+                    b.Property<int?>("PositionId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartWorkingDate")
@@ -111,19 +111,19 @@ namespace ProjectManagerCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Rate")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int?>("RoleId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartDate")
@@ -146,7 +146,7 @@ namespace ProjectManagerCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("TaskId")
@@ -187,7 +187,7 @@ namespace ProjectManagerCore.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ProjectTypeId")
+                    b.Property<int?>("ProjectTypeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartDate")
@@ -240,7 +240,7 @@ namespace ProjectManagerCore.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartDate")
@@ -259,19 +259,19 @@ namespace ProjectManagerCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ActivityId")
+                    b.Property<int?>("ActivityId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DurationInMinutes")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TaskId")
+                    b.Property<int?>("TaskId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
@@ -292,21 +292,15 @@ namespace ProjectManagerCore.Migrations
                 {
                     b.HasOne("ProjectManagerCore.Models.DepartmentModel", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("ProjectManagerCore.Models.EmployeeModel", "Employee")
                         .WithMany("Departments")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("ProjectManagerCore.Models.PositionModel", "Position")
                         .WithMany()
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PositionId");
 
                     b.Navigation("Department");
 
@@ -319,21 +313,15 @@ namespace ProjectManagerCore.Migrations
                 {
                     b.HasOne("ProjectManagerCore.Models.EmployeeModel", "Employee")
                         .WithMany("Projects")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("ProjectManagerCore.Models.ProjectModel", "Project")
                         .WithMany("Employees")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectId");
 
                     b.HasOne("ProjectManagerCore.Models.RoleModel", "Role")
                         .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Employee");
 
@@ -346,9 +334,7 @@ namespace ProjectManagerCore.Migrations
                 {
                     b.HasOne("ProjectManagerCore.Models.EmployeeModel", "Employee")
                         .WithMany("Tasks")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("ProjectManagerCore.Models.TaskModel", "Task")
                         .WithMany("Employees")
@@ -365,9 +351,7 @@ namespace ProjectManagerCore.Migrations
                 {
                     b.HasOne("ProjectManagerCore.Models.ProjectTypeModel", "ProjectType")
                         .WithMany()
-                        .HasForeignKey("ProjectTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectTypeId");
 
                     b.Navigation("ProjectType");
                 });
@@ -376,9 +360,7 @@ namespace ProjectManagerCore.Migrations
                 {
                     b.HasOne("ProjectManagerCore.Models.ProjectModel", "Project")
                         .WithMany("Tasks")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectId");
 
                     b.Navigation("Project");
                 });
@@ -387,21 +369,15 @@ namespace ProjectManagerCore.Migrations
                 {
                     b.HasOne("ProjectManagerCore.Models.ActivityModel", "Activity")
                         .WithMany()
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ActivityId");
 
                     b.HasOne("ProjectManagerCore.Models.EmployeeModel", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("ProjectManagerCore.Models.TaskModel", "Task")
                         .WithMany("TimeRecords")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TaskId");
 
                     b.Navigation("Activity");
 
