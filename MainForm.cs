@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using ProjectManagerCore.Models;
+using ProjectManagerCore.Services;
 
 namespace WorkingTimeTracker
 {
@@ -18,6 +19,8 @@ namespace WorkingTimeTracker
     public partial class MainForm : Form
     {
         private readonly EmployeeModel _employeeModel;
+        private readonly IProjectService _projectService;
+
 
         private readonly UsersDataBase _usersDataBase;
         private readonly UserInfo _authenricatedUser;
@@ -29,6 +32,7 @@ namespace WorkingTimeTracker
 		//ProjectsDataBase projectsDataBase, WorkingDataBase workingDataBase)
 		{
             _employeeModel = employeeModel;
+            _projectService = new ProjectService();
             //_usersDataBase = usersDataBase;
             //_authenricatedUser = authenricatedUser;
             //_projectsDataBase = projectsDataBase;
@@ -42,6 +46,7 @@ namespace WorkingTimeTracker
             //ShowAllUsersWorkingSessionsInfo();
             InitializeComponent();
             SetNameLabel();
+            SetProjectsDgv();
             MainPanel.Visible = true;
         }
 
@@ -49,6 +54,32 @@ namespace WorkingTimeTracker
 		{
             fioLabel.Text = $"{_employeeModel.Surname} {_employeeModel.Name} {_employeeModel.MiddleName}";
 		}
+
+        private void SetProjectsDgv()
+		{
+            var bindingSource = new BindingSource();
+            var allProjects = _projectService.GetAllProjects();
+            bindingSource.DataSource = allProjects;
+
+            projectsDgv.AutoGenerateColumns = false;
+            projectsDgv.AutoSize = true;
+            projectsDgv.DataSource = bindingSource;
+
+            var nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = nameof(ProjectModel.Name);
+            nameColumn.Name = "Название";
+            projectsDgv.Columns.Add(nameColumn);
+
+            DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
+            startDateColumn.DataPropertyName = nameof(ProjectModel.StartDate);
+            startDateColumn.Name = "Дата начала";
+            projectsDgv.Columns.Add(startDateColumn);
+
+            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
+            endDateColumn.DataPropertyName = nameof(ProjectModel.EndDate);
+            endDateColumn.Name = "Дата конца";
+            projectsDgv.Columns.Add(endDateColumn);
+        }
 
 		private void InitializeUi()
         { 
@@ -183,7 +214,7 @@ namespace WorkingTimeTracker
 
         public void ShowAllUsersWorkingSessionsInfo()
         {
-            dataGridView2.Rows.Clear();
+            projectsDgv.Rows.Clear();
             List<WorkingSessionInfo> workingSessionInfos = _workingDataBase.GetAll();
             foreach (var workingSession in workingSessionInfos)
             {
@@ -195,7 +226,7 @@ namespace WorkingTimeTracker
                 string startWorkingDate = $"{workingSessionDate.Day}/{workingSessionDate.Month}/{workingSessionDate.Year}";
                 DateTime workingSessionTime = workingSession.StartTime;
                 string startWorkingSessionTime = $"{workingSessionTime.Hour}:{workingSessionTime.Minute}:{workingSessionTime.Second}";
-                dataGridView2.Rows.Add(userFio, projectName, startWorkingDate, startWorkingSessionTime, workingSession.SpentWorkHours);
+                projectsDgv.Rows.Add(userFio, projectName, startWorkingDate, startWorkingSessionTime, workingSession.SpentWorkHours);
             }
         }
 
@@ -365,7 +396,7 @@ namespace WorkingTimeTracker
         private void HighliteByProject(string projectName, out bool evenOneDataSatisfy)
         {
             evenOneDataSatisfy = false;
-            foreach (DataGridViewRow row in dataGridView2.Rows)
+            foreach (DataGridViewRow row in projectsDgv.Rows)
             {
                 string projectNameFromGrid = row.Cells[1].Value.ToString();
                 bool isDataSatisfy = projectNameFromGrid == projectName;
@@ -381,7 +412,7 @@ namespace WorkingTimeTracker
         private void HighliteByUser(string userName, out bool evenOneDataSatisfy)
         {
             evenOneDataSatisfy = false;
-            foreach (DataGridViewRow row in dataGridView2.Rows)
+            foreach (DataGridViewRow row in projectsDgv.Rows)
             {
                 string userNameFromGrid = row.Cells[0].Value.ToString();
                 bool isDataSatisfy = userNameFromGrid == userName;
@@ -397,7 +428,7 @@ namespace WorkingTimeTracker
         private void HighliteByUserAndProject(string userName, string projectName, out bool evenOneDataSatisfy)
         {
             evenOneDataSatisfy = false;
-            foreach (DataGridViewRow row in dataGridView2.Rows)
+            foreach (DataGridViewRow row in projectsDgv.Rows)
             {
                 string userNameFromGrid = row.Cells[0].Value.ToString();
                 string projectNameFromGrid = row.Cells[1].Value.ToString();
@@ -414,7 +445,7 @@ namespace WorkingTimeTracker
 
         private void HighliteRow(int rowNum)
         {
-            dataGridView2.Rows[rowNum].DefaultCellStyle.BackColor = Color.MediumTurquoise;
+            projectsDgv.Rows[rowNum].DefaultCellStyle.BackColor = Color.MediumTurquoise;
         }
 
         private void UserscomboBox_Click(object sender, EventArgs e)
@@ -535,5 +566,10 @@ namespace WorkingTimeTracker
             //Курсовая.ProgectEdit progectEdit = new Курсовая.ProgectEdit();
             //progectEdit.Show();
         }
-    }
+
+		private void addProjBtn_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

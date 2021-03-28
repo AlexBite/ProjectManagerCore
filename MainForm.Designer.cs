@@ -48,10 +48,7 @@
 			this.label12 = new System.Windows.Forms.Label();
 			this.comboBox5 = new System.Windows.Forms.ComboBox();
 			this.button9 = new System.Windows.Forms.Button();
-			this.dataGridView2 = new System.Windows.Forms.DataGridView();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projectsDgv = new System.Windows.Forms.DataGridView();
 			this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
@@ -118,7 +115,7 @@
 			this.toolStrip1.SuspendLayout();
 			this.MainPanel.SuspendLayout();
 			this.panelProjects.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.projectsDgv)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panelWorkers.SuspendLayout();
@@ -235,7 +232,7 @@
 			this.panelProjects.Controls.Add(this.label12);
 			this.panelProjects.Controls.Add(this.comboBox5);
 			this.panelProjects.Controls.Add(this.button9);
-			this.panelProjects.Controls.Add(this.dataGridView2);
+			this.panelProjects.Controls.Add(this.projectsDgv);
 			this.panelProjects.Controls.Add(this.dateTimePicker4);
 			this.panelProjects.Controls.Add(this.label14);
 			this.panelProjects.Controls.Add(this.label15);
@@ -265,7 +262,7 @@
 			this.button12.TabIndex = 47;
 			this.button12.Text = "Добавить проект";
 			this.button12.UseVisualStyleBackColor = true;
-			this.button12.Click += new System.EventHandler(this.button12_Click);
+			this.button12.Click += new System.EventHandler(this.addProjBtn_Click);
 			// 
 			// button11
 			// 
@@ -345,46 +342,18 @@
 			this.button9.UseVisualStyleBackColor = true;
 			this.button9.Click += new System.EventHandler(this.button9_Click);
 			// 
-			// dataGridView2
+			// projectsDgv
 			// 
-			this.dataGridView2.AllowUserToAddRows = false;
-			this.dataGridView2.BackgroundColor = System.Drawing.Color.Turquoise;
-			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Column6,
-            this.Column7});
-			this.dataGridView2.Location = new System.Drawing.Point(600, 0);
-			this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.dataGridView2.Name = "dataGridView2";
-			this.dataGridView2.ReadOnly = true;
-			this.dataGridView2.RowHeadersWidth = 62;
-			this.dataGridView2.Size = new System.Drawing.Size(465, 480);
-			this.dataGridView2.TabIndex = 0;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this.dataGridViewTextBoxColumn1.HeaderText = "Проект";
-			this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			this.dataGridViewTextBoxColumn1.Width = 150;
-			// 
-			// Column6
-			// 
-			this.Column6.HeaderText = "Дата начала";
-			this.Column6.MinimumWidth = 8;
-			this.Column6.Name = "Column6";
-			this.Column6.ReadOnly = true;
-			this.Column6.Width = 150;
-			// 
-			// Column7
-			// 
-			this.Column7.HeaderText = "Дата окончания";
-			this.Column7.MinimumWidth = 8;
-			this.Column7.Name = "Column7";
-			this.Column7.ReadOnly = true;
-			this.Column7.Width = 150;
+			this.projectsDgv.AllowUserToAddRows = false;
+			this.projectsDgv.BackgroundColor = System.Drawing.Color.Turquoise;
+			this.projectsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.projectsDgv.Location = new System.Drawing.Point(600, 0);
+			this.projectsDgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.projectsDgv.Name = "projectsDgv";
+			this.projectsDgv.ReadOnly = true;
+			this.projectsDgv.RowHeadersWidth = 62;
+			this.projectsDgv.Size = new System.Drawing.Size(465, 480);
+			this.projectsDgv.TabIndex = 0;
 			// 
 			// dateTimePicker4
 			// 
@@ -1030,7 +999,7 @@
 			this.MainPanel.PerformLayout();
 			this.panelProjects.ResumeLayout(false);
 			this.panelProjects.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.projectsDgv)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.panelWorkers.ResumeLayout(false);
@@ -1098,10 +1067,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridView projectsDgv;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;

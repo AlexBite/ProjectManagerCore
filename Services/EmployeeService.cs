@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-	class EmployeeService
+	class EmployeeService : IEmployeeService
 	{
 	}
 }
