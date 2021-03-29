@@ -8,7 +8,7 @@ namespace ProjectManagerCore.Services
 {
 	internal class ProjectService : IProjectService
 	{
-		public ProjectModel AddProject(string name, string leadEmployeeId, DateTime startDate, DateTime endDate)
+		public ProjectModel AddProject(string name, DateTime startDate, DateTime endDate)
 		{
 			var project = new ProjectModel()
 			{

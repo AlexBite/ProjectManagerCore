@@ -7,7 +7,8 @@ namespace ProjectManagerCore.Services
 {
 	public interface IEmployeeService
 	{
-		EmployeeModel AddWorkers(string secname, string firstname, string thirdname, string login, string password, string phone);
+		EmployeeModel GetEmployee(int employeeId);
+		EmployeeModel AddWorker(string secname, string firstname, string thirdname, string login, string password, string phone);
 		List<EmployeeModel> GetAllEmployee();
 	}
 }

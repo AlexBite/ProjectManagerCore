@@ -10,25 +10,26 @@ namespace ProjectManagerCore.Services
     {
         public TimeRecordModel AddTime()
         {
-            var time = new TimeRecordModel(string title, DateTime StartDate, int DurationInMinutes)
-            {
+            //var time = new TimeRecordModel(string title, DateTime StartDate, int DurationInMinutes)
+            //{
 
-                //Surname = secname,
-                //Name = firstname,
-                //MiddleName = thirdname,
-                //Login = login,
-                //Password = password,
-                //PhoneNumber = phone
+            //Surname = secname,
+            //Name = firstname,
+            //MiddleName = thirdname,
+            //Login = login,
+            //Password = password,
+            //PhoneNumber = phone
 
-            };
+            //};
 
-            using (var dbContext = new CoreDbContext())
-            {
-                dbContext.Employees.Add(worker);
-                dbContext.SaveChanges();
-            }
+            //using (var dbContext = new CoreDbContext())
+            //{
+            //    dbContext.Employees.Add(worker);
+            //    dbContext.SaveChanges();
+            //}
 
-            return worker;
+            //return worker;ъ
+            throw new NotImplementedException();
         }
 
         public List<EmployeeModel> GetAllEmployee()

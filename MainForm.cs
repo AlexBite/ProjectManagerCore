@@ -14,14 +14,12 @@ using ProjectManagerCore.Services;
 
 namespace WorkingTimeTracker
 {
-    [Serializable]
-
     public partial class MainForm : Form
     {
-        private readonly EmployeeModel _employeeModel;
+        private readonly EmployeeModel _currentEmployeeModel;
         private readonly IProjectService _projectService;
         private readonly IEmployeeService _employeeService;
-
+        private readonly IEmployeeProjectService _employeeProjectService;
 
         private readonly UsersDataBase _usersDataBase;
         private readonly UserInfo _authenricatedUser;
@@ -29,11 +27,11 @@ namespace WorkingTimeTracker
         private readonly WorkingDataBase _workingDataBase;
 
 		public MainForm(EmployeeModel employeeModel)
-		//public MainForm(UsersDataBase usersDataBase, UserInfo authenricatedUser,
-		//ProjectsDataBase projectsDataBase, WorkingDataBase workingDataBase)
 		{
-            _employeeModel = employeeModel;
+            _currentEmployeeModel = employeeModel;
             _projectService = new ProjectService();
+            _employeeService = new EmployeeService();
+            _employeeProjectService = new EmployeeProjectService();
             //_usersDataBase = usersDataBase;
             //_authenricatedUser = authenricatedUser;
             //_projectsDataBase = projectsDataBase;
@@ -50,15 +48,11 @@ namespace WorkingTimeTracker
             SetProjectsDgv();
             SetWorkersDgv();
             MainPanel.Visible = true;
-            //if (UserRole == 1)
-            //{
-
-            //}
         }
 
         private void SetNameLabel()
 		{
-            fioLabel.Text = $"{_employeeModel.Surname} {_employeeModel.Name} {_employeeModel.MiddleName}";
+            fioLabel.Text = $"{_currentEmployeeModel.Surname} {_currentEmployeeModel.Name} {_currentEmployeeModel.MiddleName}";
 		}
 
         private void SetProjectsDgv()
@@ -70,6 +64,7 @@ namespace WorkingTimeTracker
             projectsDgv.AutoGenerateColumns = false;
             projectsDgv.AutoSize = true;
             projectsDgv.DataSource = bindingSource;
+            projectsDgv.ScrollBars = ScrollBars.Both;
 
             var nameColumn = new DataGridViewTextBoxColumn();
             nameColumn.DataPropertyName = nameof(ProjectModel.Name);
@@ -86,40 +81,41 @@ namespace WorkingTimeTracker
             endDateColumn.Name = "Дата конца";
             projectsDgv.Columns.Add(endDateColumn);
         }
+
         private void SetWorkersDgv()
         {
-            var bindingSource1 = new BindingSource();
+            var bindingSource = new BindingSource();
             var allEmployee = _employeeService.GetAllEmployee();
-            bindingSource1.DataSource = allEmployee;
+            bindingSource.DataSource = allEmployee;
 
             WorkersdataGridView.AutoGenerateColumns = false;
             WorkersdataGridView.AutoSize = true;
-            WorkersdataGridView.DataSource = bindingSource1;
+            WorkersdataGridView.DataSource = bindingSource;
 
             var nameColumn = new DataGridViewTextBoxColumn();
             nameColumn.DataPropertyName = nameof(EmployeeModel.Name);
             nameColumn.Name = "Имя";
             WorkersdataGridView.Columns.Add(nameColumn);
-            
-            var nameColumn1 = new DataGridViewTextBoxColumn();
-            nameColumn1.DataPropertyName = nameof(EmployeeModel.Surname);
-            nameColumn1.Name = "Фамилия";
-            WorkersdataGridView.Columns.Add(nameColumn1);
-            
-            var nameColumn2 = new DataGridViewTextBoxColumn();
-            nameColumn2.DataPropertyName = nameof(EmployeeModel.MiddleName);
-            nameColumn2.Name = "Отчество";
-            WorkersdataGridView.Columns.Add(nameColumn2);
 
-            DataGridViewColumn JobColumn = new DataGridViewTextBoxColumn();
-            JobColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
-            JobColumn.Name = "Должность";
-            WorkersdataGridView.Columns.Add(JobColumn);
+            var surnameColumns = new DataGridViewTextBoxColumn();
+            surnameColumns.DataPropertyName = nameof(EmployeeModel.Surname);
+            surnameColumns.Name = "Фамилия";
+            WorkersdataGridView.Columns.Add(surnameColumns);
 
-            DataGridViewColumn DepartmentColumn = new DataGridViewTextBoxColumn();
-            DepartmentColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Department);
-            DepartmentColumn.Name = "Департамент";
-            WorkersdataGridView.Columns.Add(DepartmentColumn);
+            var middleNameColumn = new DataGridViewTextBoxColumn();
+            middleNameColumn.DataPropertyName = nameof(EmployeeModel.MiddleName);
+            middleNameColumn.Name = "Отчество";
+            WorkersdataGridView.Columns.Add(middleNameColumn);
+
+            var positionaColumns = new DataGridViewTextBoxColumn();
+            positionaColumns.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
+            positionaColumns.Name = "Должность";
+            WorkersdataGridView.Columns.Add(positionaColumns);
+
+            //var departmentColumn = new DataGridViewTextBoxColumn();
+            //departmentColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Department);
+            //departmentColumn.Name = "Департамент";
+            //WorkersdataGridView.Columns.Add(departmentColumn);
 
             DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
             startDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.StartWorkingDate);
@@ -130,17 +126,18 @@ namespace WorkingTimeTracker
             endDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.EndWorkingDate);
             endDateColumn.Name = "Дата окончания работы";
             WorkersdataGridView.Columns.Add(endDateColumn);
+
         }
 
         private void SetTimeDgv()
         {
             var bindingSource2 = new BindingSource();
             var allTime = _employeeService.GetAllEmployee();
-            bindingSource1.DataSource = allEmployee;
+           // bindingSource1.DataSource = allEmployee;
 
             WorkersdataGridView.AutoGenerateColumns = false;
             WorkersdataGridView.AutoSize = true;
-            WorkersdataGridView.DataSource = bindingSource;
+           // WorkersdataGridView.DataSource = bindingSource;
 
             var nameColumn = new DataGridViewTextBoxColumn();
             nameColumn.DataPropertyName = nameof(EmployeeModel.Name);
@@ -194,9 +191,9 @@ namespace WorkingTimeTracker
                 button4.Enabled = true;
                 button7.Enabled = true;
 
-                button13.Enabled = false;
-                button12.Enabled = false;
-                button14.Enabled = false;
+                deleteProjectBtn.Enabled = false;
+                addProjectBtn.Enabled = false;
+                addEmployeeBtn.Enabled = false;
             }
             if (_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 4
             {
@@ -205,9 +202,9 @@ namespace WorkingTimeTracker
                 button4.Enabled = true;
                 button7.Enabled = false;
 
-                button13.Enabled = false;
-                button12.Enabled = false;
-                button14.Enabled = false;
+                deleteProjectBtn.Enabled = false;
+                addProjectBtn.Enabled = false;
+                addEmployeeBtn.Enabled = false;
             }
 
         }
@@ -580,9 +577,9 @@ namespace WorkingTimeTracker
 
         private void button14_Click(object sender, EventArgs e)//добавление сотрудника
         {
-            
             AddUserForm addUserForm = new AddUserForm();
             addUserForm.Show();
+            SetWorkersDgv();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -650,8 +647,13 @@ namespace WorkingTimeTracker
 
 		private void addProjBtn_Click(object sender, EventArgs e)//добавление проекта
 		{
-
-		}
+            var projectName = this.projectNameTB.Text;
+            var projectStartDate = this.projectStartDateDTP.Value;
+            var projectEndDate = this.projectEndDateDTP.Value;
+            var projectLeader = this.projectLeadCB.SelectedItem as EmployeeModel;
+            _employeeProjectService.AddProjectWithLeader(projectName, projectStartDate, projectEndDate, projectLeader.Id);
+            SetProjectsDgv();
+        }
 
         private void projectsDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -663,5 +665,16 @@ namespace WorkingTimeTracker
             AddTaskForm addtask = new AddTaskForm();
             addtask.Show();
         }
-    }
+
+		private void projectLeadCB_Click(object sender, EventArgs e)
+		{
+            var comboBox = sender as ComboBox;
+            var allEmployees = _employeeService.GetAllEmployee();
+            comboBox.ValueMember = nameof(EmployeeModel.Id);
+            comboBox.DisplayMember = nameof(EmployeeModel.Name);
+            comboBox.DataSource = allEmployees;
+		}
+
+
+	}
 }
