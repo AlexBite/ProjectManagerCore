@@ -8,16 +8,17 @@ namespace ProjectManagerCore.Services
 {
     class TimeService
     {
-        public TimeModel AddTime(string secname, string firstname, string thirdname, string login, string password, string phone)
+        public TimeRecordModel AddTime()
         {
-            var worker = new EmployeeModel()
+            var time = new TimeRecordModel(string title, DateTime StartDate, int DurationInMinutes)
             {
-                Surname = secname,
-                Name = firstname,
-                MiddleName = thirdname,
-                Login = login,
-                Password = password,
-                PhoneNumber = phone
+
+                //Surname = secname,
+                //Name = firstname,
+                //MiddleName = thirdname,
+                //Login = login,
+                //Password = password,
+                //PhoneNumber = phone
 
             };
 
