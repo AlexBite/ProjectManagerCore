@@ -20,7 +20,7 @@ namespace ProjectManagerCore
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			//DbCustomMigrate();
+			DbCustomMigrate();
 			Application.Run(new LoginForm());
 		}
 

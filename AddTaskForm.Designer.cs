@@ -1,6 +1,6 @@
 ﻿namespace WorkingTimeTracker
 {
-    partial class AddProjectForm
+    partial class AddTaskForm
     {
         /// <summary>
         /// Required designer variable.
@@ -70,76 +70,85 @@
             this.panelTask.Controls.Add(this.label16);
             this.panelTask.Controls.Add(this.label15);
             this.panelTask.Location = new System.Drawing.Point(0, 2);
+            this.panelTask.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelTask.Name = "panelTask";
-            this.panelTask.Size = new System.Drawing.Size(1142, 536);
+            this.panelTask.Size = new System.Drawing.Size(1269, 670);
             this.panelTask.TabIndex = 8;
             // 
             // PrOnTaskcombo
             // 
             this.PrOnTaskcombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PrOnTaskcombo.FormattingEnabled = true;
-            this.PrOnTaskcombo.Location = new System.Drawing.Point(234, 31);
+            this.PrOnTaskcombo.Location = new System.Drawing.Point(260, 39);
             this.PrOnTaskcombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PrOnTaskcombo.Name = "PrOnTaskcombo";
-            this.PrOnTaskcombo.Size = new System.Drawing.Size(216, 28);
+            this.PrOnTaskcombo.Size = new System.Drawing.Size(240, 33);
             this.PrOnTaskcombo.TabIndex = 51;
             // 
             // PersTaskButt
             // 
-            this.PersTaskButt.Location = new System.Drawing.Point(211, 449);
+            this.PersTaskButt.Location = new System.Drawing.Point(234, 561);
+            this.PersTaskButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PersTaskButt.Name = "PersTaskButt";
-            this.PersTaskButt.Size = new System.Drawing.Size(154, 49);
+            this.PersTaskButt.Size = new System.Drawing.Size(171, 61);
             this.PersTaskButt.TabIndex = 27;
             this.PersTaskButt.Text = "Сотрудники задачи";
             this.PersTaskButt.UseVisualStyleBackColor = true;
+            this.PersTaskButt.Click += new System.EventHandler(this.PersTaskButt_Click);
             // 
             // DeleteTaskButt
             // 
-            this.DeleteTaskButt.Location = new System.Drawing.Point(396, 348);
+            this.DeleteTaskButt.Location = new System.Drawing.Point(440, 435);
+            this.DeleteTaskButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DeleteTaskButt.Name = "DeleteTaskButt";
-            this.DeleteTaskButt.Size = new System.Drawing.Size(154, 49);
+            this.DeleteTaskButt.Size = new System.Drawing.Size(171, 61);
             this.DeleteTaskButt.TabIndex = 26;
             this.DeleteTaskButt.Text = "Удалить задачу";
             this.DeleteTaskButt.UseVisualStyleBackColor = true;
+            this.DeleteTaskButt.Click += new System.EventHandler(this.DeleteTaskButt_Click);
             // 
             // SaveTaskButt
             // 
-            this.SaveTaskButt.Location = new System.Drawing.Point(32, 348);
+            this.SaveTaskButt.Location = new System.Drawing.Point(36, 435);
+            this.SaveTaskButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SaveTaskButt.Name = "SaveTaskButt";
-            this.SaveTaskButt.Size = new System.Drawing.Size(154, 49);
+            this.SaveTaskButt.Size = new System.Drawing.Size(171, 61);
             this.SaveTaskButt.TabIndex = 25;
             this.SaveTaskButt.Text = "Сохранить изменения";
             this.SaveTaskButt.UseVisualStyleBackColor = true;
+            this.SaveTaskButt.Click += new System.EventHandler(this.SaveTaskButt_Click);
             // 
             // TaskNameBox
             // 
-            this.TaskNameBox.Location = new System.Drawing.Point(234, 84);
+            this.TaskNameBox.Location = new System.Drawing.Point(260, 105);
+            this.TaskNameBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TaskNameBox.Name = "TaskNameBox";
-            this.TaskNameBox.Size = new System.Drawing.Size(214, 26);
+            this.TaskNameBox.Size = new System.Drawing.Size(237, 31);
             this.TaskNameBox.TabIndex = 23;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 87);
+            this.label2.Location = new System.Drawing.Point(31, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 20);
+            this.label2.Size = new System.Drawing.Size(151, 25);
             this.label2.TabIndex = 24;
             this.label2.Text = "Название задачи";
             // 
             // TaskReviewBox
             // 
-            this.TaskReviewBox.Location = new System.Drawing.Point(234, 134);
+            this.TaskReviewBox.Location = new System.Drawing.Point(260, 168);
+            this.TaskReviewBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TaskReviewBox.Name = "TaskReviewBox";
-            this.TaskReviewBox.Size = new System.Drawing.Size(214, 26);
+            this.TaskReviewBox.Size = new System.Drawing.Size(237, 31);
             this.TaskReviewBox.TabIndex = 21;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 140);
+            this.label1.Location = new System.Drawing.Point(31, 175);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.Size = new System.Drawing.Size(153, 25);
             this.label1.TabIndex = 22;
             this.label1.Text = "Описание задачи";
             // 
@@ -152,13 +161,13 @@
             this.Column1,
             this.Column6,
             this.Column7});
-            this.dataGridView2.Location = new System.Drawing.Point(556, 18);
+            this.dataGridView2.Location = new System.Drawing.Point(618, 22);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(534, 480);
+            this.dataGridView2.Size = new System.Drawing.Size(593, 600);
             this.dataGridView2.TabIndex = 20;
             // 
             // Column1
@@ -187,9 +196,10 @@
             // 
             // TaskAddButt
             // 
-            this.TaskAddButt.Location = new System.Drawing.Point(211, 348);
+            this.TaskAddButt.Location = new System.Drawing.Point(234, 435);
+            this.TaskAddButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TaskAddButt.Name = "TaskAddButt";
-            this.TaskAddButt.Size = new System.Drawing.Size(154, 49);
+            this.TaskAddButt.Size = new System.Drawing.Size(171, 61);
             this.TaskAddButt.TabIndex = 14;
             this.TaskAddButt.Text = "Добавить";
             this.TaskAddButt.UseVisualStyleBackColor = true;
@@ -197,52 +207,55 @@
             // 
             // EndTaskDateTimePicker
             // 
-            this.EndTaskDateTimePicker.Location = new System.Drawing.Point(234, 267);
+            this.EndTaskDateTimePicker.Location = new System.Drawing.Point(260, 334);
+            this.EndTaskDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EndTaskDateTimePicker.Name = "EndTaskDateTimePicker";
-            this.EndTaskDateTimePicker.Size = new System.Drawing.Size(216, 26);
+            this.EndTaskDateTimePicker.Size = new System.Drawing.Size(240, 31);
             this.EndTaskDateTimePicker.TabIndex = 19;
             // 
             // StartTaskDateTimePicker
             // 
-            this.StartTaskDateTimePicker.Location = new System.Drawing.Point(234, 205);
+            this.StartTaskDateTimePicker.Location = new System.Drawing.Point(260, 256);
+            this.StartTaskDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StartTaskDateTimePicker.Name = "StartTaskDateTimePicker";
-            this.StartTaskDateTimePicker.Size = new System.Drawing.Size(216, 26);
+            this.StartTaskDateTimePicker.Size = new System.Drawing.Size(240, 31);
             this.StartTaskDateTimePicker.TabIndex = 18;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(28, 267);
+            this.label17.Location = new System.Drawing.Point(31, 334);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(191, 20);
+            this.label17.Size = new System.Drawing.Size(204, 25);
             this.label17.TabIndex = 17;
             this.label17.Text = "Дата окончания задачи";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(28, 205);
+            this.label16.Location = new System.Drawing.Point(31, 256);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(166, 20);
+            this.label16.Size = new System.Drawing.Size(171, 25);
             this.label16.TabIndex = 16;
             this.label16.Text = "Дата начала задачи";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(28, 39);
+            this.label15.Location = new System.Drawing.Point(31, 49);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(149, 20);
+            this.label15.Size = new System.Drawing.Size(161, 25);
             this.label15.TabIndex = 15;
             this.label15.Text = "Название проекта";
             // 
-            // AddProjectForm
+            // AddTaskForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 534);
+            this.ClientSize = new System.Drawing.Size(1267, 668);
             this.Controls.Add(this.panelTask);
-            this.Name = "AddProjectForm";
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "AddTaskForm";
             this.Text = "Добавление Задачи";
             this.panelTask.ResumeLayout(false);
             this.panelTask.PerformLayout();

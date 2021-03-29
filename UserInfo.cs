@@ -21,7 +21,9 @@ namespace WorkingTimeTracker
 		{
 			Empty = 0,
 			Leader = 1,
-			Employee = 2
+			Employee = 2,
+			Director = 3,
+			DirPro=4
 		}
 	}
 }

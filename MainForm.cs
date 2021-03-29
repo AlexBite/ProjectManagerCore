@@ -20,6 +20,7 @@ namespace WorkingTimeTracker
     {
         private readonly EmployeeModel _employeeModel;
         private readonly IProjectService _projectService;
+        private readonly IEmployeeService _employeeService;
 
 
         private readonly UsersDataBase _usersDataBase;
@@ -47,7 +48,12 @@ namespace WorkingTimeTracker
             InitializeComponent();
             SetNameLabel();
             SetProjectsDgv();
+            SetWorkersDgv();
             MainPanel.Visible = true;
+            //if (UserRole == 1)
+            //{
+
+            //}
         }
 
         private void SetNameLabel()
@@ -80,15 +86,128 @@ namespace WorkingTimeTracker
             endDateColumn.Name = "Дата конца";
             projectsDgv.Columns.Add(endDateColumn);
         }
+        private void SetWorkersDgv()
+        {
+            var bindingSource1 = new BindingSource();
+            var allEmployee = _employeeService.GetAllEmployee();
+            bindingSource1.DataSource = allEmployee;
 
-		private void InitializeUi()
+            WorkersdataGridView.AutoGenerateColumns = false;
+            WorkersdataGridView.AutoSize = true;
+            WorkersdataGridView.DataSource = bindingSource1;
+
+            var nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = nameof(EmployeeModel.Name);
+            nameColumn.Name = "Имя";
+            WorkersdataGridView.Columns.Add(nameColumn);
+            
+            var nameColumn1 = new DataGridViewTextBoxColumn();
+            nameColumn1.DataPropertyName = nameof(EmployeeModel.Surname);
+            nameColumn1.Name = "Фамилия";
+            WorkersdataGridView.Columns.Add(nameColumn1);
+            
+            var nameColumn2 = new DataGridViewTextBoxColumn();
+            nameColumn2.DataPropertyName = nameof(EmployeeModel.MiddleName);
+            nameColumn2.Name = "Отчество";
+            WorkersdataGridView.Columns.Add(nameColumn2);
+
+            DataGridViewColumn JobColumn = new DataGridViewTextBoxColumn();
+            JobColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
+            JobColumn.Name = "Должность";
+            WorkersdataGridView.Columns.Add(JobColumn);
+
+            DataGridViewColumn DepartmentColumn = new DataGridViewTextBoxColumn();
+            DepartmentColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Department);
+            DepartmentColumn.Name = "Департамент";
+            WorkersdataGridView.Columns.Add(DepartmentColumn);
+
+            DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
+            startDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.StartWorkingDate);
+            startDateColumn.Name = "Дата начала работы";
+            WorkersdataGridView.Columns.Add(startDateColumn);
+
+            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
+            endDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.EndWorkingDate);
+            endDateColumn.Name = "Дата окончания работы";
+            WorkersdataGridView.Columns.Add(endDateColumn);
+        }
+
+        private void SetTimeDgv()
+        {
+            var bindingSource2 = new BindingSource();
+            var allTime = _employeeService.GetAllEmployee();
+            bindingSource1.DataSource = allEmployee;
+
+            WorkersdataGridView.AutoGenerateColumns = false;
+            WorkersdataGridView.AutoSize = true;
+            WorkersdataGridView.DataSource = bindingSource;
+
+            var nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = nameof(EmployeeModel.Name);
+            nameColumn.Name = "Проект";
+            WorkersdataGridView.Columns.Add(nameColumn);
+
+            var nameColumn1 = new DataGridViewTextBoxColumn();
+            nameColumn1.DataPropertyName = nameof(EmployeeModel.Surname);
+            nameColumn1.Name = "Дата";
+            WorkersdataGridView.Columns.Add(nameColumn1);
+
+            var nameColumn2 = new DataGridViewTextBoxColumn();
+            nameColumn2.DataPropertyName = nameof(EmployeeModel.MiddleName);
+            nameColumn2.Name = "Продолжительность";
+            WorkersdataGridView.Columns.Add(nameColumn2);
+
+            DataGridViewColumn JobColumn = new DataGridViewTextBoxColumn();
+            JobColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
+            JobColumn.Name = "Должность";
+            WorkersdataGridView.Columns.Add(JobColumn);
+
+            DataGridViewColumn DepartmentColumn = new DataGridViewTextBoxColumn();
+            DepartmentColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Department);
+            DepartmentColumn.Name = "Департамент";
+            WorkersdataGridView.Columns.Add(DepartmentColumn);
+
+            DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
+            startDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.StartWorkingDate);
+            startDateColumn.Name = "дата начала работы";
+            WorkersdataGridView.Columns.Add(startDateColumn);
+
+            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
+            endDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.EndWorkingDate);
+            endDateColumn.Name = "Дата окончания работы";
+            WorkersdataGridView.Columns.Add(endDateColumn);
+        }
+        private void InitializeUi()//все ограничения админ -1 разраб 2 дир 3 рук проект 4 
         { 
-            if (_authenricatedUser.Role != UserInfo.UserRole.Leader)
+            if (_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 2
             {
+                button2.Enabled = false;
                 button3.Enabled = false;
                 button4.Enabled = false;
+                button7.Enabled = false;              
+            }
+            else
+            if(_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 3
+            {
+                button2.Enabled = false;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                button7.Enabled = true;
+
+                button13.Enabled = false;
+                button12.Enabled = false;
+                button14.Enabled = false;
+            }
+            if (_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 4
+            {
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = true;
                 button7.Enabled = false;
-              
+
+                button13.Enabled = false;
+                button12.Enabled = false;
+                button14.Enabled = false;
             }
 
         }
@@ -114,10 +233,10 @@ namespace WorkingTimeTracker
             // Изменение панели:
             
             panelWorkers.Visible = true;
-            //MainPanel.Visible = false;
-            //panelProjects.Visible = false;
-            //panelDirectories.Visible = false;
-            //panelReports.Visible = false;
+            MainPanel.Visible = false;
+            panelProjects.Visible = false;
+            panelDirectories.Visible = false;
+            panelReports.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)//ввод времени 
@@ -130,12 +249,12 @@ namespace WorkingTimeTracker
             button2.Font = new Font(button1.Font, FontStyle.Regular);
             // Изменение панели:
 
-            
-            MainPanel.Visible = true;            
-            //panelWorkers.Visible = false;           
+            //panelWorkers.Visible = false;
             //panelProjects.Visible = false;
             //panelDirectories.Visible = false;
             //panelReports.Visible = false;
+            MainPanel.Visible = false;
+            MainPanel.Visible = true;
 
         }
 
@@ -149,10 +268,10 @@ namespace WorkingTimeTracker
             button7.Font = new Font(button7.Font, FontStyle.Regular);
             button2.Font = new Font(button1.Font, FontStyle.Regular);
             // Изменение панели:
-            
-            //panelWorkers.Visible = false;
-            //panelDirectories.Visible = false;
-            //panelReports.Visible = false;
+
+            panelWorkers.Visible = false;
+            panelDirectories.Visible = false;
+            panelReports.Visible = false;
             MainPanel.Visible = false;
             panelProjects.Visible = true;
 
@@ -360,37 +479,7 @@ namespace WorkingTimeTracker
 
         private void applyFilterButton_Click(object sender, EventArgs e)
         {
-            //bool mathesExist = false;
-            //string userName = UsersComboBox.Text;
-            //string projectName = ProjectsComboBox.Text;
-
-            //foreach (DataGridViewRow row in dataGridView2.Rows)
-            //{
-            //    row.DefaultCellStyle.BackColor = Color.White;
-            //}
-
-            //bool searchProjectsAndUsers = projectName != string.Empty && userName != string.Empty;
-            //if (searchProjectsAndUsers)
-            //{
-            //    HighliteByUserAndProject(userName, projectName, out mathesExist);
-            //}
-
-            //bool searchUsersOnly = projectName == string.Empty && userName != string.Empty;
-            //if (searchUsersOnly)
-            //{
-            //    HighliteByUser(userName, out mathesExist);
-            //}
-
-            //bool searchProjectsOnly = projectName != string.Empty && userName == string.Empty;
-            //if (searchProjectsOnly)
-            //{
-            //    HighliteByProject(projectName, out mathesExist);
-            //}
-
-            //if (!mathesExist)
-            //{
-            //    MessageBox.Show("По данному запросу ничего не найдено.");
-            //}
+            
         }
 
         private void HighliteByProject(string projectName, out bool evenOneDataSatisfy)
@@ -450,15 +539,7 @@ namespace WorkingTimeTracker
 
         private void UserscomboBox_Click(object sender, EventArgs e)
         {
-            //UsersComboBox.Items.Clear();
-            //var usersNames = _usersDataBase.GetNamesOfUsers();
-            //foreach (var user in usersNames)
-            //{
-            //    if (user != null)
-            //    {
-            //        UsersComboBox.Items.Add(user);
-            //    }
-            //}
+            
         }
 
 
@@ -511,8 +592,8 @@ namespace WorkingTimeTracker
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //AddUsersPro addUserProForm = new AddUsersToProForm();
-            //addUserProForm.Show();
+            Курсовая.AddUsersPro addUserProForm = new Курсовая.AddUsersPro();
+            addUserProForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -567,9 +648,20 @@ namespace WorkingTimeTracker
             //progectEdit.Show();
         }
 
-		private void addProjBtn_Click(object sender, EventArgs e)
+		private void addProjBtn_Click(object sender, EventArgs e)//добавление проекта
 		{
 
 		}
-	}
+
+        private void projectsDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)//задачи проекта
+        {
+            AddTaskForm addtask = new AddTaskForm();
+            addtask.Show();
+        }
+    }
 }

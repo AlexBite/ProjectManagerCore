@@ -11,14 +11,15 @@ using System.Windows.Forms;
 namespace WorkingTimeTracker
 {
 	[Serializable]
-	public partial class AddProjectForm : Form
+	public partial class AddTaskForm : Form
     {
 		private readonly ProjectsDataBase _projectsDataBase;
 		
-		public AddProjectForm(ProjectsDataBase projectsDataBase)
-        {
+		public AddTaskForm()
+			//public AddTaskForm(ProjectsDataBase projectsDataBase)
+		{
             InitializeComponent();
-			_projectsDataBase = projectsDataBase;
+			//_projectsDataBase = projectsDataBase;
 		}
 		
 		private void textBox7_TextChanged(object sender, EventArgs e)
@@ -31,44 +32,30 @@ namespace WorkingTimeTracker
             
         }
 
-        private void PrAddButton_Click(object sender, EventArgs e)
+        private void PrAddButton_Click(object sender, EventArgs e)//добавить задачу
         {
             PrRegistrationProcess();
         }
 
-		private void PrRegistrationProcess()
+		private void PrRegistrationProcess()//
 		{
-			//bool notAllInfoInputed =  ProjectTB.Text == string.Empty;
-
-			//if (notAllInfoInputed)
-			//{
-			//	MessageBox.Show("Необходимо заполнить название проекта!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			//	return;
-			//}
-
-			//string newName = ProjectTB.Text;
-			//DateTime newStDay = StartTaskDateTimePicker.Value;
-			//DateTime newEndDay = EndTaskDateTimePicker.Value;
-			//string newStDay = StartDateTimePicker.Text;
-			//string newEndDay = EndDateTimePicker.Text;
-
-
-			//ProjectInfo newProject = new ProjectInfo()
-			//{
-			//	Name = newName,
-			//	StartDay = newStDay,
-			//	EndDate = newEndDay,
-				
-			//};
-
-			
-			
-			//MessageBox.Show("Проект успешно добавлен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			////очищение полей 
-			//ProjectTB.Clear();
-			//_projectsDataBase.AddProject(newProject);
-			//_projectsDataBase.SaveDataBase();
 			
 		}
-	}
+
+        private void SaveTaskButt_Click(object sender, EventArgs e) //сохранить изменения
+        {
+
+        }
+
+        private void DeleteTaskButt_Click(object sender, EventArgs e)//удалить задачу
+        {
+
+        }
+
+        private void PersTaskButt_Click(object sender, EventArgs e)//сотрудники задачи
+        {
+            Курсовая.AddUsersToTask addUsersToTask = new Курсовая.AddUsersToTask();
+            addUsersToTask.Show();
+        }
+    }
 }

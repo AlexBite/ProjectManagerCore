@@ -6,9 +6,9 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-    public class EmployeeService : IEmployeeService
+    class TimeService
     {
-        public EmployeeModel AddWorkers(string secname, string firstname, string thirdname, string login, string password, string phone)
+        public TimeModel AddTime(string secname, string firstname, string thirdname, string login, string password, string phone)
         {
             var worker = new EmployeeModel()
             {
@@ -39,6 +39,5 @@ namespace ProjectManagerCore.Services
             }
             return employees;
         }
-       
     }
 }

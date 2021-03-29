@@ -43,19 +43,22 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(107, 344);
+            this.button1.Location = new System.Drawing.Point(119, 430);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 66);
+            this.button1.Size = new System.Drawing.Size(117, 82);
             this.button1.TabIndex = 0;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(26, 122);
+            this.comboBox2.Location = new System.Drawing.Point(29, 152);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(285, 28);
+            this.comboBox2.Size = new System.Drawing.Size(316, 33);
             this.comboBox2.TabIndex = 2;
             // 
             // dataGridView1
@@ -67,11 +70,12 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(331, 22);
+            this.dataGridView1.Location = new System.Drawing.Point(368, 28);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(664, 453);
+            this.dataGridView1.Size = new System.Drawing.Size(738, 566);
             this.dataGridView1.TabIndex = 3;
             // 
             // Column1
@@ -105,41 +109,43 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 69);
+            this.label1.Location = new System.Drawing.Point(97, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.Size = new System.Drawing.Size(151, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Выберите задачу";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(87, 188);
+            this.label2.Location = new System.Drawing.Point(97, 235);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 20);
+            this.label2.Size = new System.Drawing.Size(190, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "Выберите сотрудника";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(26, 228);
+            this.comboBox1.Location = new System.Drawing.Point(29, 285);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(285, 28);
+            this.comboBox1.Size = new System.Drawing.Size(316, 33);
             this.comboBox1.TabIndex = 5;
             // 
             // AddUsersToTask
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(1041, 506);
+            this.ClientSize = new System.Drawing.Size(1157, 632);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddUsersToTask";
             this.Text = "AddUsersToTask";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

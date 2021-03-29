@@ -16,5 +16,6 @@ namespace ProjectManagerCore.Models
 		public ICollection<EmployeeDepartmentModel> Departments { get; set; }
 		public ICollection<EmployeeProjectModel> Projects { get; set; }
 		public ICollection<EmployeeTaskModel> Tasks { get; set; }
+		//должност, дата начала работы, дата окончания работы
 	}
 }
