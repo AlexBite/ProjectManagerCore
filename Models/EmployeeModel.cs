@@ -13,7 +13,6 @@ namespace ProjectManagerCore.Models
 		public string PhoneNumber { get; set; }
 		public string Login { get; set; }
 		public string Password { get; set; }
-		//@TODO: Поменять на связь 1 к 1
 		public ICollection<EmployeeDepartmentModel> Departments { get; set; }
 		public ICollection<EmployeeProjectModel> Projects { get; set; }
 		public ICollection<EmployeeTaskModel> Tasks { get; set; }
