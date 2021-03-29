@@ -21,12 +21,14 @@ namespace WorkingTimeTracker
 		private readonly IEmployeeService _employeeService;
 		private readonly IEmployeeProjectService _employeeProjectService;
 		private readonly UserInfo _authenticatedUser;
+		private readonly ITaskService _taskService;
 
 
-		// Выпилить:
-		private readonly UsersDataBase _usersDataBase;
+		// del
+		//private readonly UsersDataBase _usersDataBase;
 		private readonly ProjectsDataBase _projectsDataBase;
 		private readonly WorkingDataBase _workingDataBase;
+		
 
 		public MainForm(UserInfo authenticatedUser)
 		{
@@ -35,12 +37,7 @@ namespace WorkingTimeTracker
 			_employeeProjectService = new EmployeeProjectService();
 			_authenticatedUser = authenticatedUser;
 
-			//_usersDataBase = usersDataBase;
-			//_authenricatedUser = authenricatedUser;
-			//_projectsDataBase = projectsDataBase;
-			//_workingDataBase = workingDataBase;
-
-
+			
 			//panelReports.Visible = false;
 			//fioLabel.Text = _authenricatedUser.Fio;
 			//InitializeUi();
@@ -134,35 +131,30 @@ namespace WorkingTimeTracker
 
 		private void InitializeUi()//все ограничения админ -1 разраб 2 дир 3 рук проект 4 
 		{
-			if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 2
-			{
-				button2.Enabled = false;
-				button3.Enabled = false;
-				button4.Enabled = false;
-				button7.Enabled = false;
-			}
-			else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 3
-			{
-				button2.Enabled = false;
-				button3.Enabled = true;
-				button4.Enabled = true;
-				button7.Enabled = true;
+			//if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 2
+			//{
+			//button2.Enabled = false;
+			//button3.Enabled = false;
+			//button4.Enabled = false;
+			//button7.Enabled = false;
+			//}
+			//else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 3
+			//{
+			//button2.Enabled = false;			button3.Enabled = true;				button4.Enabled = true;				button7.Enabled = true;
 
-				deleteProjectBtn.Enabled = false;
-				addProjectBtn.Enabled = false;
-				addEmployeeBtn.Enabled = false;
-			}
-			else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 4
-			{
-				button2.Enabled = false;
-				button3.Enabled = false;
-				button4.Enabled = true;
-				button7.Enabled = false;
+				//deleteProjectBtn.Enabled = false;				addProjectBtn.Enabled = false;				addEmployeeBtn.Enabled = false;
+			//}
+			//else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 4
+			//{
+				//button2.Enabled = false;
+				//button3.Enabled = false;
+				//button4.Enabled = true;
+				//button7.Enabled = false;
 
-				deleteProjectBtn.Enabled = false;
-				addProjectBtn.Enabled = false;
-				addEmployeeBtn.Enabled = false;
-			}
+				//deleteProjectBtn.Enabled = false;
+				//addProjectBtn.Enabled = false;
+				//addEmployeeBtn.Enabled = false;
+			//}
 
 		}
 		private void label2_Click(object sender, EventArgs e)
@@ -258,7 +250,7 @@ namespace WorkingTimeTracker
 
 		private void saveChangesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			_usersDataBase.SaveDataBase();
+			//_usersDataBase.SaveDataBase();
 			_projectsDataBase.SaveDataBase();
 			_workingDataBase.SaveDataBase();
 		}
@@ -266,7 +258,7 @@ namespace WorkingTimeTracker
 
 
 		public void ShowUserWorkingSessionsInfo()
-		{
+		{/*
 			dataGridView1.Rows.Clear();
 			List<WorkingSessionInfo> workingSessionInfos = _workingDataBase.GetAll();
 			foreach (var workingSession in workingSessionInfos)
@@ -282,11 +274,11 @@ namespace WorkingTimeTracker
 				string startWorkingSessionTime = $"{workingSessionTime.Hour}:{workingSessionTime.Minute}:{workingSessionTime.Second}";
 				int workingsessionID = workingSession.Id;
 				dataGridView1.Rows.Add(projectName, startWorkingDate, startWorkingSessionTime, workingSession.SpentWorkHours, workingSession.Aim, workingsessionID);
-			}
+			}*/
 		}
 
 		public void ShowAllUsersWorkingSessionsInfo()
-		{
+		{/*
 			projectsDgv.Rows.Clear();
 			List<WorkingSessionInfo> workingSessionInfos = _workingDataBase.GetAll();
 			foreach (var workingSession in workingSessionInfos)
@@ -300,7 +292,7 @@ namespace WorkingTimeTracker
 				DateTime workingSessionTime = workingSession.StartTime;
 				string startWorkingSessionTime = $"{workingSessionTime.Hour}:{workingSessionTime.Minute}:{workingSessionTime.Second}";
 				projectsDgv.Rows.Add(userFio, projectName, startWorkingDate, startWorkingSessionTime, workingSession.SpentWorkHours);
-			}
+			}*/
 		}
 
 		private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -362,7 +354,7 @@ namespace WorkingTimeTracker
 			int newSpentHours = Int32.Parse(numericUpDown1.Text);
 			DateTime newStartTime = dateTimePicker2.Value;
 			DateTime newDate = dateTimePicker1.Value;
-			int userId = _authenticatedUser.Id;
+			//int userId = _authenticatedUser.Id;
 			string projectName = comboBox1.Text;
 
 			ProjectInfo projectInfo = _projectsDataBase.GetProjectByName(projectName);
@@ -374,7 +366,7 @@ namespace WorkingTimeTracker
 				SpentWorkHours = newSpentHours,
 				StartTime = newStartTime,
 				Date = newDate,
-				UserId = userId,
+				//UserId = userId,
 				ProjectId = projectInfo.Id
 			};
 
@@ -388,7 +380,7 @@ namespace WorkingTimeTracker
 
 		}
 
-		private void addWorkingSessionBt_Click(object sender, EventArgs e)
+		private void addWorkingSessionBt_Click(object sender, EventArgs e)//добавление записи о времени
 		{
 			AddWorkingSessionProcess();
 			ShowUserWorkingSessionsInfo();
@@ -396,6 +388,14 @@ namespace WorkingTimeTracker
 			comboBox1.SelectedIndex = -1;
 
 		}
+		//private void comboBox1_Click(object sender, EventArgs e)
+		//{
+		//	var comboBox = sender as ComboBox;
+		//	var allProjects = _projectService.GetAllProjects();
+		//	comboBox.ValueMember = nameof(ProjectModel.Id);
+		//	comboBox.DisplayMember = nameof(ProjectModel.Name);
+		//	comboBox.DataSource = allProjects;
+		//}
 
 		private void deleteSession()
 		{
@@ -499,15 +499,15 @@ namespace WorkingTimeTracker
 
 		private void ProjcomboBox_Click(object sender, EventArgs e)
 		{
-			ProjectsComboBox.Items.Clear();
-			var projectNames = _projectsDataBase.GetNamesOfProjects();
-			foreach (var projectName in projectNames)
-			{
-				if (projectName != null)
-				{
-					ProjectsComboBox.Items.Add(projectName);
-				}
-			}
+			//ProjectsComboBox.Items.Clear();
+			//var projectNames = _projectsDataBase.GetNamesOfProjects();
+			//foreach (var projectName in projectNames)
+			//{
+			//	if (projectName != null)
+			//	{
+			//		ProjectsComboBox.Items.Add(projectName);
+			//	}
+			//}
 		}
 
 		private void ClearFilterbutton_Click(object sender, EventArgs e)
@@ -633,6 +633,13 @@ namespace WorkingTimeTracker
 			comboBox.DataSource = allEmployees;
 		}
 
-
-	}
+        private void comboBox2_Click(object sender, EventArgs e)//выбор задачи
+        {
+			var comboBox = sender as ComboBox;
+			var allTasks = _taskService.GetAllTasks();
+			comboBox.ValueMember = nameof(ProjectModel.Id);
+			comboBox.DisplayMember = nameof(ProjectModel.Name);
+			comboBox.DataSource = allTasks;
+		}
+    }
 }
