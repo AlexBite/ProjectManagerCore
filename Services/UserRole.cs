@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-	enum UserRole
+	public enum UserRole
 	{
 		Administrator = 0,
 		ProjectLeader = 1,

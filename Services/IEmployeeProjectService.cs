@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-	interface IEmployeeProjectService
+	public interface IEmployeeProjectService
 	{
 		EmployeeProjectModel AddProjectWithLeader(string name, DateTime startDate, DateTime endDate, int employeeLeaderId);
 	}

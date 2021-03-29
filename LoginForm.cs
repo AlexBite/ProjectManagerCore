@@ -29,7 +29,7 @@ namespace Курсовая
 			var authenticatedUser = authService.AuthenticateUser(login, password);
 			bool userIsRegistered = authenticatedUser != null;
 
-			if (userIsRegistered)//|| (login=="1" && password=="1")
+			if (userIsRegistered)
 			{
 				var mainForm = new MainForm(authenticatedUser);
 				mainForm.Show();

@@ -28,57 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(30, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(384, 26);
-            this.textBox1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Введите название департамента";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(138, 230);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // AddDepartmentForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(448, 336);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Name = "AddDepartmentForm";
-            this.Text = "AddDepartmentForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.nameTb = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.addBtn = new System.Windows.Forms.Button();
+			this.SuspendLayout();
+			// 
+			// nameTb
+			// 
+			this.nameTb.Location = new System.Drawing.Point(27, 146);
+			this.nameTb.Name = "nameTb";
+			this.nameTb.Size = new System.Drawing.Size(342, 27);
+			this.nameTb.TabIndex = 0;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(76, 72);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(237, 20);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Введите название департамента";
+			// 
+			// addBtn
+			// 
+			this.addBtn.Location = new System.Drawing.Point(123, 230);
+			this.addBtn.Name = "addBtn";
+			this.addBtn.Size = new System.Drawing.Size(116, 40);
+			this.addBtn.TabIndex = 2;
+			this.addBtn.Text = "Добавить";
+			this.addBtn.UseVisualStyleBackColor = true;
+			this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+			// 
+			// AddDepartmentForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.Aquamarine;
+			this.ClientSize = new System.Drawing.Size(398, 336);
+			this.Controls.Add(this.addBtn);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.nameTb);
+			this.Name = "AddDepartmentForm";
+			this.Text = "AddDepartmentForm";
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameTb;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addBtn;
     }
 }

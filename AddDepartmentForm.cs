@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagerCore.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,19 @@ namespace Курсовая
 {
     public partial class AddDepartmentForm : Form
     {
+        private readonly IDepartmentService _departmentService;
+
         public AddDepartmentForm()
         {
+            _departmentService = new DepartmentService();
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e)
         {
-
+            var departmentName = nameTb.Text;
+            _departmentService.AddDepartment(departmentName);
+            this.Close();
         }
     }
 }

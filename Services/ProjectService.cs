@@ -26,6 +26,16 @@ namespace ProjectManagerCore.Services
 			return project;
 		}
 
+		public void DeleteProject(int id)
+		{
+			using (var dbContext = new CoreDbContext())
+			{
+				var projectToDelete = dbContext.Projects.FirstOrDefault(p => p.Id == id);
+				dbContext.Projects.Remove(projectToDelete);
+				dbContext.SaveChanges();
+			}
+		}
+
 		public List<ProjectModel> GetAllProjects()
 		{
 			List<ProjectModel> projects;

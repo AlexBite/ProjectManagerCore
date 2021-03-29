@@ -58,8 +58,8 @@
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.label4 = new System.Windows.Forms.Label();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
 			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.label2 = new System.Windows.Forms.Label();
 			this.panelWorkers = new System.Windows.Forms.Panel();
 			this.addEmployeeBtn = new System.Windows.Forms.Button();
 			this.WorkersdataGridView = new System.Windows.Forms.DataGridView();
@@ -82,7 +82,7 @@
 			this.button8 = new System.Windows.Forms.Button();
 			this.button15 = new System.Windows.Forms.Button();
 			this.button16 = new System.Windows.Forms.Button();
-			this.button17 = new System.Windows.Forms.Button();
+			this.addDepartmentBtn = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button7 = new System.Windows.Forms.Button();
 			this.panelReports = new System.Windows.Forms.Panel();
@@ -201,8 +201,8 @@
 			this.MainPanel.Controls.Add(this.dateTimePicker1);
 			this.MainPanel.Controls.Add(this.label4);
 			this.MainPanel.Controls.Add(this.comboBox1);
-			this.MainPanel.Controls.Add(this.label2);
 			this.MainPanel.Controls.Add(this.numericUpDown1);
+			this.MainPanel.Controls.Add(this.label2);
 			this.MainPanel.Location = new System.Drawing.Point(11, 97);
 			this.MainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.MainPanel.Name = "MainPanel";
@@ -424,16 +424,6 @@
 			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
 			this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 29);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(134, 20);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "Выберите проект ";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
-			// 
 			// numericUpDown1
 			// 
 			this.numericUpDown1.Location = new System.Drawing.Point(308, 292);
@@ -456,6 +446,16 @@
             0,
             0,
             0});
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(12, 29);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(134, 20);
+			this.label2.TabIndex = 3;
+			this.label2.Text = "Выберите проект ";
+			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// panelWorkers
 			// 
@@ -527,7 +527,7 @@
 			this.deleteProjectBtn.TabIndex = 48;
 			this.deleteProjectBtn.Text = "Удалить проект";
 			this.deleteProjectBtn.UseVisualStyleBackColor = true;
-			this.deleteProjectBtn.Click += new System.EventHandler(this.button13_Click);
+			this.deleteProjectBtn.Click += new System.EventHandler(this.deleteProjectBtn_Click);
 			// 
 			// addProjectBtn
 			// 
@@ -659,7 +659,7 @@
 			this.panelDirectories.Controls.Add(this.button8);
 			this.panelDirectories.Controls.Add(this.button15);
 			this.panelDirectories.Controls.Add(this.button16);
-			this.panelDirectories.Controls.Add(this.button17);
+			this.panelDirectories.Controls.Add(this.addDepartmentBtn);
 			this.panelDirectories.Location = new System.Drawing.Point(11, 119);
 			this.panelDirectories.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.panelDirectories.Name = "panelDirectories";
@@ -699,16 +699,16 @@
 			this.button16.UseVisualStyleBackColor = true;
 			this.button16.Click += new System.EventHandler(this.button16_Click);
 			// 
-			// button17
+			// addDepartmentBtn
 			// 
-			this.button17.Location = new System.Drawing.Point(136, 107);
-			this.button17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.button17.Name = "button17";
-			this.button17.Size = new System.Drawing.Size(132, 58);
-			this.button17.TabIndex = 28;
-			this.button17.Text = "Департаменты";
-			this.button17.UseVisualStyleBackColor = true;
-			this.button17.Click += new System.EventHandler(this.button17_Click);
+			this.addDepartmentBtn.Location = new System.Drawing.Point(136, 107);
+			this.addDepartmentBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.addDepartmentBtn.Name = "addDepartmentBtn";
+			this.addDepartmentBtn.Size = new System.Drawing.Size(132, 58);
+			this.addDepartmentBtn.TabIndex = 28;
+			this.addDepartmentBtn.Text = "Департаменты";
+			this.addDepartmentBtn.UseVisualStyleBackColor = true;
+			this.addDepartmentBtn.Click += new System.EventHandler(this.addDepartmentBtn_Click);
 			// 
 			// button4
 			// 
@@ -920,11 +920,11 @@
 			this.Controls.Add(this.fioLabel);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.Rolelabel);
-			this.Controls.Add(this.panelWorkers);
-			this.Controls.Add(this.MainPanel);
 			this.Controls.Add(this.panelProjects);
 			this.Controls.Add(this.panelDirectories);
 			this.Controls.Add(this.panelReports);
+			this.Controls.Add(this.panelWorkers);
+			this.Controls.Add(this.MainPanel);
 			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "MainForm";
 			this.Text = "Система учета рабочего времени";
@@ -1013,7 +1013,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button addDepartmentBtn;
         private System.Windows.Forms.Panel panelWorkers;
         private System.Windows.Forms.DataGridView WorkersdataGridView;
         private System.Windows.Forms.Button addEmployeeBtn;

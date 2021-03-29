@@ -28,7 +28,7 @@ namespace ProjectManagerCore.Services
 				var employeeProject = new EmployeeProjectModel()
 				{
 					EmployeeId = employeeLeaderId,
-					RoleId = (int)UserRole.ProjectLeader,
+					RoleId = (int) UserRole.ProjectLeader,
 					ProjectId = project.Id,
 					//@TODO: Добавить ставку
 					Rate = 1,

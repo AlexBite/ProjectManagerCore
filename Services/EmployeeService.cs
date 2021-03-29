@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-    public class EmployeeService : IEmployeeService
+    internal class EmployeeService : IEmployeeService
     {
         public EmployeeModel AddWorker(string secname, string firstname, string thirdname, string login, string password, string phone)
         {

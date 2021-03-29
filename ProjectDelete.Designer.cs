@@ -28,57 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(135, 139);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 55);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Удалить проект";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(45, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(415, 28);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Выберите проект";
-            // 
-            // ProjectDelete
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(495, 292);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Name = "ProjectDelete";
-            this.Text = "ProjectDelete";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.deleteBtn = new System.Windows.Forms.Button();
+			this.projectsCB = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.SuspendLayout();
+			// 
+			// deleteBtn
+			// 
+			this.deleteBtn.Location = new System.Drawing.Point(120, 139);
+			this.deleteBtn.Name = "deleteBtn";
+			this.deleteBtn.Size = new System.Drawing.Size(170, 55);
+			this.deleteBtn.TabIndex = 0;
+			this.deleteBtn.Text = "Удалить проект";
+			this.deleteBtn.UseVisualStyleBackColor = true;
+			this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+			// 
+			// projectsCB
+			// 
+			this.projectsCB.FormattingEnabled = true;
+			this.projectsCB.Location = new System.Drawing.Point(40, 87);
+			this.projectsCB.Name = "projectsCB";
+			this.projectsCB.Size = new System.Drawing.Size(369, 28);
+			this.projectsCB.TabIndex = 1;
+			this.projectsCB.Click += new System.EventHandler(this.projectsCB_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(141, 41);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(130, 20);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "Выберите проект";
+			// 
+			// ProjectDelete
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.Aquamarine;
+			this.ClientSize = new System.Drawing.Size(440, 292);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.projectsCB);
+			this.Controls.Add(this.deleteBtn);
+			this.Name = "ProjectDelete";
+			this.Text = "ProjectDelete";
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.ComboBox projectsCB;
         private System.Windows.Forms.Label label1;
     }
 }
