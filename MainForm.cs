@@ -107,25 +107,25 @@ namespace WorkingTimeTracker
             middleNameColumn.Name = "Отчество";
             WorkersdataGridView.Columns.Add(middleNameColumn);
 
-            var positionaColumns = new DataGridViewTextBoxColumn();
-            positionaColumns.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
-            positionaColumns.Name = "Должность";
-            WorkersdataGridView.Columns.Add(positionaColumns);
+            //var positionaColumns = new DataGridViewTextBoxColumn();
+            //positionaColumns.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
+            //positionaColumns.Name = "Должность";
+            //WorkersdataGridView.Columns.Add(positionaColumns);
 
             //var departmentColumn = new DataGridViewTextBoxColumn();
             //departmentColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Department);
             //departmentColumn.Name = "Департамент";
             //WorkersdataGridView.Columns.Add(departmentColumn);
 
-            DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
-            startDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.StartWorkingDate);
-            startDateColumn.Name = "Дата начала работы";
-            WorkersdataGridView.Columns.Add(startDateColumn);
+            //DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
+            //startDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.StartWorkingDate);
+            //startDateColumn.Name = "Дата начала работы";
+            //WorkersdataGridView.Columns.Add(startDateColumn);
 
-            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
-            endDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.EndWorkingDate);
-            endDateColumn.Name = "Дата окончания работы";
-            WorkersdataGridView.Columns.Add(endDateColumn);
+            //DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
+            //endDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.EndWorkingDate);
+            //endDateColumn.Name = "Дата окончания работы";
+            //WorkersdataGridView.Columns.Add(endDateColumn);
 
         }
 
@@ -578,7 +578,7 @@ namespace WorkingTimeTracker
         private void button14_Click(object sender, EventArgs e)//добавление сотрудника
         {
             AddUserForm addUserForm = new AddUserForm();
-            addUserForm.Show();
+            addUserForm.ShowDialog();
             SetWorkersDgv();
         }
 

@@ -32,6 +32,7 @@ namespace WorkingTimeTracker
 			var phoneNumber = PhoneBox.Text;
 
 			_employeeService.AddWorker(surname, name, middleName, login, password, phoneNumber);
+			this.Close();
 		}
 	}
 }
