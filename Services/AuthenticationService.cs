@@ -3,20 +3,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WorkingTimeTracker;
 
 namespace ProjectManagerCore.Services
 {
 	internal class AuthenticationService : IAuthenticationService
 	{
-		public EmployeeModel AuthenticateUser(string login, string password)
+		// private readonly СервисУКоторогоЕстьРоль
+		public UserInfo AuthenticateUser(string login, string password)
 		{
-			EmployeeModel authenticatedUser;
+			EmployeeModel employeeModel;
 			using (var db = new CoreDbContext())
 			{
-				authenticatedUser = db.Employees.FirstOrDefault(user => user.Login == login && user.Password == password);
+				employeeModel = db.Employees.FirstOrDefault(user => user.Login == login && user.Password == password);
 			};
 
-			return authenticatedUser;
+			var userInfo = new UserInfo()
+			{
+				Name = employeeModel.Name,
+				SecondName = employeeModel.Surname,
+				MiddleName = employeeModel.MiddleName,
+				Login = employeeModel.Login,
+				Password = employeeModel.Password
+				// Role = СервисУКоторогоЕстьРоль.ПолучитьРольПользователя(employeeModel.Id)
+			};
+
+			return userInfo;
 		}
 	}
 }

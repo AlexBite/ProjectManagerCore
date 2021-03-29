@@ -17,22 +17,24 @@ namespace WorkingTimeTracker
 {
 	public partial class MainForm : Form
 	{
-		private readonly EmployeeModel _currentEmployeeModel;
 		private readonly IProjectService _projectService;
 		private readonly IEmployeeService _employeeService;
 		private readonly IEmployeeProjectService _employeeProjectService;
+		private readonly UserInfo _authenticatedUser;
 
+
+		// Выпилить:
 		private readonly UsersDataBase _usersDataBase;
-		private readonly UserInfo _authenricatedUser;
 		private readonly ProjectsDataBase _projectsDataBase;
 		private readonly WorkingDataBase _workingDataBase;
 
-		public MainForm(EmployeeModel employeeModel)
+		public MainForm(UserInfo authenticatedUser)
 		{
-			_currentEmployeeModel = employeeModel;
 			_projectService = new ProjectService();
 			_employeeService = new EmployeeService();
 			_employeeProjectService = new EmployeeProjectService();
+			_authenticatedUser = authenticatedUser;
+
 			//_usersDataBase = usersDataBase;
 			//_authenricatedUser = authenricatedUser;
 			//_projectsDataBase = projectsDataBase;
@@ -53,7 +55,7 @@ namespace WorkingTimeTracker
 
 		private void SetNameLabel()
 		{
-			fioLabel.Text = $"{_currentEmployeeModel.Surname} {_currentEmployeeModel.Name} {_currentEmployeeModel.MiddleName}";
+			fioLabel.Text = _authenticatedUser.GetFullNameString();
 		}
 
 		private void SetProjectsDgv()
@@ -132,14 +134,14 @@ namespace WorkingTimeTracker
 
 		private void InitializeUi()//все ограничения админ -1 разраб 2 дир 3 рук проект 4 
 		{
-			if (_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 2
+			if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 2
 			{
 				button2.Enabled = false;
 				button3.Enabled = false;
 				button4.Enabled = false;
 				button7.Enabled = false;
 			}
-			else if (_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 3
+			else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 3
 			{
 				button2.Enabled = false;
 				button3.Enabled = true;
@@ -150,7 +152,7 @@ namespace WorkingTimeTracker
 				addProjectBtn.Enabled = false;
 				addEmployeeBtn.Enabled = false;
 			}
-			else if (_authenricatedUser.Role != UserInfo.UserRole.Leader)// роль 4
+			else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 4
 			{
 				button2.Enabled = false;
 				button3.Enabled = false;
@@ -269,7 +271,7 @@ namespace WorkingTimeTracker
 			List<WorkingSessionInfo> workingSessionInfos = _workingDataBase.GetAll();
 			foreach (var workingSession in workingSessionInfos)
 			{
-				if (workingSession.UserId != _authenricatedUser.Id)
+				if (workingSession.UserId != _authenticatedUser.Id)
 					continue;
 
 				ProjectInfo projectInfo = _projectsDataBase.GetProject(workingSession.ProjectId);
@@ -360,7 +362,7 @@ namespace WorkingTimeTracker
 			int newSpentHours = Int32.Parse(numericUpDown1.Text);
 			DateTime newStartTime = dateTimePicker2.Value;
 			DateTime newDate = dateTimePicker1.Value;
-			int userId = _authenricatedUser.Id;
+			int userId = _authenticatedUser.Id;
 			string projectName = comboBox1.Text;
 
 			ProjectInfo projectInfo = _projectsDataBase.GetProjectByName(projectName);
