@@ -36,8 +36,8 @@ namespace WorkingTimeTracker
 			_employeeService = new EmployeeService();
 			_employeeProjectService = new EmployeeProjectService();
 			_authenticatedUser = authenticatedUser;
+			_taskService = new TaskService();
 
-			
 			//panelReports.Visible = false;
 			//fioLabel.Text = _authenricatedUser.Fio;
 			//InitializeUi();
@@ -193,13 +193,13 @@ namespace WorkingTimeTracker
 			button4.Font = new Font(button4.Font, FontStyle.Regular);
 			button7.Font = new Font(button7.Font, FontStyle.Regular);
 			button2.Font = new Font(button1.Font, FontStyle.Regular);
-			// Изменение панели:
+            // Изменение панели:
 
-			//panelWorkers.Visible = false;
-			//panelProjects.Visible = false;
-			//panelDirectories.Visible = false;
-			//panelReports.Visible = false;
-			MainPanel.Visible = false;
+            panelWorkers.Visible = false;
+            panelProjects.Visible = false;
+            panelDirectories.Visible = false;
+            panelReports.Visible = false;
+            MainPanel.Visible = false;
 			MainPanel.Visible = true;
 
 		}
@@ -329,15 +329,20 @@ namespace WorkingTimeTracker
 
 		private void comboBox1_Click(object sender, EventArgs e)
 		{
-			comboBox1.Items.Clear();
-			var projectNames = _projectsDataBase.GetNamesOfProjects();
-			foreach (var projectName in projectNames)
-			{
-				if (projectName != null)
-				{
-					comboBox1.Items.Add(projectName);
-				}
-			}
+			var comboBox = sender as ComboBox;
+			var allProjects = _projectService.GetAllProjects();
+			comboBox.ValueMember = nameof(ProjectModel.Id);
+			comboBox.DisplayMember = nameof(ProjectModel.Name);
+			comboBox.DataSource = allProjects;
+			//comboBox1.Items.Clear();
+			//var projectNames = _projectsDataBase.GetNamesOfProjects();
+			//foreach (var projectName in projectNames)
+			//{
+			//	if (projectName != null)
+			//	{
+			//		comboBox1.Items.Add(projectName);
+			//	}
+			//}
 		}
 
 		private void AddWorkingSessionProcess()
@@ -637,9 +642,14 @@ namespace WorkingTimeTracker
         {
 			var comboBox = sender as ComboBox;
 			var allTasks = _taskService.GetAllTasks();
-			comboBox.ValueMember = nameof(ProjectModel.Id);
-			comboBox.DisplayMember = nameof(ProjectModel.Name);
+			comboBox.ValueMember = nameof(TaskModel.Id);
+			comboBox.DisplayMember = nameof(TaskModel.Description);
 			comboBox.DataSource = allTasks;
 		}
+
+        private void projectLeadCB_Click(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

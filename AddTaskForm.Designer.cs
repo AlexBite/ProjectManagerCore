@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelTask = new System.Windows.Forms.Panel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.PrOnTaskcombo = new System.Windows.Forms.ComboBox();
             this.PersTaskButt = new System.Windows.Forms.Button();
             this.DeleteTaskButt = new System.Windows.Forms.Button();
@@ -37,10 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TaskReviewBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskAddButt = new System.Windows.Forms.Button();
             this.EndTaskDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.StartTaskDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -54,6 +51,7 @@
             // panelTask
             // 
             this.panelTask.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelTask.Controls.Add(this.dataGridView2);
             this.panelTask.Controls.Add(this.PrOnTaskcombo);
             this.panelTask.Controls.Add(this.PersTaskButt);
             this.panelTask.Controls.Add(this.DeleteTaskButt);
@@ -62,7 +60,6 @@
             this.panelTask.Controls.Add(this.label2);
             this.panelTask.Controls.Add(this.TaskReviewBox);
             this.panelTask.Controls.Add(this.label1);
-            this.panelTask.Controls.Add(this.dataGridView2);
             this.panelTask.Controls.Add(this.TaskAddButt);
             this.panelTask.Controls.Add(this.EndTaskDateTimePicker);
             this.panelTask.Controls.Add(this.StartTaskDateTimePicker);
@@ -75,6 +72,20 @@
             this.panelTask.Size = new System.Drawing.Size(1269, 670);
             this.panelTask.TabIndex = 8;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.Turquoise;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(618, 22);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 28;
+            this.dataGridView2.Size = new System.Drawing.Size(593, 600);
+            this.dataGridView2.TabIndex = 20;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
             // PrOnTaskcombo
             // 
             this.PrOnTaskcombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -84,6 +95,7 @@
             this.PrOnTaskcombo.Name = "PrOnTaskcombo";
             this.PrOnTaskcombo.Size = new System.Drawing.Size(240, 33);
             this.PrOnTaskcombo.TabIndex = 51;
+            this.PrOnTaskcombo.Click += new System.EventHandler(this.PrOnTaskcombo_Click);
             // 
             // PersTaskButt
             // 
@@ -151,48 +163,6 @@
             this.label1.Size = new System.Drawing.Size(153, 25);
             this.label1.TabIndex = 22;
             this.label1.Text = "Описание задачи";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column6,
-            this.Column7});
-            this.dataGridView2.Location = new System.Drawing.Point(618, 22);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(593, 600);
-            this.dataGridView2.TabIndex = 20;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Задача";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 150;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Дата начала";
-            this.Column6.MinimumWidth = 8;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 150;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Дата окончания";
-            this.Column7.MinimumWidth = 8;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 150;
             // 
             // TaskAddButt
             // 
@@ -281,9 +251,6 @@
         private System.Windows.Forms.TextBox TaskReviewBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.ComboBox PrOnTaskcombo;
     }
 }

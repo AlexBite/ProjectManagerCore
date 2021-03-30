@@ -44,6 +44,22 @@
             this.NumRowTB = new System.Windows.Forms.TextBox();
             this.DeleteSessionbutton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.addWorkingSessionBt = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelWorkers = new System.Windows.Forms.Panel();
             this.addEmployeeBtn = new System.Windows.Forms.Button();
             this.WorkersdataGridView = new System.Windows.Forms.DataGridView();
@@ -82,30 +98,15 @@
             this.projectStartDateDTP = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.addWorkingSessionBt = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.Rolelabel = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.projectsDataBaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panelWorkers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkersdataGridView)).BeginInit();
             this.panelReports.SuspendLayout();
@@ -114,8 +115,6 @@
             this.panelDirectories.SuspendLayout();
             this.panelProjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataBaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,7 +150,7 @@
             // fioLabel
             // 
             this.fioLabel.AutoSize = true;
-            this.fioLabel.Location = new System.Drawing.Point(75, 11);
+            this.fioLabel.Location = new System.Drawing.Point(50, 0);
             this.fioLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.fioLabel.Name = "fioLabel";
             this.fioLabel.Size = new System.Drawing.Size(166, 25);
@@ -291,418 +290,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(399, 35);
             this.textBox1.TabIndex = 32;
-            // 
-            // panelWorkers
-            // 
-            this.panelWorkers.BackColor = System.Drawing.Color.Aquamarine;
-            this.panelWorkers.Controls.Add(this.panelProjects);
-            this.panelWorkers.Controls.Add(this.addEmployeeBtn);
-            this.panelWorkers.Controls.Add(this.WorkersdataGridView);
-            this.panelWorkers.Location = new System.Drawing.Point(23, 130);
-            this.panelWorkers.Margin = new System.Windows.Forms.Padding(4);
-            this.panelWorkers.Name = "panelWorkers";
-            this.panelWorkers.Size = new System.Drawing.Size(1341, 714);
-            this.panelWorkers.TabIndex = 51;
-            // 
-            // addEmployeeBtn
-            // 
-            this.addEmployeeBtn.Location = new System.Drawing.Point(594, 608);
-            this.addEmployeeBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.addEmployeeBtn.Name = "addEmployeeBtn";
-            this.addEmployeeBtn.Size = new System.Drawing.Size(228, 55);
-            this.addEmployeeBtn.TabIndex = 1;
-            this.addEmployeeBtn.Text = "Добавить сотрудника";
-            this.addEmployeeBtn.UseVisualStyleBackColor = true;
-            this.addEmployeeBtn.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // WorkersdataGridView
-            // 
-            this.WorkersdataGridView.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.WorkersdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WorkersdataGridView.Location = new System.Drawing.Point(54, 24);
-            this.WorkersdataGridView.Margin = new System.Windows.Forms.Padding(4);
-            this.WorkersdataGridView.Name = "WorkersdataGridView";
-            this.WorkersdataGridView.RowHeadersWidth = 62;
-            this.WorkersdataGridView.Size = new System.Drawing.Size(1244, 531);
-            this.WorkersdataGridView.TabIndex = 0;
-            // 
-            // panelReports
-            // 
-            this.panelReports.BackColor = System.Drawing.Color.Aquamarine;
-            this.panelReports.Controls.Add(this.dataGridView4);
-            this.panelReports.Controls.Add(this.label3);
-            this.panelReports.Controls.Add(this.button6);
-            this.panelReports.Controls.Add(this.dataGridView3);
-            this.panelReports.Controls.Add(this.button5);
-            this.panelReports.Controls.Add(this.ProjectsComboBox);
-            this.panelReports.Controls.Add(this.applyFilterButton);
-            this.panelReports.Controls.Add(this.button18);
-            this.panelReports.Location = new System.Drawing.Point(11, 130);
-            this.panelReports.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.panelReports.Name = "panelReports";
-            this.panelReports.Size = new System.Drawing.Size(1345, 710);
-            this.panelReports.TabIndex = 9;
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column18,
-            this.Column19,
-            this.Column20,
-            this.Column21});
-            this.dataGridView4.Location = new System.Drawing.Point(572, 14);
-            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowHeadersWidth = 62;
-            this.dataGridView4.Size = new System.Drawing.Size(739, 321);
-            this.dataGridView4.TabIndex = 51;
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "Фамилия";
-            this.Column18.MinimumWidth = 8;
-            this.Column18.Name = "Column18";
-            this.Column18.Width = 150;
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "Имя";
-            this.Column19.MinimumWidth = 8;
-            this.Column19.Name = "Column19";
-            this.Column19.Width = 150;
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "Отчество";
-            this.Column20.MinimumWidth = 8;
-            this.Column20.Name = "Column20";
-            this.Column20.Width = 150;
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "Показатель утилизации";
-            this.Column21.MinimumWidth = 8;
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 150;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(190, 310);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 25);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Выберите проект";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(46, 434);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(469, 42);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Отчет по выручке на проекте";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column16,
-            this.Column17});
-            this.dataGridView3.Location = new System.Drawing.Point(572, 411);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 62;
-            this.dataGridView3.Size = new System.Drawing.Size(739, 210);
-            this.dataGridView3.TabIndex = 50;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "Название проекта";
-            this.Column16.MinimumWidth = 8;
-            this.Column16.Name = "Column16";
-            this.Column16.Width = 300;
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "Размер выручки на проекте";
-            this.Column17.MinimumWidth = 8;
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 300;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(46, 106);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(469, 42);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Отчет по коммерческой утилизации сотрудников";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // ProjectsComboBox
-            // 
-            this.ProjectsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ProjectsComboBox.FormattingEnabled = true;
-            this.ProjectsComboBox.Location = new System.Drawing.Point(46, 356);
-            this.ProjectsComboBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.ProjectsComboBox.Name = "ProjectsComboBox";
-            this.ProjectsComboBox.Size = new System.Drawing.Size(469, 33);
-            this.ProjectsComboBox.TabIndex = 7;
-            this.ProjectsComboBox.Click += new System.EventHandler(this.ProjcomboBox_Click);
-            // 
-            // applyFilterButton
-            // 
-            this.applyFilterButton.Location = new System.Drawing.Point(112, 555);
-            this.applyFilterButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.applyFilterButton.Name = "applyFilterButton";
-            this.applyFilterButton.Size = new System.Drawing.Size(306, 55);
-            this.applyFilterButton.TabIndex = 6;
-            this.applyFilterButton.Text = "Выгрузить отчет";
-            this.applyFilterButton.UseVisualStyleBackColor = true;
-            this.applyFilterButton.Click += new System.EventHandler(this.applyFilterButton_Click);
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(112, 212);
-            this.button18.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(306, 55);
-            this.button18.TabIndex = 52;
-            this.button18.Text = "Выгрузить отчет";
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // panelDirectories
-            // 
-            this.panelDirectories.BackColor = System.Drawing.Color.Aquamarine;
-            this.panelDirectories.Controls.Add(this.button8);
-            this.panelDirectories.Controls.Add(this.button15);
-            this.panelDirectories.Controls.Add(this.button16);
-            this.panelDirectories.Controls.Add(this.addDepartmentBtn);
-            this.panelDirectories.Location = new System.Drawing.Point(14, 130);
-            this.panelDirectories.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.panelDirectories.Name = "panelDirectories";
-            this.panelDirectories.Size = new System.Drawing.Size(1345, 710);
-            this.panelDirectories.TabIndex = 49;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(170, 412);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(165, 72);
-            this.button8.TabIndex = 48;
-            this.button8.Text = "Роли";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(765, 134);
-            this.button15.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(165, 72);
-            this.button15.TabIndex = 46;
-            this.button15.Text = "Должности";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(765, 398);
-            this.button16.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(165, 72);
-            this.button16.TabIndex = 45;
-            this.button16.Text = "Виды деятельности";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // addDepartmentBtn
-            // 
-            this.addDepartmentBtn.Location = new System.Drawing.Point(170, 134);
-            this.addDepartmentBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.addDepartmentBtn.Name = "addDepartmentBtn";
-            this.addDepartmentBtn.Size = new System.Drawing.Size(165, 72);
-            this.addDepartmentBtn.TabIndex = 28;
-            this.addDepartmentBtn.Text = "Департаменты";
-            this.addDepartmentBtn.UseVisualStyleBackColor = true;
-            this.addDepartmentBtn.Click += new System.EventHandler(this.addDepartmentBtn_Click);
-            // 
-            // panelProjects
-            // 
-            this.panelProjects.BackColor = System.Drawing.Color.Aquamarine;
-            this.panelProjects.Controls.Add(this.projectNameTB);
-            this.panelProjects.Controls.Add(this.deleteProjectBtn);
-            this.panelProjects.Controls.Add(this.addProjectBtn);
-            this.panelProjects.Controls.Add(this.pjoectTasksBtn);
-            this.panelProjects.Controls.Add(this.changeProjectBtn);
-            this.panelProjects.Controls.Add(this.projectEndDateDTP);
-            this.panelProjects.Controls.Add(this.label9);
-            this.panelProjects.Controls.Add(this.label12);
-            this.panelProjects.Controls.Add(this.projectLeadCB);
-            this.panelProjects.Controls.Add(this.projectEmployeesBtn);
-            this.panelProjects.Controls.Add(this.projectsDgv);
-            this.panelProjects.Controls.Add(this.projectStartDateDTP);
-            this.panelProjects.Controls.Add(this.label14);
-            this.panelProjects.Controls.Add(this.label15);
-            this.panelProjects.Location = new System.Drawing.Point(0, 4);
-            this.panelProjects.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.panelProjects.Name = "panelProjects";
-            this.panelProjects.Size = new System.Drawing.Size(1345, 710);
-            this.panelProjects.TabIndex = 40;
-            // 
-            // projectNameTB
-            // 
-            this.projectNameTB.Location = new System.Drawing.Point(285, 51);
-            this.projectNameTB.Margin = new System.Windows.Forms.Padding(2);
-            this.projectNameTB.Name = "projectNameTB";
-            this.projectNameTB.Size = new System.Drawing.Size(382, 31);
-            this.projectNameTB.TabIndex = 49;
-            // 
-            // deleteProjectBtn
-            // 
-            this.deleteProjectBtn.Location = new System.Drawing.Point(246, 488);
-            this.deleteProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.deleteProjectBtn.Name = "deleteProjectBtn";
-            this.deleteProjectBtn.Size = new System.Drawing.Size(165, 72);
-            this.deleteProjectBtn.TabIndex = 48;
-            this.deleteProjectBtn.Text = "Удалить проект";
-            this.deleteProjectBtn.UseVisualStyleBackColor = true;
-            this.deleteProjectBtn.Click += new System.EventHandler(this.deleteProjectBtn_Click);
-            // 
-            // addProjectBtn
-            // 
-            this.addProjectBtn.Location = new System.Drawing.Point(502, 194);
-            this.addProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.addProjectBtn.Name = "addProjectBtn";
-            this.addProjectBtn.Size = new System.Drawing.Size(165, 72);
-            this.addProjectBtn.TabIndex = 47;
-            this.addProjectBtn.Text = "Добавить проект";
-            this.addProjectBtn.UseVisualStyleBackColor = true;
-            this.addProjectBtn.Click += new System.EventHandler(this.addProjBtn_Click);
-            // 
-            // pjoectTasksBtn
-            // 
-            this.pjoectTasksBtn.Location = new System.Drawing.Point(20, 375);
-            this.pjoectTasksBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.pjoectTasksBtn.Name = "pjoectTasksBtn";
-            this.pjoectTasksBtn.Size = new System.Drawing.Size(165, 72);
-            this.pjoectTasksBtn.TabIndex = 46;
-            this.pjoectTasksBtn.Text = "Задачи проекта";
-            this.pjoectTasksBtn.UseVisualStyleBackColor = true;
-            this.pjoectTasksBtn.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // changeProjectBtn
-            // 
-            this.changeProjectBtn.Location = new System.Drawing.Point(246, 372);
-            this.changeProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.changeProjectBtn.Name = "changeProjectBtn";
-            this.changeProjectBtn.Size = new System.Drawing.Size(165, 72);
-            this.changeProjectBtn.TabIndex = 45;
-            this.changeProjectBtn.Text = "Изменить проект";
-            this.changeProjectBtn.UseVisualStyleBackColor = true;
-            this.changeProjectBtn.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // projectEndDateDTP
-            // 
-            this.projectEndDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.projectEndDateDTP.Location = new System.Drawing.Point(285, 254);
-            this.projectEndDateDTP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.projectEndDateDTP.Name = "projectEndDateDTP";
-            this.projectEndDateDTP.Size = new System.Drawing.Size(153, 31);
-            this.projectEndDateDTP.TabIndex = 44;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 236);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 50);
-            this.label9.TabIndex = 43;
-            this.label9.Text = "Выберите дату\r\nокончания проекта";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 104);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(211, 25);
-            this.label12.TabIndex = 40;
-            this.label12.Text = "Выберите руководителя";
-            // 
-            // projectLeadCB
-            // 
-            this.projectLeadCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.projectLeadCB.FormattingEnabled = true;
-            this.projectLeadCB.Location = new System.Drawing.Point(285, 101);
-            this.projectLeadCB.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.projectLeadCB.Name = "projectLeadCB";
-            this.projectLeadCB.Size = new System.Drawing.Size(382, 33);
-            this.projectLeadCB.TabIndex = 36;
-            this.projectLeadCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.projectLeadCB_Click);
-            // 
-            // projectEmployeesBtn
-            // 
-            this.projectEmployeesBtn.Location = new System.Drawing.Point(485, 372);
-            this.projectEmployeesBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.projectEmployeesBtn.Name = "projectEmployeesBtn";
-            this.projectEmployeesBtn.Size = new System.Drawing.Size(165, 72);
-            this.projectEmployeesBtn.TabIndex = 28;
-            this.projectEmployeesBtn.Text = "Сотрудники проекта";
-            this.projectEmployeesBtn.UseVisualStyleBackColor = true;
-            this.projectEmployeesBtn.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // projectsDgv
-            // 
-            this.projectsDgv.AllowUserToAddRows = false;
-            this.projectsDgv.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.projectsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.projectsDgv.Location = new System.Drawing.Point(730, 24);
-            this.projectsDgv.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.projectsDgv.Name = "projectsDgv";
-            this.projectsDgv.ReadOnly = true;
-            this.projectsDgv.RowHeadersWidth = 62;
-            this.projectsDgv.Size = new System.Drawing.Size(581, 600);
-            this.projectsDgv.TabIndex = 0;
-            this.projectsDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectsDgv_CellContentClick);
-            // 
-            // projectStartDateDTP
-            // 
-            this.projectStartDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.projectStartDateDTP.Location = new System.Drawing.Point(285, 189);
-            this.projectStartDateDTP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.projectStartDateDTP.Name = "projectStartDateDTP";
-            this.projectStartDateDTP.Size = new System.Drawing.Size(153, 31);
-            this.projectStartDateDTP.TabIndex = 25;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 166);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(139, 50);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "Выберите дату\r\nначала проекта";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 49);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(228, 25);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Введите название проекта";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label6
             // 
@@ -878,6 +465,424 @@
             this.label2.Text = "Выберите проект ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // panelWorkers
+            // 
+            this.panelWorkers.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelWorkers.Controls.Add(this.addEmployeeBtn);
+            this.panelWorkers.Controls.Add(this.WorkersdataGridView);
+            this.panelWorkers.Location = new System.Drawing.Point(19, 130);
+            this.panelWorkers.Margin = new System.Windows.Forms.Padding(4);
+            this.panelWorkers.Name = "panelWorkers";
+            this.panelWorkers.Size = new System.Drawing.Size(1341, 714);
+            this.panelWorkers.TabIndex = 51;
+            // 
+            // addEmployeeBtn
+            // 
+            this.addEmployeeBtn.Location = new System.Drawing.Point(594, 608);
+            this.addEmployeeBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.addEmployeeBtn.Name = "addEmployeeBtn";
+            this.addEmployeeBtn.Size = new System.Drawing.Size(228, 55);
+            this.addEmployeeBtn.TabIndex = 1;
+            this.addEmployeeBtn.Text = "Добавить сотрудника";
+            this.addEmployeeBtn.UseVisualStyleBackColor = true;
+            this.addEmployeeBtn.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // WorkersdataGridView
+            // 
+            this.WorkersdataGridView.BackgroundColor = System.Drawing.Color.Turquoise;
+            this.WorkersdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.WorkersdataGridView.Location = new System.Drawing.Point(54, 24);
+            this.WorkersdataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.WorkersdataGridView.Name = "WorkersdataGridView";
+            this.WorkersdataGridView.RowHeadersWidth = 62;
+            this.WorkersdataGridView.Size = new System.Drawing.Size(1244, 531);
+            this.WorkersdataGridView.TabIndex = 0;
+            // 
+            // panelReports
+            // 
+            this.panelReports.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelReports.Controls.Add(this.dataGridView4);
+            this.panelReports.Controls.Add(this.label3);
+            this.panelReports.Controls.Add(this.button6);
+            this.panelReports.Controls.Add(this.dataGridView3);
+            this.panelReports.Controls.Add(this.button5);
+            this.panelReports.Controls.Add(this.ProjectsComboBox);
+            this.panelReports.Controls.Add(this.applyFilterButton);
+            this.panelReports.Controls.Add(this.button18);
+            this.panelReports.Location = new System.Drawing.Point(11, 130);
+            this.panelReports.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.panelReports.Name = "panelReports";
+            this.panelReports.Size = new System.Drawing.Size(1345, 710);
+            this.panelReports.TabIndex = 9;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.BackgroundColor = System.Drawing.Color.Turquoise;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column18,
+            this.Column19,
+            this.Column20,
+            this.Column21});
+            this.dataGridView4.Location = new System.Drawing.Point(572, 14);
+            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersWidth = 62;
+            this.dataGridView4.Size = new System.Drawing.Size(739, 321);
+            this.dataGridView4.TabIndex = 51;
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "Фамилия";
+            this.Column18.MinimumWidth = 8;
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            this.Column18.Width = 150;
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "Имя";
+            this.Column19.MinimumWidth = 8;
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            this.Column19.Width = 150;
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "Отчество";
+            this.Column20.MinimumWidth = 8;
+            this.Column20.Name = "Column20";
+            this.Column20.ReadOnly = true;
+            this.Column20.Width = 150;
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "Показатель утилизации";
+            this.Column21.MinimumWidth = 8;
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            this.Column21.Width = 150;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(190, 310);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(153, 25);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Выберите проект";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(46, 434);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(469, 42);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Отчет по выручке на проекте";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.Turquoise;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column16,
+            this.Column17});
+            this.dataGridView3.Location = new System.Drawing.Point(572, 411);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidth = 62;
+            this.dataGridView3.Size = new System.Drawing.Size(739, 210);
+            this.dataGridView3.TabIndex = 50;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Название проекта";
+            this.Column16.MinimumWidth = 8;
+            this.Column16.Name = "Column16";
+            this.Column16.Width = 300;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Размер выручки на проекте";
+            this.Column17.MinimumWidth = 8;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 300;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(46, 106);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(469, 42);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "Отчет по коммерческой утилизации сотрудников";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // ProjectsComboBox
+            // 
+            this.ProjectsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ProjectsComboBox.FormattingEnabled = true;
+            this.ProjectsComboBox.Location = new System.Drawing.Point(46, 356);
+            this.ProjectsComboBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.ProjectsComboBox.Name = "ProjectsComboBox";
+            this.ProjectsComboBox.Size = new System.Drawing.Size(469, 33);
+            this.ProjectsComboBox.TabIndex = 7;
+            this.ProjectsComboBox.Click += new System.EventHandler(this.ProjcomboBox_Click);
+            // 
+            // applyFilterButton
+            // 
+            this.applyFilterButton.Location = new System.Drawing.Point(112, 555);
+            this.applyFilterButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.applyFilterButton.Name = "applyFilterButton";
+            this.applyFilterButton.Size = new System.Drawing.Size(306, 55);
+            this.applyFilterButton.TabIndex = 6;
+            this.applyFilterButton.Text = "Выгрузить отчет";
+            this.applyFilterButton.UseVisualStyleBackColor = true;
+            this.applyFilterButton.Click += new System.EventHandler(this.applyFilterButton_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(112, 212);
+            this.button18.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(306, 55);
+            this.button18.TabIndex = 52;
+            this.button18.Text = "Выгрузить отчет";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // panelDirectories
+            // 
+            this.panelDirectories.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelDirectories.Controls.Add(this.button8);
+            this.panelDirectories.Controls.Add(this.button15);
+            this.panelDirectories.Controls.Add(this.button16);
+            this.panelDirectories.Controls.Add(this.addDepartmentBtn);
+            this.panelDirectories.Location = new System.Drawing.Point(11, 130);
+            this.panelDirectories.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.panelDirectories.Name = "panelDirectories";
+            this.panelDirectories.Size = new System.Drawing.Size(1345, 710);
+            this.panelDirectories.TabIndex = 49;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(170, 412);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(165, 72);
+            this.button8.TabIndex = 48;
+            this.button8.Text = "Роли";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(765, 134);
+            this.button15.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(165, 72);
+            this.button15.TabIndex = 46;
+            this.button15.Text = "Должности";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(765, 398);
+            this.button16.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(165, 72);
+            this.button16.TabIndex = 45;
+            this.button16.Text = "Виды деятельности";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // addDepartmentBtn
+            // 
+            this.addDepartmentBtn.Location = new System.Drawing.Point(170, 134);
+            this.addDepartmentBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.addDepartmentBtn.Name = "addDepartmentBtn";
+            this.addDepartmentBtn.Size = new System.Drawing.Size(165, 72);
+            this.addDepartmentBtn.TabIndex = 28;
+            this.addDepartmentBtn.Text = "Департаменты";
+            this.addDepartmentBtn.UseVisualStyleBackColor = true;
+            this.addDepartmentBtn.Click += new System.EventHandler(this.addDepartmentBtn_Click);
+            // 
+            // panelProjects
+            // 
+            this.panelProjects.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelProjects.Controls.Add(this.projectNameTB);
+            this.panelProjects.Controls.Add(this.deleteProjectBtn);
+            this.panelProjects.Controls.Add(this.addProjectBtn);
+            this.panelProjects.Controls.Add(this.pjoectTasksBtn);
+            this.panelProjects.Controls.Add(this.changeProjectBtn);
+            this.panelProjects.Controls.Add(this.projectEndDateDTP);
+            this.panelProjects.Controls.Add(this.label9);
+            this.panelProjects.Controls.Add(this.label12);
+            this.panelProjects.Controls.Add(this.projectLeadCB);
+            this.panelProjects.Controls.Add(this.projectEmployeesBtn);
+            this.panelProjects.Controls.Add(this.projectsDgv);
+            this.panelProjects.Controls.Add(this.projectStartDateDTP);
+            this.panelProjects.Controls.Add(this.label14);
+            this.panelProjects.Controls.Add(this.label15);
+            this.panelProjects.Location = new System.Drawing.Point(14, 130);
+            this.panelProjects.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.panelProjects.Name = "panelProjects";
+            this.panelProjects.Size = new System.Drawing.Size(1345, 710);
+            this.panelProjects.TabIndex = 40;
+            // 
+            // projectNameTB
+            // 
+            this.projectNameTB.Location = new System.Drawing.Point(285, 51);
+            this.projectNameTB.Margin = new System.Windows.Forms.Padding(2);
+            this.projectNameTB.Name = "projectNameTB";
+            this.projectNameTB.Size = new System.Drawing.Size(382, 31);
+            this.projectNameTB.TabIndex = 49;
+            // 
+            // deleteProjectBtn
+            // 
+            this.deleteProjectBtn.Location = new System.Drawing.Point(246, 488);
+            this.deleteProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.deleteProjectBtn.Name = "deleteProjectBtn";
+            this.deleteProjectBtn.Size = new System.Drawing.Size(165, 72);
+            this.deleteProjectBtn.TabIndex = 48;
+            this.deleteProjectBtn.Text = "Удалить проект";
+            this.deleteProjectBtn.UseVisualStyleBackColor = true;
+            this.deleteProjectBtn.Click += new System.EventHandler(this.deleteProjectBtn_Click);
+            // 
+            // addProjectBtn
+            // 
+            this.addProjectBtn.Location = new System.Drawing.Point(502, 194);
+            this.addProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.addProjectBtn.Name = "addProjectBtn";
+            this.addProjectBtn.Size = new System.Drawing.Size(165, 72);
+            this.addProjectBtn.TabIndex = 47;
+            this.addProjectBtn.Text = "Добавить проект";
+            this.addProjectBtn.UseVisualStyleBackColor = true;
+            this.addProjectBtn.Click += new System.EventHandler(this.addProjBtn_Click);
+            // 
+            // pjoectTasksBtn
+            // 
+            this.pjoectTasksBtn.Location = new System.Drawing.Point(20, 375);
+            this.pjoectTasksBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.pjoectTasksBtn.Name = "pjoectTasksBtn";
+            this.pjoectTasksBtn.Size = new System.Drawing.Size(165, 72);
+            this.pjoectTasksBtn.TabIndex = 46;
+            this.pjoectTasksBtn.Text = "Задачи проекта";
+            this.pjoectTasksBtn.UseVisualStyleBackColor = true;
+            this.pjoectTasksBtn.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // changeProjectBtn
+            // 
+            this.changeProjectBtn.Location = new System.Drawing.Point(246, 372);
+            this.changeProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.changeProjectBtn.Name = "changeProjectBtn";
+            this.changeProjectBtn.Size = new System.Drawing.Size(165, 72);
+            this.changeProjectBtn.TabIndex = 45;
+            this.changeProjectBtn.Text = "Изменить проект";
+            this.changeProjectBtn.UseVisualStyleBackColor = true;
+            this.changeProjectBtn.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // projectEndDateDTP
+            // 
+            this.projectEndDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.projectEndDateDTP.Location = new System.Drawing.Point(285, 254);
+            this.projectEndDateDTP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.projectEndDateDTP.Name = "projectEndDateDTP";
+            this.projectEndDateDTP.Size = new System.Drawing.Size(153, 31);
+            this.projectEndDateDTP.TabIndex = 44;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 236);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(172, 50);
+            this.label9.TabIndex = 43;
+            this.label9.Text = "Выберите дату\r\nокончания проекта";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 104);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(211, 25);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Выберите руководителя";
+            // 
+            // projectLeadCB
+            // 
+            this.projectLeadCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.projectLeadCB.FormattingEnabled = true;
+            this.projectLeadCB.Location = new System.Drawing.Point(285, 101);
+            this.projectLeadCB.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.projectLeadCB.Name = "projectLeadCB";
+            this.projectLeadCB.Size = new System.Drawing.Size(382, 33);
+            this.projectLeadCB.TabIndex = 36;
+            this.projectLeadCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.projectLeadCB_Click);
+            // 
+            // projectEmployeesBtn
+            // 
+            this.projectEmployeesBtn.Location = new System.Drawing.Point(485, 372);
+            this.projectEmployeesBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.projectEmployeesBtn.Name = "projectEmployeesBtn";
+            this.projectEmployeesBtn.Size = new System.Drawing.Size(165, 72);
+            this.projectEmployeesBtn.TabIndex = 28;
+            this.projectEmployeesBtn.Text = "Сотрудники проекта";
+            this.projectEmployeesBtn.UseVisualStyleBackColor = true;
+            this.projectEmployeesBtn.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // projectsDgv
+            // 
+            this.projectsDgv.AllowUserToAddRows = false;
+            this.projectsDgv.BackgroundColor = System.Drawing.Color.Turquoise;
+            this.projectsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.projectsDgv.Location = new System.Drawing.Point(730, 24);
+            this.projectsDgv.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.projectsDgv.Name = "projectsDgv";
+            this.projectsDgv.ReadOnly = true;
+            this.projectsDgv.RowHeadersWidth = 62;
+            this.projectsDgv.Size = new System.Drawing.Size(581, 600);
+            this.projectsDgv.TabIndex = 0;
+            this.projectsDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectsDgv_CellContentClick);
+            // 
+            // projectStartDateDTP
+            // 
+            this.projectStartDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.projectStartDateDTP.Location = new System.Drawing.Point(285, 189);
+            this.projectStartDateDTP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.projectStartDateDTP.Name = "projectStartDateDTP";
+            this.projectStartDateDTP.Size = new System.Drawing.Size(153, 31);
+            this.projectStartDateDTP.TabIndex = 25;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 166);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(139, 50);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Выберите дату\r\nначала проекта";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 49);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(228, 25);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Введите название проекта";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Aquamarine;
@@ -902,17 +907,6 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // Rolelabel
-            // 
-            this.Rolelabel.AutoSize = true;
-            this.Rolelabel.Location = new System.Drawing.Point(75, 11);
-            this.Rolelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Rolelabel.Name = "Rolelabel";
-            this.Rolelabel.Size = new System.Drawing.Size(51, 25);
-            this.Rolelabel.TabIndex = 10;
-            this.Rolelabel.Text = "Роль";
-            this.Rolelabel.Click += new System.EventHandler(this.Rolelabel_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -935,8 +929,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(1414, 901);
-            this.Controls.Add(this.panelReports);
-            this.Controls.Add(this.panelDirectories);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
@@ -944,9 +936,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.fioLabel);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.Rolelabel);
+            this.Controls.Add(this.panelDirectories);
+            this.Controls.Add(this.panelReports);
             this.Controls.Add(this.panelWorkers);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.panelProjects);
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "MainForm";
             this.Text = "Система учета рабочего времени";
@@ -955,6 +949,8 @@
             this.toolStrip1.PerformLayout();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panelWorkers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WorkersdataGridView)).EndInit();
             this.panelReports.ResumeLayout(false);
@@ -965,8 +961,6 @@
             this.panelProjects.ResumeLayout(false);
             this.panelProjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectsDataBaseBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -995,7 +989,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panelReports;
-        private System.Windows.Forms.Label Rolelabel;
         private System.Windows.Forms.BindingSource projectsDataBaseBindingSource;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button DeleteSessionbutton;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagerCore.Models;
+using ProjectManagerCore.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +16,19 @@ namespace WorkingTimeTracker
 	public partial class AddTaskForm : Form
     {
 		private readonly ProjectsDataBase _projectsDataBase;
-		
-		public AddTaskForm()
+        private readonly IProjectService _projectService;
+        private readonly ITaskService _taskService;
+
+        public AddTaskForm()
 			//public AddTaskForm(ProjectsDataBase projectsDataBase)
 		{
             InitializeComponent();
-			//_projectsDataBase = projectsDataBase;
-		}
+            _projectService = new ProjectService();
+            _taskService = new TaskService();
+            //_projectsDataBase = projectsDataBase;
+            SetProjectsDgv();
+
+        }
 		
 		private void textBox7_TextChanged(object sender, EventArgs e)
         {
@@ -39,9 +47,42 @@ namespace WorkingTimeTracker
 
 		private void PrRegistrationProcess()//
 		{
-			
-		}
+            var prName = this.PrOnTaskcombo.SelectedItem as ProjectModel;
+            //var prName = this.PrOnTaskcombo.Text;
+            var taskName = this.TaskNameBox.Text;
+            var taskStartDate = this.StartTaskDateTimePicker.Value;
+            var taskEndDate = this.EndTaskDateTimePicker.Value;
+            _taskService.AddTask( taskName, taskStartDate, taskEndDate);
+            
+            this.Close();
 
+        }
+        private void SetProjectsDgv()
+        {
+            var bindingSource = new BindingSource();
+            var allTasks = _taskService.GetAllTasks();
+            bindingSource.DataSource = allTasks;
+
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.AutoSize = true;
+            dataGridView2.DataSource = bindingSource;
+            dataGridView2.ScrollBars = ScrollBars.Both;
+
+            var nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = nameof(TaskModel.Description);
+            nameColumn.Name = "Задача";
+            dataGridView2.Columns.Add(nameColumn);
+
+            DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
+            startDateColumn.DataPropertyName = nameof(TaskModel.StartDate);
+            startDateColumn.Name = "Дата начала";
+            dataGridView2.Columns.Add(startDateColumn);
+
+            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
+            endDateColumn.DataPropertyName = nameof(TaskModel.EndDate);
+            endDateColumn.Name = "Дата конца";
+            dataGridView2.Columns.Add(endDateColumn);
+        }
         private void SaveTaskButt_Click(object sender, EventArgs e) //сохранить изменения
         {
 
@@ -56,6 +97,21 @@ namespace WorkingTimeTracker
         {
             Курсовая.AddUsersToTask addUsersToTask = new Курсовая.AddUsersToTask();
             addUsersToTask.Show();
+        }
+
+        private void PrOnTaskcombo_Click(object sender, EventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            var allProjects = _projectService.GetAllProjects();
+            comboBox.ValueMember = nameof(ProjectModel.Id);
+            comboBox.DisplayMember = nameof(ProjectModel.Name);
+            comboBox.DataSource = allProjects;
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

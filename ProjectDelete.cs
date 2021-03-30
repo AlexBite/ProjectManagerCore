@@ -37,5 +37,10 @@ namespace Курсовая
 			_projectService.DeleteProject(projectToDelete.Id);
 			this.Close();
 		}
-	}
+
+        private void projectsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

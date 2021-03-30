@@ -10,10 +10,11 @@ namespace ProjectManagerCore.Services
 	internal class TaskService : ITaskService
     {
 		
-			public TaskModel AddTask(string name, DateTime startDate, DateTime endDate)
+			public TaskModel AddTask( string name, DateTime startDate, DateTime endDate)
 			{
 				var task = new TaskModel()
 				{
+					//ProjectId = Convert.ToInt32(projectId),
 					Description = name,
 					StartDate = startDate,
 					EndDate = endDate
@@ -47,6 +48,16 @@ namespace ProjectManagerCore.Services
 				}
 				return tasks;
 			}
-		
+		public TaskModel GetTask(int taskId)
+		{
+			TaskModel taskModel;
+			using (var dbContext = new CoreDbContext())
+			{
+				taskModel = dbContext.Tasks.Where(e => e.Id == taskId)
+					.FirstOrDefault();
+			}
+
+			return taskModel;
+		}
 	}
 }

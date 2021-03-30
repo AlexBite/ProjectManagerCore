@@ -35,38 +35,42 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(152, 224);
+            this.button1.Location = new System.Drawing.Point(169, 280);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 44);
+            this.button1.Size = new System.Drawing.Size(129, 55);
             this.button1.TabIndex = 0;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 97);
+            this.label1.Location = new System.Drawing.Point(103, 121);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 20);
+            this.label1.Size = new System.Drawing.Size(251, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите назавние должности";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 159);
+            this.textBox1.Location = new System.Drawing.Point(96, 199);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(259, 26);
+            this.textBox1.Size = new System.Drawing.Size(287, 31);
             this.textBox1.TabIndex = 2;
             // 
             // AddJobForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(448, 371);
+            this.ClientSize = new System.Drawing.Size(498, 464);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddJobForm";
             this.Text = "AddJobForm";
             this.ResumeLayout(false);
