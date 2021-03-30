@@ -39,5 +39,27 @@ namespace ProjectManagerCore.Services
 				return employeeProject;
 			}
 		}
+		public EmployeeProjectModel AddProjectEmpoyee(int name, int employeeId, double rate)
+		{
+			var leaderEmployee = _employeeService.GetEmployee(employeeId);
+			if (leaderEmployee == null)
+				throw new Exception("Пользователь с таким ID не найден");
+
+			using (var dbContext = new CoreDbContext())
+			{
+				//var project = _projectService.AddProject(name, startDate, endDate);
+				var employeeProject = new EmployeeProjectModel()
+				{
+					EmployeeId = employeeId,
+					RoleId = (int)UserRole.Developer,
+					ProjectId = name,					
+					Rate = rate,
+					//StartDate = startDate,
+					//EndDate = endDate
+				};
+				dbContext.EmployeeProjects.Add(employeeProject);
+				return employeeProject;
+			}
+		}
 	}
 }

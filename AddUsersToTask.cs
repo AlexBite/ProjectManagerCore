@@ -29,16 +29,15 @@ namespace Курсовая
         private void button1_Click(object sender, EventArgs e)// добавить задачу
         {
             PrRegistrationProcess();
+            SetTasksDgv();
         }
         private void PrRegistrationProcess()//
         {
+
             var employee = this.comboBox1.SelectedItem as EmployeeModel;
             //var prName = this.PrOnTaskcombo.Text;
             var taskName = this.comboBox2.SelectedItem as TaskModel;
-            //var taskStartDate = this.StartTaskDateTimePicker.Value;
-            //var taskEndDate = this.EndTaskDateTimePicker.Value;
-            //int taskNameInt = Convert.ToInt32(taskName);
-            //int employeeInt = Convert.ToInt32(employee);// ошибка
+            
             _employeetaskService.AddTaskEmpoyee(taskName.Id, employee.Id);
 
             this.Close();

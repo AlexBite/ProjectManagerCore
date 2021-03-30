@@ -35,25 +35,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 184);
+            this.textBox1.Location = new System.Drawing.Point(90, 230);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(253, 26);
+            this.textBox1.Size = new System.Drawing.Size(281, 31);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(113, 120);
+            this.label1.Location = new System.Drawing.Point(126, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 20);
+            this.label1.Size = new System.Drawing.Size(203, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите название роли";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(144, 260);
+            this.button1.Location = new System.Drawing.Point(160, 325);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 50);
+            this.button1.Size = new System.Drawing.Size(132, 62);
             this.button1.TabIndex = 2;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
@@ -61,13 +64,14 @@
             // 
             // AddRoleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(432, 375);
+            this.ClientSize = new System.Drawing.Size(480, 469);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddRoleForm";
             this.Text = "AddRoleForm";
             this.ResumeLayout(false);

@@ -17,22 +17,31 @@ namespace Курсовая
         private readonly IEmployeeService _employeeService;
         private readonly IProjectService _projectService;
         private readonly ITaskService _taskService;
+        private readonly IEmployeeProjectService _employeeprojectService;
         public AddUsersPro()
         {
             InitializeComponent();
             SetProjectsDgv();
             _projectService = new ProjectService();
             _taskService = new TaskService();
+            _employeeprojectService = new EmployeeProjectService();
+            //_projectEmployeeService = new EmployeeProjectService();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             AddUsersProPosess();
+            SetProjectsDgv();
         }
 
         private void AddUsersProPosess ()
         {
-
+            var employee = this.comboBox1.SelectedItem as EmployeeModel;
+            //var prName = this.PrOnTaskcombo.Text;
+            var proName = this.comboBox2.SelectedItem as ProjectModel;
+            var rate = Convert.ToDouble( this.textBox1.Text) ;
+            _employeeprojectService.AddProjectEmpoyee(proName.Id, employee.Id, rate);
         }
         private void comboBox1_Click(object sender, EventArgs e)//кб проекта
         {
