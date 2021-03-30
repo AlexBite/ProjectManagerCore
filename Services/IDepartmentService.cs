@@ -8,5 +8,6 @@ namespace ProjectManagerCore.Services
 	public interface IDepartmentService
 	{
 		DepartmentModel AddDepartment(string name);
+		List<DepartmentModel> GetAllDepartment();
 	}
 }

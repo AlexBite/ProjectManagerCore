@@ -1,6 +1,7 @@
 ﻿using ProjectManagerCore.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectManagerCore.Services
@@ -21,6 +22,15 @@ namespace ProjectManagerCore.Services
 			}
 
 			return position;
+		}
+		public List<PositionModel> GetAllPosition()
+		{
+			List<PositionModel> departments;
+			using (var dbContext = new CoreDbContext())
+			{
+				departments = dbContext.Positions.ToList();
+			}
+			return departments;
 		}
 	}
 }

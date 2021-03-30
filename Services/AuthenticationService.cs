@@ -9,28 +9,28 @@ namespace ProjectManagerCore.Services
 {
 	internal class AuthenticationService : IAuthenticationService
 	{
-		//private readonly DepartmentService
 		public UserInfo AuthenticateUser(string login, string password)
 		{
 			EmployeeModel employeeModel;
-            DepartmentModel departmentModel;
 			using (var db = new CoreDbContext())
 			{
 				employeeModel = db.Employees.FirstOrDefault(user => user.Login == login && user.Password == password);
-                
 			};
 
-            var userInfo = new UserInfo();
-            //{
-            //    Name = employeeModel.Name,
-            //    SecondName = employeeModel.Surname,
-            //    MiddleName = employeeModel.MiddleName,
-            //    Login = employeeModel.Login,
-            //    Password = employeeModel.Password,
-            //   // Role = (UserRole)departmentModel.Id
-            //};
+			if (employeeModel == null)
+				return null;
 
-            return userInfo;
-        }
+			var userInfo = new UserInfo()
+			{
+				Name = employeeModel.Name,
+			    SecondName = employeeModel.Surname,
+			    MiddleName = employeeModel.MiddleName,
+			    Login = employeeModel.Login,
+			    Password = employeeModel.Password,
+				Role = UserRole.Administrator
+			};
+
+			return userInfo;
+		}
 	}
 }

@@ -28,168 +28,130 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(100, 446);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 72);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(47, 118);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(341, 33);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(47, 249);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(341, 33);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.Click += new System.EventHandler(this.comboBox2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(129, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Выберите проект";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 186);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Выберите сотрудника";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Turquoise;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(486, 78);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(706, 480);
-            this.dataGridView1.TabIndex = 5;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Название проекта";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 150;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Фамилия";
-            this.Column2.MinimumWidth = 8;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Имя";
-            this.Column3.MinimumWidth = 8;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Отчество";
-            this.Column4.MinimumWidth = 8;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 150;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(129, 311);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 25);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Введите ставку";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(47, 370);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 31);
-            this.textBox1.TabIndex = 8;
-            // 
-            // AddUsersPro
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(1218, 582);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "AddUsersPro";
-            this.Text = "AddUsersPro";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.addBtn = new System.Windows.Forms.Button();
+			this.projectCb = new System.Windows.Forms.ComboBox();
+			this.employeeCb = new System.Windows.Forms.ComboBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.rateTb = new System.Windows.Forms.TextBox();
+			this.employeeProjectDgv = new System.Windows.Forms.DataGridView();
+			((System.ComponentModel.ISupportInitialize)(this.employeeProjectDgv)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// addBtn
+			// 
+			this.addBtn.Location = new System.Drawing.Point(80, 357);
+			this.addBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+			this.addBtn.Name = "addBtn";
+			this.addBtn.Size = new System.Drawing.Size(166, 58);
+			this.addBtn.TabIndex = 0;
+			this.addBtn.Text = "Добавить";
+			this.addBtn.UseVisualStyleBackColor = true;
+			this.addBtn.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// projectCb
+			// 
+			this.projectCb.FormattingEnabled = true;
+			this.projectCb.Location = new System.Drawing.Point(38, 94);
+			this.projectCb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+			this.projectCb.Name = "projectCb";
+			this.projectCb.Size = new System.Drawing.Size(274, 28);
+			this.projectCb.TabIndex = 1;
+			this.projectCb.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+			this.projectCb.Click += new System.EventHandler(this.comboBox1_Click);
+			// 
+			// employeeCb
+			// 
+			this.employeeCb.FormattingEnabled = true;
+			this.employeeCb.Location = new System.Drawing.Point(38, 199);
+			this.employeeCb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+			this.employeeCb.Name = "employeeCb";
+			this.employeeCb.Size = new System.Drawing.Size(274, 28);
+			this.employeeCb.TabIndex = 2;
+			this.employeeCb.Click += new System.EventHandler(this.comboBox2_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(103, 46);
+			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(130, 20);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Выберите проект";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(94, 149);
+			this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(161, 20);
+			this.label2.TabIndex = 4;
+			this.label2.Text = "Выберите сотрудника";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(103, 249);
+			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(112, 20);
+			this.label3.TabIndex = 7;
+			this.label3.Text = "Введите ставку";
+			// 
+			// rateTb
+			// 
+			this.rateTb.Location = new System.Drawing.Point(38, 296);
+			this.rateTb.Margin = new System.Windows.Forms.Padding(2);
+			this.rateTb.Name = "rateTb";
+			this.rateTb.Size = new System.Drawing.Size(274, 27);
+			this.rateTb.TabIndex = 8;
+			// 
+			// employeeProjectDgv
+			// 
+			this.employeeProjectDgv.BackgroundColor = System.Drawing.Color.Turquoise;
+			this.employeeProjectDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.employeeProjectDgv.Location = new System.Drawing.Point(389, 62);
+			this.employeeProjectDgv.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+			this.employeeProjectDgv.Name = "employeeProjectDgv";
+			this.employeeProjectDgv.RowHeadersWidth = 62;
+			this.employeeProjectDgv.Size = new System.Drawing.Size(565, 384);
+			this.employeeProjectDgv.TabIndex = 5;
+			// 
+			// AddUsersPro
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.Aquamarine;
+			this.ClientSize = new System.Drawing.Size(974, 466);
+			this.Controls.Add(this.rateTb);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.employeeProjectDgv);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.employeeCb);
+			this.Controls.Add(this.projectCb);
+			this.Controls.Add(this.addBtn);
+			this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+			this.Name = "AddUsersPro";
+			this.Text = "AddUsersPro";
+			((System.ComponentModel.ISupportInitialize)(this.employeeProjectDgv)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.ComboBox projectCb;
+        private System.Windows.Forms.ComboBox employeeCb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView employeeProjectDgv;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox rateTb;
     }
 }

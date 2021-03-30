@@ -12,89 +12,93 @@ using System.Windows.Forms;
 
 namespace Курсовая
 {
-    public partial class AddUsersPro : Form
-    {
-        private readonly IEmployeeService _employeeService;
-        private readonly IProjectService _projectService;
-        private readonly ITaskService _taskService;
-        private readonly IEmployeeProjectService _employeeprojectService;
-        public AddUsersPro()
-        {
-            InitializeComponent();
-            SetProjectsDgv();
-            _projectService = new ProjectService();
-            _taskService = new TaskService();
-            _employeeprojectService = new EmployeeProjectService();
-            //_projectEmployeeService = new EmployeeProjectService();
+	public partial class AddUsersPro : Form
+	{
+		private readonly IEmployeeService _employeeService;
+		private readonly IProjectService _projectService;
+		private readonly IEmployeeProjectService _employeeprojectService;
 
-        }
+		public AddUsersPro()
+		{
+			_projectService = new ProjectService();
+			_employeeprojectService = new EmployeeProjectService();
+			_employeeService = new EmployeeService();
+			InitializeComponent();
+			SetProjectsDgv();
+		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddUsersProPosess();
-            SetProjectsDgv();
-        }
+		private void button1_Click(object sender, EventArgs e)
+		{
+			AddEmployeeToProject();
+			SetProjectsDgv();
+		}
 
-        private void AddUsersProPosess ()
-        {
-            var employee = this.comboBox1.SelectedItem as EmployeeModel;
-            //var prName = this.PrOnTaskcombo.Text;
-            var proName = this.comboBox2.SelectedItem as ProjectModel;
-            var rate = Convert.ToDouble( this.textBox1.Text) ;
-            _employeeprojectService.AddProjectEmpoyee(proName.Id, employee.Id, rate);
-        }
-        private void comboBox1_Click(object sender, EventArgs e)//кб проекта
-        {
-            var comboBox = sender as ComboBox;
-            var allProjects = _projectService.GetAllProjects();
-            comboBox.ValueMember = nameof(ProjectModel.Id);
-            comboBox.DisplayMember = nameof(ProjectModel.Name);
-            comboBox.DataSource = allProjects;
-        }
+		private void AddEmployeeToProject()
+		{
+			var employee = this.employeeCb.SelectedItem as EmployeeModel;
+			var project = this.projectCb.SelectedItem as ProjectModel;
+			var rate = Convert.ToDouble(this.rateTb.Text);
+			_employeeprojectService.AttachDeveloperToProject(project.Id, employee.Id, rate);
+		}
+		private void comboBox1_Click(object sender, EventArgs e)//кб проекта
+		{
+			var comboBox = sender as ComboBox;
+			var allProjects = _projectService.GetAllProjects();
+			comboBox.ValueMember = nameof(ProjectModel.Id);
+			comboBox.DisplayMember = nameof(ProjectModel.Name);
+			comboBox.DataSource = allProjects;
+		}
 
-        private void comboBox2_Click(object sender, EventArgs e)//кб пользователя
-        {
-            var comboBox = sender as ComboBox;
-            var allEmployees = _employeeService.GetAllEmployee();
-            comboBox.ValueMember = nameof(EmployeeModel.Id);
-            comboBox.DisplayMember = nameof(EmployeeModel.Name);
-            comboBox.DataSource = allEmployees;
-        }
-        private void SetProjectsDgv()
-        {
-            var bindingSource = new BindingSource();
-            var allProjects = _projectService.GetAllProjects();
-            bindingSource.DataSource = allProjects;
+		private void comboBox2_Click(object sender, EventArgs e)//кб пользователя
+		{
+			var comboBox = sender as ComboBox;
+			var allEmployees = _employeeService.GetAllEmployee();
+			comboBox.ValueMember = nameof(EmployeeModel.Id);
+			comboBox.DisplayMember = nameof(EmployeeModel.Name);
+			comboBox.DataSource = allEmployees;
+		}
+		private void SetProjectsDgv()
+		{
+			var bindingSource = new BindingSource();
+			var allProjects = _employeeprojectService.GetAllEmployeesProjects();
+			bindingSource.DataSource = allProjects;
 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.AutoSize = true;
-            dataGridView1.DataSource = bindingSource;
-            dataGridView1.ScrollBars = ScrollBars.Both;
+			employeeProjectDgv.AutoGenerateColumns = false;
+			employeeProjectDgv.AutoSize = true;
+			employeeProjectDgv.DataSource = bindingSource;
+			employeeProjectDgv.ScrollBars = ScrollBars.Both;
+			employeeProjectDgv.Controls[0].Enabled = true;
+			employeeProjectDgv.Controls[1].Enabled = true; 
 
-            var nameColumn = new DataGridViewTextBoxColumn();
-            nameColumn.DataPropertyName = nameof(ProjectModel.Name);
-            nameColumn.Name = "Название проекта";
-            dataGridView1.Columns.Add(nameColumn);
+			var projectNameColumn = new DataGridViewTextBoxColumn();
+			projectNameColumn.DataPropertyName = nameof(EmployeeProjectModel.Project.Name);
+			projectNameColumn.Name = "Название проекта";
+			employeeProjectDgv.Columns.Add(projectNameColumn);
 
-            DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
-            startDateColumn.DataPropertyName = nameof(EmployeeModel.Surname);
-            startDateColumn.Name = "Фамилия";
-            dataGridView1.Columns.Add(startDateColumn);
+			var employeeSurnameColumn = new DataGridViewTextBoxColumn();
+			employeeSurnameColumn.DataPropertyName = nameof(EmployeeProjectModel.Employee.Surname);
+			employeeSurnameColumn.Name = "Фамилия";
+			employeeProjectDgv.Columns.Add(employeeSurnameColumn);
 
-            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
-            endDateColumn.DataPropertyName = nameof(EmployeeModel.Name);
-            endDateColumn.Name = "Имя";
-            dataGridView1.Columns.Add(endDateColumn);
-            
-            DataGridViewColumn endDate1Column = new DataGridViewTextBoxColumn();
-            endDate1Column.DataPropertyName = nameof(EmployeeModel.MiddleName);
-            endDate1Column.Name = "Отчество";
-            dataGridView1.Columns.Add(endDate1Column);
-        }
+			var employeeNameColumn = new DataGridViewTextBoxColumn();
+			employeeNameColumn.DataPropertyName = nameof(EmployeeProjectModel.Employee.Name);
+			employeeNameColumn.Name = "Имя";
+			employeeProjectDgv.Columns.Add(employeeNameColumn);
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+			var middleNameColumn = new DataGridViewTextBoxColumn();
+			middleNameColumn.DataPropertyName = nameof(EmployeeProjectModel.Employee.MiddleName);
+			middleNameColumn.Name = "Отчество";
+			employeeProjectDgv.Columns.Add(middleNameColumn);
 
-        }
-    }
+			var rateColumn = new DataGridViewTextBoxColumn();
+			rateColumn.DataPropertyName = nameof(EmployeeProjectModel.Rate);
+			rateColumn.Name = "Ставка";
+			employeeProjectDgv.Columns.Add(rateColumn);
+		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

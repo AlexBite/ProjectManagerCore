@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace ProjectManagerCore.Services
-{
-	public interface IPositionService
-	{
-		public PositionModel AddPosition(string name);
-		List<PositionModel> GetAllPosition();
-	}
+{  
+    public interface IRoleService
+    {
+        public RoleModel AddRole(string name);
+    }
 }

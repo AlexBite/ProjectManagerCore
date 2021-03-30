@@ -1,4 +1,5 @@
-﻿using ProjectManagerCore.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagerCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +42,22 @@ namespace ProjectManagerCore.Services
 			List<ProjectModel> projects;
 			using (var dbContext = new CoreDbContext())
 			{
-				projects = dbContext.Projects.ToList();
+				projects = dbContext.Projects.Include(c => c.Employees)
+					.ToList();
 			}
+
 			return projects;
+		}
+
+		public ProjectModel GetProject(int projectId)
+		{
+			ProjectModel project;
+			using (var dbContext = new CoreDbContext())
+			{
+				project = dbContext.Projects.FirstOrDefault(p => p.Id == projectId);
+			}
+
+			return project;
 		}
 	}
 }

@@ -20,48 +20,48 @@ namespace ProjectManagerCore.Services
 			//_projectService = new ProjectService();
 			}
 
-		//public EmployeeTaskModel AddTaskWithLeader(string name, DateTime startDate, DateTime endDate)
-		//{
-		//	var leaderEmployee = _employeeService.GetEmployee(employeeId);
-		//	if (leaderEmployee == null)
-		//		throw new Exception("Пользователь с таким ID не найден");
+        //public EmployeeTaskModel AddTaskWithLeader(string name, DateTime startDate, DateTime endDate)
+        //{
+        //    var leaderEmployee = _employeeService.GetEmployee(employeeId);
+        //    if (leaderEmployee == null)
+        //        throw new Exception("Пользователь с таким ID не найден");
 
-		//	using (var dbContext = new CoreDbContext())
-		//	{
-		//		var task = _taskService.AddTask(name, startDate, endDate );
-		//		var employeeTask = new EmployeeTaskModel()
-		//		{
-		//			//EmployeeId = employeeLeaderId,						
-		//			TaskId = task.Id,
-		//			// Добавить ставку
-		//			//Rate = 1,
-		//			StartDate = task.StartDate,
-		//			EndDate = task.EndDate
-		//		};
-		//		dbContext.EmployeeTasks.Add(employeeTask);
-		//		return employeeTask;
-		//	}
-		//}
-		//public EmployeeTaskModel AddTaskEmpoyee(string projectId, string name, DateTime startDate, DateTime endDate, int employeeId)
-		//{
-		//	var leaderEmployee = _employeeService.GetEmployee(employeeId);
-		//	if (leaderEmployee == null)
-		//		throw new Exception("Пользователь с таким ID не найден");
-		//	using (var dbContext = new CoreDbContext())
-		//	{
-		//		var task = _taskService.AddTask( name, startDate, endDate);
-		//		var employeeTask = new EmployeeTaskModel()
-		//		{
-		//			//EmployeeId = employeeLeaderId,						
-		//			TaskId = task.Id,
-		//			// Добавить ставку
-		//			//Rate = 1,
-		//		};
-		//		dbContext.EmployeeTasks.Add(employeeTask);
-		//		return employeeTask;
-		//	}
-		//}
-		public EmployeeTaskModel AddTaskEmpoyee( int name,  int employeeId)
+        //    using (var dbContext = new CoreDbContext())
+        //    {
+        //        var task = _taskService.AddTask(name, startDate, endDate);
+        //        var employeeTask = new EmployeeTaskModel()
+        //        {
+        //            //EmployeeId = employeeLeaderId,						
+        //            TaskId = task.Id,
+        //            // Добавить ставку
+        //            //Rate = 1,
+        //            StartDate = task.StartDate,
+        //            EndDate = task.EndDate
+        //        };
+        //        dbContext.EmployeeTasks.Add(employeeTask);
+        //        return employeeTask;
+        //    }
+        //}
+        //public EmployeeTaskModel AddTaskEmpoyee(string projectId, string name, DateTime startDate, DateTime endDate, int employeeId)
+        //{
+        //	var leaderEmployee = _employeeService.GetEmployee(employeeId);
+        //	if (leaderEmployee == null)
+        //		throw new Exception("Пользователь с таким ID не найден");
+        //	using (var dbContext = new CoreDbContext())
+        //	{
+        //		var task = _taskService.AddTask( name, startDate, endDate);
+        //		var employeeTask = new EmployeeTaskModel()
+        //		{
+        //			//EmployeeId = employeeLeaderId,						
+        //			TaskId = task.Id,
+        //			// Добавить ставку
+        //			//Rate = 1,
+        //		};
+        //		dbContext.EmployeeTasks.Add(employeeTask);
+        //		return employeeTask;
+        //	}
+        //}
+        public EmployeeTaskModel AddTaskEmpoyee( int name,  int employeeId)
 		{
 			var leaderEmployee = _employeeService.GetEmployee(employeeId);
 			if (leaderEmployee == null)

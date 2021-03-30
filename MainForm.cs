@@ -22,6 +22,8 @@ namespace WorkingTimeTracker
 		private readonly IEmployeeProjectService _employeeProjectService;
 		private readonly UserInfo _authenticatedUser;
 		private readonly ITaskService _taskService;
+		private readonly IActivityService _activityService;
+		private readonly ITimeService _timeService;
 
 
 		// del
@@ -37,6 +39,8 @@ namespace WorkingTimeTracker
 			_employeeProjectService = new EmployeeProjectService();
 			_authenticatedUser = authenticatedUser;
 			_taskService = new TaskService();
+			_activityService = new ActivityService();
+			_timeService = new TimeService();
 
 			//panelReports.Visible = false;
 			//fioLabel.Text = _authenricatedUser.Fio;
@@ -47,6 +51,7 @@ namespace WorkingTimeTracker
 			SetNameLabel();
 			SetProjectsDgv();
 			SetWorkersDgv();
+			SetTimeDgv();
 			MainPanel.Visible = true;
 		}
 
@@ -107,26 +112,35 @@ namespace WorkingTimeTracker
 			middleNameColumn.Name = "Отчество";
 			WorkersdataGridView.Columns.Add(middleNameColumn);
 
-			//var positionaColumns = new DataGridViewTextBoxColumn();
-			//positionaColumns.DataPropertyName = nameof(EmployeeDepartmentModel.Position);
-			//positionaColumns.Name = "Должность";
-			//WorkersdataGridView.Columns.Add(positionaColumns);
+			
+		}
 
-			//var departmentColumn = new DataGridViewTextBoxColumn();
-			//departmentColumn.DataPropertyName = nameof(EmployeeDepartmentModel.Department);
-			//departmentColumn.Name = "Департамент";
-			//WorkersdataGridView.Columns.Add(departmentColumn);
+		private void SetTimeDgv()
+		{
+			var bindingSource = new BindingSource();
+			var allTime = _timeService.GetAllTime();
+			bindingSource.DataSource = allTime;
 
-			//DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
-			//startDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.StartWorkingDate);
-			//startDateColumn.Name = "Дата начала работы";
-			//WorkersdataGridView.Columns.Add(startDateColumn);
+			dataGridView1.AutoGenerateColumns = false;
+			dataGridView1.AutoSize = true;
+			dataGridView1.DataSource = bindingSource;
 
-			//DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
-			//endDateColumn.DataPropertyName = nameof(EmployeeDepartmentModel.EndWorkingDate);
-			//endDateColumn.Name = "Дата окончания работы";
-			//WorkersdataGridView.Columns.Add(endDateColumn);
+			var nameColumn = new DataGridViewTextBoxColumn();
+			nameColumn.DataPropertyName = nameof(TimeRecordModel.Task);
+			nameColumn.Name = "Задача";
+			dataGridView1.Columns.Add(nameColumn);
 
+			var surnameColumns = new DataGridViewTextBoxColumn();
+			surnameColumns.DataPropertyName = nameof(TimeRecordModel.StartDate);
+			surnameColumns.Name = "Дата";
+			dataGridView1.Columns.Add(surnameColumns);
+
+			var middleNameColumn = new DataGridViewTextBoxColumn();
+			middleNameColumn.DataPropertyName = nameof(TimeRecordModel.DurationInMinutes);
+			middleNameColumn.Name = "Продолжительность";
+			dataGridView1.Columns.Add(middleNameColumn);
+
+			
 		}
 
 		private void InitializeUi()//все ограничения админ -1 разраб 2 дир 3 рук проект 4 
@@ -347,7 +361,7 @@ namespace WorkingTimeTracker
 
 		private void AddWorkingSessionProcess()
 		{
-			bool notAllInfoInputed = textBox1.Text == string.Empty || comboBox1.Text == string.Empty;
+			bool notAllInfoInputed = textBox1.Text == string.Empty || comboBox1.Text == string.Empty || comboBox2.Text == string.Empty|| comboBox3.Text == string.Empty;
 
 			if (notAllInfoInputed)
 			{
@@ -355,27 +369,38 @@ namespace WorkingTimeTracker
 				return;
 			}
 
-			string newAim = textBox1.Text;
-			int newSpentHours = Int32.Parse(numericUpDown1.Text);
-			DateTime newStartTime = dateTimePicker2.Value;
-			DateTime newDate = dateTimePicker1.Value;
-			//int userId = _authenticatedUser.Id;
-			string projectName = comboBox1.Text;
+			//var employee = _authenticatedUser.ToString as EmployeeModel;
+			var description = textBox1.Text;
+			var project = this.comboBox1.SelectedItem as ProjectModel;
+			var task = this.comboBox2.SelectedItem as TaskModel;
+			var activity = this.comboBox3.SelectedItem as ActivityModel;
+			var date = dateTimePicker1.Value;
+			var time = dateTimePicker2.Value;
+			var duration = Convert.ToInt32 (numericUpDown1.Value);
 
-			ProjectInfo projectInfo = _projectsDataBase.GetProjectByName(projectName);
+			_timeService.AddTime(description, task.Id, activity.Id, date, time, duration);
+			//this.Close();
+			//string newAim = textBox1.Text;
+			//int newSpentHours = Int32.Parse(numericUpDown1.Text);
+			//DateTime newStartTime = dateTimePicker2.Value;
+			//DateTime newDate = dateTimePicker1.Value;
+			////int userId = _authenticatedUser.Id;
+			//string projectName = comboBox1.Text;
+
+			//ProjectInfo projectInfo = _projectsDataBase.GetProjectByName(projectName);
 
 
-			WorkingSessionInfo newWS = new WorkingSessionInfo()
-			{
-				Aim = newAim,
-				SpentWorkHours = newSpentHours,
-				StartTime = newStartTime,
-				Date = newDate,
-				//UserId = userId,
-				ProjectId = projectInfo.Id
-			};
+			//WorkingSessionInfo newWS = new WorkingSessionInfo()
+			//{
+			//	Aim = newAim,
+			//	SpentWorkHours = newSpentHours,
+			//	StartTime = newStartTime,
+			//	Date = newDate,
+			//	//UserId = userId,
+			//	ProjectId = projectInfo.Id
+			//};
 
-			_workingDataBase.AddWS(newWS);
+			//_workingDataBase.AddWS(newWS);
 
 			MessageBox.Show("Сеанс успешно добавлен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			textBox1.Clear();
@@ -415,14 +440,19 @@ namespace WorkingTimeTracker
 				}
 				else
 				{
-					object WSidobj = dataGridView1.Rows[deletedRow].Cells[5].Value;
-					deletedWSId = Convert.ToInt32(WSidobj);
+					//object WSidobj = dataGridView1.Rows[deletedRow].Cells[4].Value;
+					//deletedWSId = Convert.ToInt32(WSidobj);
+					//var timeToDelete = (TimeRecordModel)projectsCB.SelectedItem;
+					var timeToDelete = deletedRow;
+					_timeService.DeleteTime(timeToDelete);
+					SetTimeDgv();
+					//this.Close();
 					//dataGridView1.Rows.RemoveAt(deletedRow);
 					//dataGridView1.Refresh();
-					_workingDataBase.DeleteWS(deletedWSId);
-					ShowUserWorkingSessionsInfo();
+					//_workingDataBase.DeleteWS(deletedWSId);
+					//ShowUserWorkingSessionsInfo();
 					NumRowTB.Clear();
-					ShowAllUsersWorkingSessionsInfo();
+					//ShowAllUsersWorkingSessionsInfo();
 				}
 
 
@@ -504,15 +534,11 @@ namespace WorkingTimeTracker
 
 		private void ProjcomboBox_Click(object sender, EventArgs e)
 		{
-			//ProjectsComboBox.Items.Clear();
-			//var projectNames = _projectsDataBase.GetNamesOfProjects();
-			//foreach (var projectName in projectNames)
-			//{
-			//	if (projectName != null)
-			//	{
-			//		ProjectsComboBox.Items.Add(projectName);
-			//	}
-			//}
+			var comboBox = sender as ComboBox;
+			var allPro = _projectService.GetAllProjects();
+			comboBox.ValueMember = nameof(ProjectModel.Id);
+			comboBox.DisplayMember = nameof(ProjectModel.Name);
+			comboBox.DataSource = allPro;
 		}
 
 		private void ClearFilterbutton_Click(object sender, EventArgs e)
@@ -651,5 +677,20 @@ namespace WorkingTimeTracker
         {
 
         }
+
+        private void button9_Click_1(object sender, EventArgs e)//сотрудники-депаартаменты
+        {
+			DepartmentJobConnect addDepJob = new DepartmentJobConnect();
+			addDepJob.Show();
+		}
+
+        private void comboBox3_Click(object sender, EventArgs e)
+        {
+			var comboBox = sender as ComboBox;
+			var allActivities = _activityService.GetAllActivities();
+			comboBox.ValueMember = nameof(ActivityModel.Id);
+			comboBox.DisplayMember = nameof(ActivityModel.Description);
+			comboBox.DataSource = allActivities;
+		}
     }
 }

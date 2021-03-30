@@ -44,101 +44,111 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 51);
+            this.label1.Location = new System.Drawing.Point(82, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 20);
+            this.label1.Size = new System.Drawing.Size(200, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите департамент";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(29, 100);
+            this.comboBox1.Location = new System.Drawing.Point(32, 125);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(264, 28);
+            this.comboBox1.Size = new System.Drawing.Size(293, 33);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(29, 223);
+            this.comboBox2.Location = new System.Drawing.Point(32, 279);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(264, 28);
+            this.comboBox2.Size = new System.Drawing.Size(293, 33);
             this.comboBox2.TabIndex = 3;
+            this.comboBox2.Click += new System.EventHandler(this.comboBox2_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 174);
+            this.label2.Location = new System.Drawing.Point(82, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 20);
+            this.label2.Size = new System.Drawing.Size(184, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Выберите должность";
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(29, 341);
+            this.comboBox3.Location = new System.Drawing.Point(32, 426);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(264, 28);
+            this.comboBox3.Size = new System.Drawing.Size(293, 33);
             this.comboBox3.TabIndex = 5;
+            this.comboBox3.Click += new System.EventHandler(this.comboBox3_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 292);
+            this.label3.Location = new System.Drawing.Point(82, 365);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 20);
+            this.label3.Size = new System.Drawing.Size(190, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Выберите сотрудника";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(410, 100);
+            this.dateTimePicker1.Location = new System.Drawing.Point(456, 125);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(166, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(184, 31);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(406, 51);
+            this.label4.Location = new System.Drawing.Point(451, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 20);
+            this.label4.Size = new System.Drawing.Size(191, 25);
             this.label4.TabIndex = 7;
             this.label4.Text = "Время начала работы";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(406, 174);
+            this.label5.Location = new System.Drawing.Point(451, 218);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 20);
+            this.label5.Size = new System.Drawing.Size(224, 25);
             this.label5.TabIndex = 9;
             this.label5.Text = "Время окончания работы";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(417, 223);
+            this.dateTimePicker2.Location = new System.Drawing.Point(463, 279);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(166, 26);
+            this.dateTimePicker2.Size = new System.Drawing.Size(184, 31);
             this.dateTimePicker2.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(410, 325);
+            this.button1.Location = new System.Drawing.Point(456, 406);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 44);
+            this.button1.Size = new System.Drawing.Size(184, 55);
             this.button1.TabIndex = 10;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DepartmentJobConnect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
-            this.ClientSize = new System.Drawing.Size(674, 477);
+            this.ClientSize = new System.Drawing.Size(749, 596);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePicker2);
@@ -150,6 +160,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DepartmentJobConnect";
             this.Text = "DepartmentJobConnect";
             this.ResumeLayout(false);

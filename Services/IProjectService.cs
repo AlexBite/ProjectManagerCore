@@ -9,5 +9,6 @@ namespace ProjectManagerCore.Services
 		ProjectModel AddProject(string name, DateTime startDate, DateTime endDate);
 		List<ProjectModel> GetAllProjects();
 		void DeleteProject(int id);
+		ProjectModel GetProject(int projectId);
 	}
 }

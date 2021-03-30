@@ -49,18 +49,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.addWorkingSessionBt = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.panelWorkers = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.addEmployeeBtn = new System.Windows.Forms.Button();
             this.WorkersdataGridView = new System.Windows.Forms.DataGridView();
             this.panelReports = new System.Windows.Forms.Panel();
@@ -219,6 +214,7 @@
             this.comboBox3.Size = new System.Drawing.Size(399, 33);
             this.comboBox3.TabIndex = 39;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.comboBox3.Click += new System.EventHandler(this.comboBox3_Click);
             // 
             // label8
             // 
@@ -337,13 +333,6 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Turquoise;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column3,
-            this.Column4,
-            this.Column2,
-            this.Column5,
-            this.Column11});
             this.dataGridView1.Location = new System.Drawing.Point(635, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dataGridView1.Name = "dataGridView1";
@@ -351,54 +340,6 @@
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(702, 600);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Проект";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Дата";
-            this.Column3.MinimumWidth = 8;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Время начала работы ";
-            this.Column4.MinimumWidth = 8;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 150;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Затраченное время";
-            this.Column2.MinimumWidth = 8;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Задача ";
-            this.Column5.MinimumWidth = 8;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 150;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "ID";
-            this.Column11.MinimumWidth = 8;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 150;
             // 
             // dateTimePicker1
             // 
@@ -468,6 +409,7 @@
             // panelWorkers
             // 
             this.panelWorkers.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelWorkers.Controls.Add(this.button9);
             this.panelWorkers.Controls.Add(this.addEmployeeBtn);
             this.panelWorkers.Controls.Add(this.WorkersdataGridView);
             this.panelWorkers.Location = new System.Drawing.Point(19, 130);
@@ -476,9 +418,20 @@
             this.panelWorkers.Size = new System.Drawing.Size(1341, 714);
             this.panelWorkers.TabIndex = 51;
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(673, 601);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(272, 55);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Сотрудники-департаменты";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
             // addEmployeeBtn
             // 
-            this.addEmployeeBtn.Location = new System.Drawing.Point(594, 608);
+            this.addEmployeeBtn.Location = new System.Drawing.Point(383, 601);
             this.addEmployeeBtn.Margin = new System.Windows.Forms.Padding(4);
             this.addEmployeeBtn.Name = "addEmployeeBtn";
             this.addEmployeeBtn.Size = new System.Drawing.Size(228, 55);
@@ -936,11 +889,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.fioLabel);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.panelProjects);
             this.Controls.Add(this.panelDirectories);
             this.Controls.Add(this.panelReports);
             this.Controls.Add(this.panelWorkers);
-            this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.panelProjects);
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "MainForm";
             this.Text = "Система учета рабочего времени";
@@ -994,12 +947,6 @@
         private System.Windows.Forms.Button DeleteSessionbutton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox NumRowTB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label8;
@@ -1042,5 +989,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TextBox projectNameTB;
+        private System.Windows.Forms.Button button9;
     }
 }

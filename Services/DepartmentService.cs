@@ -1,6 +1,8 @@
-﻿using ProjectManagerCore.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagerCore.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectManagerCore.Services
@@ -21,6 +23,15 @@ namespace ProjectManagerCore.Services
 			}
 
 			return department;
+		}
+		public List<DepartmentModel> GetAllDepartment()
+		{
+			List<DepartmentModel> departments;
+			using (var dbContext = new CoreDbContext())
+			{
+				departments = dbContext.DepartmentModels.ToList();
+			}
+			return departments;
 		}
 	}
 }

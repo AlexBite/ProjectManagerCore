@@ -1,6 +1,7 @@
 ﻿using ProjectManagerCore.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectManagerCore.Services
@@ -39,27 +40,44 @@ namespace ProjectManagerCore.Services
 				return employeeProject;
 			}
 		}
-		public EmployeeProjectModel AddProjectEmpoyee(int name, int employeeId, double rate)
+		public EmployeeProjectModel AttachDeveloperToProject(int employeeId, int projectId, double rate)
 		{
-			var leaderEmployee = _employeeService.GetEmployee(employeeId);
-			if (leaderEmployee == null)
+			var employee = _employeeService.GetEmployee(employeeId);
+			if (employee == null)
 				throw new Exception("Пользователь с таким ID не найден");
 
+			var project = _projectService.GetProject(projectId);
+			if (project == null)
+				throw new Exception("Проект с таким ID не найден");
+
+			EmployeeProjectModel employeeProject;
 			using (var dbContext = new CoreDbContext())
 			{
-				//var project = _projectService.AddProject(name, startDate, endDate);
-				var employeeProject = new EmployeeProjectModel()
+				employeeProject = new EmployeeProjectModel()
 				{
-					EmployeeId = employeeId,
-					RoleId = (int)UserRole.Developer,
-					ProjectId = name,					
+					EmployeeId = employee.Id,
+					RoleId = (int) UserRole.Developer,
+					ProjectId = project.Id,					
 					Rate = rate,
 					//StartDate = startDate,
 					//EndDate = endDate
 				};
 				dbContext.EmployeeProjects.Add(employeeProject);
-				return employeeProject;
+				dbContext.SaveChanges();
 			}
+
+			return employeeProject;
+		}
+
+		public List<EmployeeProjectModel> GetAllEmployeesProjects()
+		{
+			List<EmployeeProjectModel> employeeProjects;
+			using (var dbContext = new CoreDbContext())
+			{
+				employeeProjects = dbContext.EmployeeProjects.ToList();
+			}
+
+			return employeeProjects;
 		}
 	}
 }

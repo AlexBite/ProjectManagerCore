@@ -6,38 +6,46 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-    class TimeService
-    {
-        public TimeRecordModel AddTime()
+    internal class TimeService : ITimeService
+    { 
+        public TimeRecordModel AddTime(string description,  int taskId, int activityId, DateTime date, DateTime time, int duration)
         {
-            //var time = new TimeRecordModel(string title, DateTime StartDate, int DurationInMinutes)
-            //{
+            var timerec = new TimeRecordModel()
+            {
 
-            //Surname = secname,
-            //Name = firstname,
-            //MiddleName = thirdname,
-            //Login = login,
-            //Password = password,
-            //PhoneNumber = phone
+                Title = description,
+                //Name = projectId,
+                TaskId = taskId,
+                ActivityId = activityId,
+                StartDate = date,
+                DurationInMinutes = duration
 
-            //};
+            };
 
-            //using (var dbContext = new CoreDbContext())
-            //{
-            //    dbContext.Employees.Add(worker);
-            //    dbContext.SaveChanges();
-            //}
-
-            //return worker;ъ
-            throw new NotImplementedException();
-        }
-
-        public List<EmployeeModel> GetAllEmployee()
-        {
-            List<EmployeeModel> employees;
             using (var dbContext = new CoreDbContext())
             {
-                employees = dbContext.Employees.ToList();
+                dbContext.TimeRecords.Add(timerec);
+                dbContext.SaveChanges();
+            }
+
+            return timerec; 
+            
+        }
+        public void DeleteTime(int id)
+        {
+            using (var dbContext = new CoreDbContext())
+            {
+                var timeToDelete = dbContext.TimeRecords.FirstOrDefault(p => p.Id == id);
+                dbContext.TimeRecords.Remove(timeToDelete);
+                dbContext.SaveChanges();
+            }
+        }
+        public List<TimeRecordModel> GetAllTime()
+        {
+            List<TimeRecordModel> employees;
+            using (var dbContext = new CoreDbContext())
+            {
+                employees = dbContext.TimeRecords.ToList();
             }
             return employees;
         }
