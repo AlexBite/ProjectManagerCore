@@ -15,10 +15,12 @@ namespace Курсовая
 	public partial class ProjectDelete : Form
 	{
 		private readonly IProjectService _projectService;
+		private readonly ITaskService _taskService;
 
 		public ProjectDelete()
 		{
 			_projectService = new ProjectService();
+			_taskService = new TaskService();
 			InitializeComponent();
 		}
 
@@ -33,8 +35,16 @@ namespace Курсовая
 
 		private void deleteBtn_Click(object sender, EventArgs e)
 		{
+			bool notAllInfoInputed = (projectsCB.Text == string.Empty );
+
+			if (notAllInfoInputed)
+			{
+				MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			var projectToDelete = (ProjectModel)projectsCB.SelectedItem;
-			_projectService.DeleteProject(projectToDelete.Id);		
+			_projectService.DeleteProject(projectToDelete.Id);
+			_taskService.DeleteTask(projectToDelete.Id);
 			this.Close();
 		}
 

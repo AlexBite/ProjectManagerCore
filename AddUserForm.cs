@@ -24,6 +24,13 @@ namespace WorkingTimeTracker
 
 		private void addButton_Click(object sender, EventArgs e)
 		{
+			bool notAllInfoInputed = (SurnameTb.Text == string.Empty || NameTb.Text == string.Empty || MiddleNameTb.Text == string.Empty|| LoginTb.Text == string.Empty|| PasswordTb.Text == string.Empty|| PhoneBox.Text == string.Empty);
+
+			if (notAllInfoInputed)
+			{
+				MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			var surname = SurnameTb.Text;
 			var name = NameTb.Text;
 			var middleName = MiddleNameTb.Text;

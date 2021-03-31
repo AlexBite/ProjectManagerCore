@@ -30,6 +30,13 @@ namespace Курсовая
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			bool notAllInfoInputed = (employeeCb.Text == string.Empty || projectCb.Text == string.Empty || rateTb.Text == string.Empty );
+
+			if (notAllInfoInputed)
+			{
+				MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			AddEmployeeToProject();
 			//LoadData();
 			SetProjectsDgv();

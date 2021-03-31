@@ -7,7 +7,7 @@ namespace ProjectManagerCore.Services
 {
 	public interface IEmployeeProjectService
 	{
-		EmployeeProjectModel AddProjectWithLeader(string name, DateTime startDate, DateTime endDate, int employeeLeaderId);
+		EmployeeProjectModel AddProjectWithLeader(string name, DateTime startDate, DateTime endDate, int employeeLeaderId, int typeId);
 		EmployeeProjectModel AttachDeveloperToProject(int taskId, int employeeId, double rate);
 		List<EmployeeProjectModel> GetAllEmployeesProjects();
 	}

@@ -18,6 +18,13 @@ namespace Курсовая
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			bool notAllInfoInputed = (loginTb.Text == string.Empty || passwordTb.Text == string.Empty );
+
+			if (notAllInfoInputed)
+			{
+				MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			LoginProcess();
 		}
 

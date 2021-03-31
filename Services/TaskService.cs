@@ -29,17 +29,17 @@ namespace ProjectManagerCore.Services
 				return task;
 			}
 
-			//public void DeleteProject(int id)
-			//{
-			//	using (var dbContext = new CoreDbContext())
-			//	{
-			//		var projectToDelete = dbContext.Projects.FirstOrDefault(p => p.Id == id);
-			//		dbContext.Projects.Remove(projectToDelete);
-			//		dbContext.SaveChanges();
-			//	}
-			//}
+        public void DeleteTask(int Prid)
+        {
+            using (var dbContext = new CoreDbContext())
+            {
+                var taskToDelete = dbContext.Tasks.FirstOrDefault(p => p.ProjectId == Prid);
+                //dbContext.Tasks.Remove(taskToDelete);
+                dbContext.SaveChanges();
+            }
+        }
 
-			public List<TaskModel> GetAllTasks()
+        public List<TaskModel> GetAllTasks()
 			{
 				List<TaskModel> tasks;
 				using (var dbContext = new CoreDbContext())
@@ -48,6 +48,8 @@ namespace ProjectManagerCore.Services
 				}
 				return tasks;
 			}
+
+		
 		public TaskModel GetTask(int taskId)
 		{
 			TaskModel taskModel;
@@ -59,5 +61,6 @@ namespace ProjectManagerCore.Services
 
 			return taskModel;
 		}
+		
 	}
 }

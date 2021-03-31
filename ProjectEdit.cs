@@ -51,6 +51,8 @@ namespace ProjectManagerCore
                 MessageBox.Show ("Заполните все поля");
             }
             else { 
+            if (textBox1.Text == "")
+            { 
                // var proname= (ProjectModel)comboBox1.Text;
                 var projectToEdit = (ProjectModel)comboBox1.SelectedItem;
             var emplpoeeToEdit = (EmployeeModel)comboBox2.SelectedItem;            
@@ -59,6 +61,18 @@ namespace ProjectManagerCore
 
             _projectService.EditProject(projectToEdit.Name, projectToEdit.Id, emplpoeeToEdit.Id, projectStartDate, projectEndDate);
                 this.Close(); 
+            }
+            else
+                {
+                    var projectToEdit = (ProjectModel)comboBox1.SelectedItem;
+                    var emplpoeeToEdit = (EmployeeModel)comboBox2.SelectedItem;
+                    var projectStartDate = this.projectStartDateDTP.Value;
+                    var projectEndDate = this.projectEndDateDTP.Value;
+                    var projectNameNew = textBox1.Text;
+
+                    _projectService.EditProjectName(projectNameNew, projectToEdit.Id, emplpoeeToEdit.Id, projectStartDate, projectEndDate);
+                    this.Close();
+                }        
             }
         }
 

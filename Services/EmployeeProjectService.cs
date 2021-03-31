@@ -17,7 +17,7 @@ namespace ProjectManagerCore.Services
 			_employeeService = new EmployeeService();
 		}
 
-		public EmployeeProjectModel AddProjectWithLeader(string name, DateTime startDate, DateTime endDate, int employeeLeaderId)
+		public EmployeeProjectModel AddProjectWithLeader(string name, DateTime startDate, DateTime endDate, int employeeLeaderId, int typeId)
 		{
 			var leaderEmployee = _employeeService.GetEmployee(employeeLeaderId);
 			if (leaderEmployee == null)
@@ -25,7 +25,7 @@ namespace ProjectManagerCore.Services
 
 			using (var dbContext = new CoreDbContext())
 			{
-				var project = _projectService.AddProject(name, startDate, endDate);
+				var project = _projectService.AddProject(name, startDate, endDate, typeId);
 				var employeeProject = new EmployeeProjectModel()
 				{
 					EmployeeId = employeeLeaderId,
@@ -45,12 +45,27 @@ namespace ProjectManagerCore.Services
 			var employee = _employeeService.GetEmployee(employeeId);
 			if (employee == null)
 				throw new Exception("Пользователь с таким ID не найден");
+			if (projectId==1)
+            {
 
+            }
+			else
+			if (projectId == 2 || projectId == 3 || projectId == 4)  
+			{
+				projectId= projectId + 2;
+
+			}
+			else 
+				if(projectId >= 5)
+            {
+				projectId = projectId + 9;
+			}
 			var project = _projectService.GetProject(projectId);
-			//if (project == null)
-			//	throw new Exception("Проект с таким ID не найден");
+            if (project == null)
+                throw new Exception("Проект с таким ID не найден");
 
-			EmployeeProjectModel employeeProject;
+
+            EmployeeProjectModel employeeProject;
 			using (var dbContext = new CoreDbContext())
 			{
 				employeeProject = new EmployeeProjectModel()

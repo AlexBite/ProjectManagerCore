@@ -28,6 +28,13 @@ namespace Курсовая
 
         private void button1_Click(object sender, EventArgs e)// добавить задачу
         {
+            bool notAllInfoInputed = (comboBox1.Text == string.Empty || comboBox2.Text == string.Empty );
+
+            if (notAllInfoInputed)
+            {
+                MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             PrRegistrationProcess();
             SetTasksDgv();
         }

@@ -38,12 +38,14 @@ namespace ProjectManagerCore
             this.projectEndDateDTP = new System.Windows.Forms.DateTimePicker();
             this.projectStartDateDTP = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(118, 118);
+            this.comboBox1.Location = new System.Drawing.Point(118, 62);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(338, 33);
             this.comboBox1.TabIndex = 0;
@@ -52,7 +54,7 @@ namespace ProjectManagerCore
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(118, 220);
+            this.comboBox2.Location = new System.Drawing.Point(118, 253);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(338, 33);
             this.comboBox2.TabIndex = 1;
@@ -72,7 +74,7 @@ namespace ProjectManagerCore
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(174, 176);
+            this.label12.Location = new System.Drawing.Point(174, 202);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(211, 25);
@@ -92,12 +94,12 @@ namespace ProjectManagerCore
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(174, 66);
+            this.label15.Location = new System.Drawing.Point(174, 19);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(228, 25);
+            this.label15.Size = new System.Drawing.Size(242, 25);
             this.label15.TabIndex = 44;
-            this.label15.Text = "Введите название проекта";
+            this.label15.Text = "Выберите название проекта";
             // 
             // projectEndDateDTP
             // 
@@ -127,12 +129,31 @@ namespace ProjectManagerCore
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(174, 107);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 50);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Введите название проекта\r\n      (если необходимо)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(118, 159);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(338, 31);
+            this.textBox1.TabIndex = 52;
+            // 
             // ProjectEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
             this.ClientSize = new System.Drawing.Size(631, 496);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.projectEndDateDTP);
             this.Controls.Add(this.projectStartDateDTP);
@@ -160,5 +181,7 @@ namespace ProjectManagerCore
         private System.Windows.Forms.DateTimePicker projectEndDateDTP;
         private System.Windows.Forms.DateTimePicker projectStartDateDTP;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

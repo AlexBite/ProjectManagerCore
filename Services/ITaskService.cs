@@ -8,8 +8,10 @@ namespace ProjectManagerCore.Services
     public interface ITaskService
     {
         TaskModel AddTask( int projectId, string name, DateTime startDate, DateTime endDate);
-        List<TaskModel> GetAllTasks();
+        List<TaskModel> GetAllTasks();        
+        
         TaskModel GetTask(int taskId);
-        //void DeleteProject(int id);
+        
+        void DeleteTask(int Prid);
     }
 }

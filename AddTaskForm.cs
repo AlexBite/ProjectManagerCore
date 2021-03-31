@@ -42,7 +42,7 @@ namespace WorkingTimeTracker
 
         private void PrAddButton_Click(object sender, EventArgs e)//добавить задачу
         {
-            bool notAllInfoInputed = (PrOnTaskcombo.Text == string.Empty|| TaskNameBox.Text == string.Empty || TaskNameBox.Text == string.Empty);
+            bool notAllInfoInputed = (PrOnTaskcombo.Text == string.Empty|| TaskNameBox.Text == string.Empty );
 
             if (notAllInfoInputed)
             {

@@ -118,7 +118,17 @@ namespace WorkingTimeTracker
 			middleNameColumn.Name = "Отчество";
 			WorkersdataGridView.Columns.Add(middleNameColumn);
 
-			
+			var loginColumn = new DataGridViewTextBoxColumn();
+			loginColumn.DataPropertyName = nameof(EmployeeModel.Login);
+			loginColumn.Name = "Логин";
+			WorkersdataGridView.Columns.Add(loginColumn);
+			var phoneColumn = new DataGridViewTextBoxColumn();
+			phoneColumn.DataPropertyName = nameof(EmployeeModel.PhoneNumber);
+			phoneColumn.Name = "Телефон";
+			WorkersdataGridView.Columns.Add(phoneColumn);
+
+
+
 		}
 
 		private void SetTimeDgv()
@@ -364,7 +374,7 @@ namespace WorkingTimeTracker
 
 		private void AddWorkingSessionProcess()
 		{
-			bool notAllInfoInputed = textBox1.Text == string.Empty || comboBox1.Text == string.Empty || comboBox2.Text == string.Empty|| comboBox3.Text == string.Empty;
+			bool notAllInfoInputed = (textBox1.Text == string.Empty || (comboBox1.Text == string.Empty && comboBox2.Text == string.Empty)|| comboBox3.Text == string.Empty);
 
 			if (notAllInfoInputed)
 			{
@@ -455,10 +465,7 @@ namespace WorkingTimeTracker
 				MessageBox.Show("Error");
 		}
 
-		private void applyFilterButton_Click(object sender, EventArgs e)
-		{
-
-		}
+		
 
 		private void HighliteByProject(string projectName, out bool evenOneDataSatisfy)
 		{
@@ -556,6 +563,8 @@ namespace WorkingTimeTracker
 		{
 			AddUserForm addUserForm = new AddUserForm();
 			addUserForm.ShowDialog();
+			WorkersdataGridView.Rows.Clear();
+			WorkersdataGridView.Columns.Clear();
 			SetWorkersDgv();
 		}
 
@@ -629,8 +638,14 @@ namespace WorkingTimeTracker
 			var projectStartDate = this.projectStartDateDTP.Value;
 			var projectEndDate = this.projectEndDateDTP.Value;
 			var projectLeader = this.projectLeadCB.SelectedItem as EmployeeModel;
-			_employeeProjectService.AddProjectWithLeader(projectName, projectStartDate, projectEndDate, projectLeader.Id);
+			var projectType = this.comboBox3.SelectedItem as ProjectTypeModel;
+			_employeeProjectService.AddProjectWithLeader(projectName, projectStartDate, projectEndDate, projectLeader.Id, projectType.Id);
+			projectsDgv.Rows.Clear();
+			projectsDgv.Columns.Clear();
 			SetProjectsDgv();
+			projectNameTB.Clear();
+			
+
 		}
 
 		private void projectsDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -655,11 +670,14 @@ namespace WorkingTimeTracker
 
         private void comboBox2_Click(object sender, EventArgs e)//выбор задачи
         {
+			
 			var comboBox = sender as ComboBox;
-			var allTasks = _taskService.GetAllTasks();
+			var allProjectTasks = _taskService.GetAllTasks();
 			comboBox.ValueMember = nameof(TaskModel.Id);
+
 			comboBox.DisplayMember = nameof(TaskModel.Description);
-			comboBox.DataSource = allTasks;
+			comboBox.DataSource = allProjectTasks;
+			
 		}
 
         private void projectLeadCB_Click(object sender, MouseEventArgs e)
@@ -725,5 +743,45 @@ namespace WorkingTimeTracker
         {
 
         }
-    }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+			
+			projectsDgv.Rows.Clear();
+			projectsDgv.Columns.Clear();
+			SetProjectsDgv();
+		}
+
+        private void button5_Click(object sender, EventArgs e)// вывод отчета по утилизации
+        {//фио + показатель утилизации (кол-во часов на внешних проектах/колво часов на всех проектах)
+			PrintReviewUtil();
+        }
+
+		public void PrintReviewUtil ()
+        {
+			// теоретически : собрать все записанное время у этого пользователя + собрать время на внешних проектах и поделить
+        }
+
+		private void button6_Click(object sender, EventArgs e)//отчет по выручке на проекте
+        {
+			bool notAllInfoInputed = (ProjectsComboBox.Text == string.Empty );
+
+			if (notAllInfoInputed)
+			{
+				MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			// название проекта + размер выручки (сумма ставок на нем) 
+			PrintReviewMoney();
+        }
+		public void PrintReviewMoney()
+		{
+			//собрать все ставки и сложить 
+		}
+		private void applyFilterButton_Click(object sender, EventArgs e)//выгрузка отчетов в эксель
+		{
+			//ссылки, надеюсь, помогут https://habr.com/en/sandbox/40189/
+			//https://www.cyberforum.ru/windows-forms/thread196357.html
+		}
+	}
 }
