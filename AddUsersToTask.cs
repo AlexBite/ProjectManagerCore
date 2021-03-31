@@ -33,14 +33,10 @@ namespace Курсовая
         }
         private void PrRegistrationProcess()//
         {
-
             var employee = this.comboBox1.SelectedItem as EmployeeModel;
-            //var prName = this.PrOnTaskcombo.Text;
-            var taskName = this.comboBox2.SelectedItem as TaskModel;
-            
-            _employeetaskService.AddTaskEmpoyee(taskName.Id, employee.Id);
-
-            this.Close();
+            var task = this.comboBox2.SelectedItem as TaskModel;
+            //var rate = Convert.ToDouble(this.rateTb.Text);
+            _employeetaskService.AddTaskEmpoyee(task.Id, employee.Id);            
 
         }
         private void comboBox2_Click(object sender, EventArgs e)// кб задачи
@@ -72,12 +68,12 @@ namespace Курсовая
             dataGridView1.ScrollBars = ScrollBars.Both;
 
             var nameColumn = new DataGridViewTextBoxColumn();
-            nameColumn.DataPropertyName = nameof(TaskModel.Description);
+            nameColumn.DataPropertyName = nameof(EmployeeTaskModel.Task);
             nameColumn.Name = "Задача";
             dataGridView1.Columns.Add(nameColumn);
 
             DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
-            startDateColumn.DataPropertyName = nameof(EmployeeModel.Surname);
+            startDateColumn.DataPropertyName = nameof(EmployeeTaskModel.Employee);
             startDateColumn.Name = "Фамилия";
             dataGridView1.Columns.Add(startDateColumn);
 

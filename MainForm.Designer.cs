@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.saveChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,11 +84,14 @@
             this.applyFilterButton = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.panelDirectories = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.addDepartmentBtn = new System.Windows.Forms.Button();
             this.panelProjects = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.projectNameTB = new System.Windows.Forms.TextBox();
             this.deleteProjectBtn = new System.Windows.Forms.Button();
             this.addProjectBtn = new System.Windows.Forms.Button();
@@ -203,6 +216,7 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1345, 710);
             this.MainPanel.TabIndex = 0;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // comboBox3
             // 
@@ -266,6 +280,7 @@
             this.NumRowTB.Name = "NumRowTB";
             this.NumRowTB.Size = new System.Drawing.Size(158, 39);
             this.NumRowTB.TabIndex = 34;
+            this.NumRowTB.Validating += new System.ComponentModel.CancelEventHandler(this.NumRowTB_Validating);
             // 
             // DeleteSessionbutton
             // 
@@ -332,7 +347,23 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(635, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dataGridView1.Name = "dataGridView1";
@@ -443,7 +474,23 @@
             // WorkersdataGridView
             // 
             this.WorkersdataGridView.BackgroundColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.WorkersdataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.WorkersdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.WorkersdataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.WorkersdataGridView.Location = new System.Drawing.Point(54, 24);
             this.WorkersdataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.WorkersdataGridView.Name = "WorkersdataGridView";
@@ -473,12 +520,28 @@
             this.dataGridView4.AllowUserToAddRows = false;
             this.dataGridView4.AllowUserToDeleteRows = false;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column18,
             this.Column19,
             this.Column20,
             this.Column21});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView4.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView4.Location = new System.Drawing.Point(572, 14);
             this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView4.Name = "dataGridView4";
@@ -542,10 +605,26 @@
             // dataGridView3
             // 
             this.dataGridView3.BackgroundColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column16,
             this.Column17});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView3.Location = new System.Drawing.Point(572, 411);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
@@ -612,6 +691,7 @@
             // panelDirectories
             // 
             this.panelDirectories.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelDirectories.Controls.Add(this.button10);
             this.panelDirectories.Controls.Add(this.button8);
             this.panelDirectories.Controls.Add(this.button15);
             this.panelDirectories.Controls.Add(this.button16);
@@ -621,10 +701,22 @@
             this.panelDirectories.Name = "panelDirectories";
             this.panelDirectories.Size = new System.Drawing.Size(1345, 710);
             this.panelDirectories.TabIndex = 49;
+            this.panelDirectories.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDirectories_Paint);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(572, 76);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(165, 72);
+            this.button10.TabIndex = 49;
+            this.button10.Text = "Типы проектов";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(170, 412);
+            this.button8.Location = new System.Drawing.Point(1123, 76);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(165, 72);
@@ -635,7 +727,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(765, 134);
+            this.button15.Location = new System.Drawing.Point(306, 76);
             this.button15.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(165, 72);
@@ -646,7 +738,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(765, 398);
+            this.button16.Location = new System.Drawing.Point(860, 76);
             this.button16.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(165, 72);
@@ -657,7 +749,7 @@
             // 
             // addDepartmentBtn
             // 
-            this.addDepartmentBtn.Location = new System.Drawing.Point(170, 134);
+            this.addDepartmentBtn.Location = new System.Drawing.Point(23, 80);
             this.addDepartmentBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.addDepartmentBtn.Name = "addDepartmentBtn";
             this.addDepartmentBtn.Size = new System.Drawing.Size(165, 72);
@@ -669,6 +761,8 @@
             // panelProjects
             // 
             this.panelProjects.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelProjects.Controls.Add(this.label10);
+            this.panelProjects.Controls.Add(this.comboBox4);
             this.panelProjects.Controls.Add(this.projectNameTB);
             this.panelProjects.Controls.Add(this.deleteProjectBtn);
             this.panelProjects.Controls.Add(this.addProjectBtn);
@@ -688,6 +782,29 @@
             this.panelProjects.Name = "panelProjects";
             this.panelProjects.Size = new System.Drawing.Size(1345, 710);
             this.panelProjects.TabIndex = 40;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 158);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(194, 25);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Выберите тип проекта";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(285, 155);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(382, 33);
+            this.comboBox4.TabIndex = 50;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.comboBox4.Click += new System.EventHandler(this.comboBox4_Click);
             // 
             // projectNameTB
             // 
@@ -710,7 +827,7 @@
             // 
             // addProjectBtn
             // 
-            this.addProjectBtn.Location = new System.Drawing.Point(502, 194);
+            this.addProjectBtn.Location = new System.Drawing.Point(502, 261);
             this.addProjectBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.addProjectBtn.Name = "addProjectBtn";
             this.addProjectBtn.Size = new System.Drawing.Size(165, 72);
@@ -744,7 +861,7 @@
             // projectEndDateDTP
             // 
             this.projectEndDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.projectEndDateDTP.Location = new System.Drawing.Point(285, 254);
+            this.projectEndDateDTP.Location = new System.Drawing.Point(285, 321);
             this.projectEndDateDTP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.projectEndDateDTP.Name = "projectEndDateDTP";
             this.projectEndDateDTP.Size = new System.Drawing.Size(153, 31);
@@ -753,7 +870,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 236);
+            this.label9.Location = new System.Drawing.Point(12, 303);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(172, 50);
@@ -796,7 +913,23 @@
             // 
             this.projectsDgv.AllowUserToAddRows = false;
             this.projectsDgv.BackgroundColor = System.Drawing.Color.Turquoise;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.projectsDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.projectsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.projectsDgv.DefaultCellStyle = dataGridViewCellStyle10;
             this.projectsDgv.Location = new System.Drawing.Point(730, 24);
             this.projectsDgv.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.projectsDgv.Name = "projectsDgv";
@@ -809,7 +942,7 @@
             // projectStartDateDTP
             // 
             this.projectStartDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.projectStartDateDTP.Location = new System.Drawing.Point(285, 189);
+            this.projectStartDateDTP.Location = new System.Drawing.Point(285, 256);
             this.projectStartDateDTP.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.projectStartDateDTP.Name = "projectStartDateDTP";
             this.projectStartDateDTP.Size = new System.Drawing.Size(153, 31);
@@ -818,7 +951,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 166);
+            this.label14.Location = new System.Drawing.Point(15, 233);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(139, 50);
@@ -958,7 +1091,6 @@
         private System.Windows.Forms.Button deleteProjectBtn;
         private System.Windows.Forms.Button addProjectBtn;
         private System.Windows.Forms.Button pjoectTasksBtn;
-        private System.Windows.Forms.Button changeProjectBtn;
         private System.Windows.Forms.DateTimePicker projectEndDateDTP;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
@@ -990,5 +1122,9 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TextBox projectNameTB;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button changeProjectBtn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button10;
     }
 }

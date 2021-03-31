@@ -32,5 +32,17 @@ namespace ProjectManagerCore.Services
 			}
 			return departments;
 		}
+
+		public PositionModel GetPosition(int posId)
+        {
+			PositionModel depModel;
+			using (var dbContext = new CoreDbContext())
+			{
+				depModel = dbContext.Positions.Where(e => e.Id == posId)
+					.FirstOrDefault();
+			}
+
+			return depModel;
+		}
 	}
 }

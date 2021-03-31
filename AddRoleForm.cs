@@ -23,6 +23,13 @@ namespace Курсовая
 
         private void button1_Click(object sender, EventArgs e)
         {
+            bool notAllInfoInputed = textBox1.Text == string.Empty;
+
+            if (notAllInfoInputed)
+            {
+                MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var roleName = textBox1.Text;
             _roleService.AddRole(roleName);
             this.Close();

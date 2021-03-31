@@ -34,7 +34,7 @@ namespace Курсовая
 		private void deleteBtn_Click(object sender, EventArgs e)
 		{
 			var projectToDelete = (ProjectModel)projectsCB.SelectedItem;
-			_projectService.DeleteProject(projectToDelete.Id);
+			_projectService.DeleteProject(projectToDelete.Id);		
 			this.Close();
 		}
 

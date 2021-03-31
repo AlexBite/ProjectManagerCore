@@ -24,6 +24,17 @@ namespace ProjectManagerCore.Services
 
 			return department;
 		}
+		public DepartmentModel GetDepartment(int taskId)
+		{
+			DepartmentModel depModel;
+			using (var dbContext = new CoreDbContext())
+			{
+				depModel = dbContext.DepartmentModels.Where(e => e.Id == taskId)
+					.FirstOrDefault();
+			}
+
+			return depModel;
+		}
 		public List<DepartmentModel> GetAllDepartment()
 		{
 			List<DepartmentModel> departments;

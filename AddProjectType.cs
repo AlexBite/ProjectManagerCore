@@ -4,20 +4,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Курсовая
+namespace ProjectManagerCore
 {
-    public partial class AddJobForm : Form
+    public partial class AddProjectType : Form
     {
-        private readonly IPositionService _positionService;
-        public AddJobForm()
+        private readonly IProjectTypeService _typeService;
+        public AddProjectType()
         {
-            _positionService = new PositionService();
-            InitializeComponent();
+            InitializeComponent(); 
+            _typeService = new ProjectTypeService();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,19 +27,9 @@ namespace Курсовая
                 MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var positionName = textBox1.Text;
-            _positionService.AddPosition(positionName);
+            var typeName = textBox1.Text;
+            _typeService.AddType(typeName);
             this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

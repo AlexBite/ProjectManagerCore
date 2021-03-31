@@ -52,6 +52,7 @@
             this.label1.Size = new System.Drawing.Size(251, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите назавние должности";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -60,6 +61,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(287, 31);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // AddJobForm
             // 

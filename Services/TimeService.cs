@@ -35,9 +35,13 @@ namespace ProjectManagerCore.Services
         {
             using (var dbContext = new CoreDbContext())
             {
-                var timeToDelete = dbContext.TimeRecords.FirstOrDefault(p => p.Id == id);
-                dbContext.TimeRecords.Remove(timeToDelete);
-                dbContext.SaveChanges();
+                
+                    var timeToDelete = dbContext.TimeRecords.FirstOrDefault(p => p.Id == id);
+
+                    dbContext.TimeRecords.Remove(timeToDelete);
+                    dbContext.SaveChanges();
+                
+                    
             }
         }
         public List<TimeRecordModel> GetAllTime()

@@ -23,6 +23,13 @@ namespace Курсовая
 
         private void addBtn_Click(object sender, EventArgs e)
         {
+            bool notAllInfoInputed = nameTb.Text == string.Empty;
+
+            if (notAllInfoInputed)
+            {
+                MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var departmentName = nameTb.Text;
             _departmentService.AddDepartment(departmentName);
             this.Close();

@@ -8,6 +8,8 @@ namespace ProjectManagerCore.Services
 	public interface IPositionService
 	{
 		public PositionModel AddPosition(string name);
+		PositionModel GetPosition(int posId);
+
 		List<PositionModel> GetAllPosition();
 	}
 }

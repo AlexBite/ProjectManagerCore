@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,10 +31,46 @@ namespace Курсовая
 		private void button1_Click(object sender, EventArgs e)
 		{
 			AddEmployeeToProject();
+			//LoadData();
 			SetProjectsDgv();
 		}
 
-		private void AddEmployeeToProject()
+		private void LoadData()
+		{
+			string connectString = "Data Source=.\\SQLLite;Initial Catalog=core;" +
+				"Integrated Security=true;";
+
+			SqlConnection myConnection = new SqlConnection(connectString);
+
+			myConnection.Open();
+
+			string query = "SELECT * FROM EmployeeProjects ORDER BY Id";
+
+			SqlCommand command = new SqlCommand(query, myConnection);
+
+			SqlDataReader reader = command.ExecuteReader();
+
+			List<string[]> data = new List<string[]>();
+
+			while (reader.Read())
+			{
+				data.Add(new string[5]);
+
+				data[data.Count - 1][0] = reader[0].ToString();//название
+				data[data.Count - 1][1] = reader[1].ToString();//фамилия
+				data[data.Count - 1][2] = reader[2].ToString();//имя
+				data[data.Count - 1][2] = reader[3].ToString();//отчество
+				data[data.Count - 1][2] = reader[4].ToString();//ставка
+			}
+
+			reader.Close();
+
+			myConnection.Close();
+
+			foreach (string[] s in data)
+				employeeProjectDgv.Rows.Add(s);
+		}
+			private void AddEmployeeToProject()
 		{
 			var employee = this.employeeCb.SelectedItem as EmployeeModel;
 			var project = this.projectCb.SelectedItem as ProjectModel;
@@ -71,7 +108,7 @@ namespace Курсовая
 			employeeProjectDgv.Controls[1].Enabled = true; 
 
 			var projectNameColumn = new DataGridViewTextBoxColumn();
-			projectNameColumn.DataPropertyName = nameof(EmployeeProjectModel.Project.Name);
+			projectNameColumn.DataPropertyName = nameof(EmployeeProjectModel.ProjectId);
 			projectNameColumn.Name = "Название проекта";
 			employeeProjectDgv.Columns.Add(projectNameColumn);
 

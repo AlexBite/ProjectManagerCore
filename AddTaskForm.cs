@@ -42,17 +42,26 @@ namespace WorkingTimeTracker
 
         private void PrAddButton_Click(object sender, EventArgs e)//добавить задачу
         {
+            bool notAllInfoInputed = (PrOnTaskcombo.Text == string.Empty|| TaskNameBox.Text == string.Empty || TaskNameBox.Text == string.Empty);
+
+            if (notAllInfoInputed)
+            {
+                MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             PrRegistrationProcess();
         }
 
 		private void PrRegistrationProcess()//
 		{
             var prName = this.PrOnTaskcombo.SelectedItem as ProjectModel;
+            //var prId = Convert.ToInt32(this.PrOnTaskcombo.SelectedItem); 
             //var prName = this.PrOnTaskcombo.Text;
             var taskName = this.TaskNameBox.Text;
+            var taskReview = this.TaskReviewBox.Text;
             var taskStartDate = this.StartTaskDateTimePicker.Value;
             var taskEndDate = this.EndTaskDateTimePicker.Value;
-            _taskService.AddTask( taskName, taskStartDate, taskEndDate);
+            _taskService.AddTask(prName.Id, taskName,  taskStartDate, taskEndDate);
             
             this.Close();
 

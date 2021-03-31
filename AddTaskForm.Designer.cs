@@ -32,8 +32,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.PrOnTaskcombo = new System.Windows.Forms.ComboBox();
             this.PersTaskButt = new System.Windows.Forms.Button();
-            this.DeleteTaskButt = new System.Windows.Forms.Button();
-            this.SaveTaskButt = new System.Windows.Forms.Button();
             this.TaskNameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TaskReviewBox = new System.Windows.Forms.TextBox();
@@ -54,8 +52,6 @@
             this.panelTask.Controls.Add(this.dataGridView2);
             this.panelTask.Controls.Add(this.PrOnTaskcombo);
             this.panelTask.Controls.Add(this.PersTaskButt);
-            this.panelTask.Controls.Add(this.DeleteTaskButt);
-            this.panelTask.Controls.Add(this.SaveTaskButt);
             this.panelTask.Controls.Add(this.TaskNameBox);
             this.panelTask.Controls.Add(this.label2);
             this.panelTask.Controls.Add(this.TaskReviewBox);
@@ -82,7 +78,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(593, 600);
+            this.dataGridView2.Size = new System.Drawing.Size(593, 474);
             this.dataGridView2.TabIndex = 20;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -99,7 +95,7 @@
             // 
             // PersTaskButt
             // 
-            this.PersTaskButt.Location = new System.Drawing.Point(234, 561);
+            this.PersTaskButt.Location = new System.Drawing.Point(329, 435);
             this.PersTaskButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PersTaskButt.Name = "PersTaskButt";
             this.PersTaskButt.Size = new System.Drawing.Size(171, 61);
@@ -107,28 +103,6 @@
             this.PersTaskButt.Text = "Сотрудники задачи";
             this.PersTaskButt.UseVisualStyleBackColor = true;
             this.PersTaskButt.Click += new System.EventHandler(this.PersTaskButt_Click);
-            // 
-            // DeleteTaskButt
-            // 
-            this.DeleteTaskButt.Location = new System.Drawing.Point(440, 435);
-            this.DeleteTaskButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.DeleteTaskButt.Name = "DeleteTaskButt";
-            this.DeleteTaskButt.Size = new System.Drawing.Size(171, 61);
-            this.DeleteTaskButt.TabIndex = 26;
-            this.DeleteTaskButt.Text = "Удалить задачу";
-            this.DeleteTaskButt.UseVisualStyleBackColor = true;
-            this.DeleteTaskButt.Click += new System.EventHandler(this.DeleteTaskButt_Click);
-            // 
-            // SaveTaskButt
-            // 
-            this.SaveTaskButt.Location = new System.Drawing.Point(36, 435);
-            this.SaveTaskButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SaveTaskButt.Name = "SaveTaskButt";
-            this.SaveTaskButt.Size = new System.Drawing.Size(171, 61);
-            this.SaveTaskButt.TabIndex = 25;
-            this.SaveTaskButt.Text = "Сохранить изменения";
-            this.SaveTaskButt.UseVisualStyleBackColor = true;
-            this.SaveTaskButt.Click += new System.EventHandler(this.SaveTaskButt_Click);
             // 
             // TaskNameBox
             // 
@@ -166,7 +140,7 @@
             // 
             // TaskAddButt
             // 
-            this.TaskAddButt.Location = new System.Drawing.Point(234, 435);
+            this.TaskAddButt.Location = new System.Drawing.Point(31, 435);
             this.TaskAddButt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TaskAddButt.Name = "TaskAddButt";
             this.TaskAddButt.Size = new System.Drawing.Size(171, 61);
@@ -222,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 668);
+            this.ClientSize = new System.Drawing.Size(1240, 527);
             this.Controls.Add(this.panelTask);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddTaskForm";
@@ -244,8 +218,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button PersTaskButt;
-        private System.Windows.Forms.Button DeleteTaskButt;
-        private System.Windows.Forms.Button SaveTaskButt;
         private System.Windows.Forms.TextBox TaskNameBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TaskReviewBox;

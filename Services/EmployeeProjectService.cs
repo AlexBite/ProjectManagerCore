@@ -47,8 +47,8 @@ namespace ProjectManagerCore.Services
 				throw new Exception("Пользователь с таким ID не найден");
 
 			var project = _projectService.GetProject(projectId);
-			if (project == null)
-				throw new Exception("Проект с таким ID не найден");
+			//if (project == null)
+			//	throw new Exception("Проект с таким ID не найден");
 
 			EmployeeProjectModel employeeProject;
 			using (var dbContext = new CoreDbContext())
