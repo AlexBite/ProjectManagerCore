@@ -27,7 +27,12 @@ namespace ProjectManagerCore.Services
 				throw new Exception("Пользователь с таким ID не найден");
 
 			var department = _departmentService.GetDepartment(departmentId);
+			if (department == null)
+				throw new Exception("Департамент с таким ID не найден");
+
 			var position = _positionService.GetPosition(positionId);
+			if (position == null)
+				throw new Exception("Должность с таким ID не найдена");
 
 			EmployeeDepartmentModel employeeDepartment;
 			using (var dbContext = new CoreDbContext())

@@ -9,6 +9,6 @@ namespace ProjectManagerCore.Services
 	{
 		DepartmentModel AddDepartment(string name);
 		DepartmentModel GetDepartment(int depId);
-		List<DepartmentModel> GetAllDepartment();
+		List<DepartmentModel> GetAllDepartments();
 	}
 }

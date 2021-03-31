@@ -25,12 +25,6 @@ namespace WorkingTimeTracker
 		private readonly IActivityService _activityService;
 		private readonly ITimeService _timeService;
 		private readonly IProjectTypeService _projectTypeService;
-
-
-		// del
-		//private readonly UsersDataBase _usersDataBase;
-		private readonly ProjectsDataBase _projectsDataBase;
-		private readonly WorkingDataBase _workingDataBase;
 		
 
 		public MainForm(UserInfo authenticatedUser)

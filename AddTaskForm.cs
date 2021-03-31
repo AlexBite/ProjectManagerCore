@@ -15,7 +15,6 @@ namespace WorkingTimeTracker
 	[Serializable]
 	public partial class AddTaskForm : Form
     {
-		private readonly ProjectsDataBase _projectsDataBase;
         private readonly IProjectService _projectService;
         private readonly ITaskService _taskService;
 

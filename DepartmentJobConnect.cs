@@ -33,7 +33,7 @@ namespace Курсовая
         private void comboBox1_Click(object sender, EventArgs e)
         {
             var comboBox = sender as ComboBox;
-            var allDepartments = _departmentService.GetAllDepartment();
+            var allDepartments = _departmentService.GetAllDepartments();
             comboBox.ValueMember = nameof(DepartmentModel.Id);
             comboBox.DisplayMember = nameof(DepartmentModel.Name);
             comboBox.DataSource = allDepartments;

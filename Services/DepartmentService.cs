@@ -9,11 +9,11 @@ namespace ProjectManagerCore.Services
 {
 	internal class DepartmentService : IDepartmentService
 	{
-		public DepartmentModel AddDepartment(string name)
+		public DepartmentModel AddDepartment(string departmentName)
 		{
 			var department = new DepartmentModel()
 			{
-				Name = name
+				Name = departmentName
 			};
 
 			using (var dbContext = new CoreDbContext())
@@ -24,18 +24,20 @@ namespace ProjectManagerCore.Services
 
 			return department;
 		}
-		public DepartmentModel GetDepartment(int taskId)
+
+		public DepartmentModel GetDepartment(int departmentId)
 		{
-			DepartmentModel depModel;
+			DepartmentModel department;
 			using (var dbContext = new CoreDbContext())
 			{
-				depModel = dbContext.DepartmentModels.Where(e => e.Id == taskId)
+				department = dbContext.DepartmentModels.Where(e => e.Id == departmentId)
 					.FirstOrDefault();
 			}
 
-			return depModel;
+			return department;
 		}
-		public List<DepartmentModel> GetAllDepartment()
+
+		public List<DepartmentModel> GetAllDepartments()
 		{
 			List<DepartmentModel> departments;
 			using (var dbContext = new CoreDbContext())
