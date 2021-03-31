@@ -7,20 +7,20 @@ using System.Text;
 namespace ProjectManagerCore.Services
 {
 
-    internal class DepartmentPositionService : IDepartmentPositionService
+    internal class EmployeeDepartmentService : IEmployeeDepartmentService
 
     {
 		private readonly IDepartmentService _departmentService;
 		private readonly IPositionService _positionService;
 		private readonly IEmployeeService _employeeService;
-		public DepartmentPositionService()
+		public EmployeeDepartmentService()
 		{
 			_departmentService = new DepartmentService();
 			_positionService = new PositionService();
 			_employeeService = new EmployeeService();
 		}
 
-		public EmployeeDepartmentModel EmployeeDepartment(int departmentId, int employeeId, int positionId, DateTime startDate, DateTime endDate)
+		public EmployeeDepartmentModel AddEmployeeDepartment(int departmentId, int employeeId, int positionId, DateTime startDate, DateTime endDate)
         {
 			var employee = _employeeService.GetEmployee(employeeId);
 			if (employee == null)

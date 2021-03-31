@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-    public interface IDepartmentPositionService
+    public interface IEmployeeDepartmentService
     {
-        EmployeeDepartmentModel EmployeeDepartment(int departmentId, int employeeId, int position, DateTime startDate, DateTime endDate);
+        EmployeeDepartmentModel AddEmployeeDepartment(int departmentId, int employeeId, int position, DateTime startDate, DateTime endDate);
         EmployeeDepartmentModel GetEmployeeDepartment(int taskId);
     }
 }

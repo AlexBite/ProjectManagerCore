@@ -20,14 +20,14 @@ namespace Курсовая
         private readonly IEmployeeService _employeeService;
         private readonly IDepartmentService _departmentService;
         private readonly IPositionService _positionService;
-        private readonly IDepartmentPositionService _depPosService;
+        private readonly IEmployeeDepartmentService _depPosService;
         public DepartmentJobConnect()
         {
             InitializeComponent();
             _employeeService = new EmployeeService();
             _departmentService = new DepartmentService();
             _positionService = new PositionService();
-            _depPosService = new DepartmentPositionService();
+            _depPosService = new EmployeeDepartmentService();
         }
 
         private void comboBox1_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace Курсовая
             var startDate = dateTimePicker1.Value;
             var endDate = dateTimePicker2.Value;
             //var rate = Convert.ToDouble(this.rateTb.Text);
-            _depPosService.EmployeeDepartment(department.Id, employee.Id, position.Id, startDate, endDate);
+            _depPosService.AddEmployeeDepartment(department.Id, employee.Id, position.Id, startDate, endDate);
         }
     }
 }
