@@ -47,16 +47,25 @@ namespace WorkingTimeTracker
 			SetWorkersDgv();
 			SetTimeDgv();
 			MainPanel.Visible = true;
+			
 		}
 
 		private void SetNameLabel()
 		{
 			fioLabel.Text = _authenticatedUser.GetFullNameString();
 			fioLabel.Text += $" ({_authenticatedUser.GetPositionName()}) ";
+			if (_authenticatedUser.Position.ToString() == "Директор департамента"  || _authenticatedUser.Position.ToString() == "Руководитель проекта")
+            {
+				DeleteSessionbutton.Visible = true;
+            }
+				
 		}
 
+		
 		private void SetProjectsDgv()
 		{
+			projectsDgv.Rows.Clear();
+			projectsDgv.Columns.Clear();
 			var bindingSource = new BindingSource();
 			var allProjects = _projectService.GetAllProjects();
 			bindingSource.DataSource = allProjects;
@@ -88,10 +97,13 @@ namespace WorkingTimeTracker
 
 		private void SetWorkersDgv()
 		{
+			WorkersdataGridView.Rows.Clear();
+			WorkersdataGridView.Columns.Clear();
+
 			var bindingSource = new BindingSource();
 			var allEmployee = _employeeService.GetAllEmployee();
 			bindingSource.DataSource = allEmployee;
-
+			
 			WorkersdataGridView.AutoGenerateColumns = false;
 			WorkersdataGridView.AutoSize = true;
 			WorkersdataGridView.DataSource = bindingSource;
@@ -120,12 +132,12 @@ namespace WorkingTimeTracker
 			phoneColumn.Name = "Телефон";
 			WorkersdataGridView.Columns.Add(phoneColumn);
 
-
-
 		}
 
 		private void SetTimeDgv()
 		{
+			employeeTasksDgv.Rows.Clear();
+			employeeTasksDgv.Columns.Clear();
 			var bindingSource = new BindingSource();
 			var allTime = _timeService.GetAllTime();
 			bindingSource.DataSource = allTime;
@@ -133,9 +145,16 @@ namespace WorkingTimeTracker
 			employeeTasksDgv.AutoGenerateColumns = false;
 			employeeTasksDgv.AutoSize = true;
 			employeeTasksDgv.DataSource = bindingSource;
-
+			var IDnameColumn = new DataGridViewTextBoxColumn();
+						IDnameColumn.DataPropertyName = nameof(TimeRecordModel.Id);
+						IDnameColumn.Name = "ID";
+						employeeTasksDgv.Columns.Add(IDnameColumn);
+			
+			
+			
 			var nameColumn = new DataGridViewTextBoxColumn();
-			nameColumn.DataPropertyName = nameof(TaskModel.Description);
+
+			nameColumn.DataPropertyName = nameof(TimeRecordModel.Task.Description.ToString);
 			nameColumn.Name = "Задача";
 			employeeTasksDgv.Columns.Add(nameColumn);
 
@@ -149,10 +168,7 @@ namespace WorkingTimeTracker
 			middleNameColumn.Name = "Продолжительность";
 			employeeTasksDgv.Columns.Add(middleNameColumn);
 			
-			var IDnameColumn = new DataGridViewTextBoxColumn();
-			IDnameColumn.DataPropertyName = nameof(TimeRecordModel.Id);
-			IDnameColumn.Name = "ID";
-			employeeTasksDgv.Columns.Add(IDnameColumn);
+			
 
 
 		}
@@ -799,12 +815,26 @@ namespace WorkingTimeTracker
         }
 		public void PrintReviewMoney()
 		{
+			
+			dataGridView3.Rows[1].Cells[1].Value = "Проект";
+			dataGridView3.Rows[2].Cells[1].Value = "11700";
+
+			//var surnameColumns = new DataGridViewTextBoxColumn();
+			//surnameColumns.DataPropertyName = "Проект 1";
+			//surnameColumns.Name = "Проект";
+			//dataGridView3.Columns.Add(surnameColumns);
+
+			//var middleNameColumn = new DataGridViewTextBoxColumn();
+			//middleNameColumn.DataPropertyName = "11700";
+			//middleNameColumn.Name = "Выручка";
+			//dataGridView3.Columns.Add(middleNameColumn);
+
+
+
 			//собрать все ставки и сложить 
 		}
 		private void applyFilterButton_Click(object sender, EventArgs e)//выгрузка отчетов в эксель
 		{
-			//ссылки, надеюсь, помогут https://habr.com/en/sandbox/40189/
-			//https://www.cyberforum.ru/windows-forms/thread196357.html
 		}
 
 		private void createUtilReportBtn_Click_1(object sender, EventArgs e)
@@ -849,5 +879,10 @@ namespace WorkingTimeTracker
 		public void ListToExcel(List<string> list)
 		{
 		}
-	}
+
+        private void panelWorkers_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+    }
 }

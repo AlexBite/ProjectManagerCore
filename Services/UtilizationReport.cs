@@ -9,7 +9,7 @@ namespace ProjectManagerCore.Services
 		public string EmployeeSurname;
 		public string EmployeeName;
 		public string EmployeeMiddleName;
-		// сумма часов на внутренних делить на сумму часов на внешних
+		
 		public double UtilizationValue;
 	}
 }

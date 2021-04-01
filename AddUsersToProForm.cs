@@ -107,6 +107,9 @@ namespace Курсовая
 			var allProjects = _employeeprojectService.GetAllEmployeesProjects();
 			bindingSource.DataSource = allProjects;
 
+			employeeProjectDgv.Rows.Clear();
+			employeeProjectDgv.Columns.Clear();
+
 			employeeProjectDgv.AutoGenerateColumns = false;
 			employeeProjectDgv.AutoSize = true;
 			employeeProjectDgv.DataSource = bindingSource;
@@ -119,8 +122,9 @@ namespace Курсовая
 			projectNameColumn.Name = "Название проекта";
 			employeeProjectDgv.Columns.Add(projectNameColumn);
 
+			var employeeSurname = _employeeprojectService.GetAllEmployeesProjects();
 			var employeeSurnameColumn = new DataGridViewTextBoxColumn();
-			employeeSurnameColumn.DataPropertyName = nameof(EmployeeProjectModel.Employee.Surname);
+			employeeSurnameColumn.DataPropertyName = nameof(employeeSurname);
 			employeeSurnameColumn.Name = "Фамилия";
 			employeeProjectDgv.Columns.Add(employeeSurnameColumn);
 

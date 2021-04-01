@@ -11,5 +11,6 @@ namespace ProjectManagerCore.Services
 		List<TaskModel> GetAllTasks();
 		TaskModel GetTask(int taskId);
 		void DeleteTask(int Prid);
+		void GetTaskName(int taskId);
 	}
 }

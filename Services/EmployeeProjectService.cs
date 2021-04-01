@@ -110,5 +110,18 @@ namespace ProjectManagerCore.Services
 
 			return projects;
 		}
+
+		public List<ProjectModel> GetEmployeeFromPro()
+		{
+			List<ProjectModel> projects;
+			using (var dbContext = new CoreDbContext())
+			{
+				projects = dbContext.EmployeeProjects.Include(ep => ep.Project)
+					.Select(ep => ep.Project)
+					.ToList();
+			}
+
+			return projects;
+		}
 	}
 }

@@ -62,6 +62,18 @@ namespace ProjectManagerCore.Services
 
 			return taskModel;
 		}
-	
+		public void GetTaskName(int taskId)
+		{
+			
+			string taskModel;
+			using (var dbContext = new CoreDbContext())
+			{
+				taskModel = dbContext.Tasks.Where(e => e.Id == taskId)
+					.ToString();
+			}
+
+			//return taskModel;
+		}
+
 	}
 }
