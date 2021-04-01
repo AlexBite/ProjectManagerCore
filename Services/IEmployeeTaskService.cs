@@ -8,6 +8,7 @@ namespace ProjectManagerCore.Services
 	{
 		EmployeeTaskModel AddTaskEmpoyee(int taskId, int employeeId);
 		List<EmployeeTaskModel> GetEmployeeTasksConnectedToProject(int employeeId, int projectId);
+		List<EmployeeTaskModel> GetAllTasks();
 	}
 
 }

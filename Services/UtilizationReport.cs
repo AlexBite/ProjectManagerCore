@@ -6,10 +6,9 @@ namespace ProjectManagerCore.Services
 {
 	public class UtilizationReport
 	{
-		public string EmployeeSurname;
-		public string EmployeeName;
-		public string EmployeeMiddleName;
-		
-		public double UtilizationValue;
+		public string EmployeeSurname { get; set; }
+		public string EmployeeName { get; set; }
+		public string EmployeeMiddleName { get; set; }
+		public double UtilizationValue { get; set; }
 	}
 }

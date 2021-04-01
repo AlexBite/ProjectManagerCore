@@ -106,42 +106,61 @@ namespace Курсовая
 			var bindingSource = new BindingSource();
 			var allProjects = _employeeprojectService.GetAllEmployeesProjects();
 			bindingSource.DataSource = allProjects;
+			{
+				employeeProjectDgv.Rows.Clear();
+				employeeProjectDgv.Columns.Clear();
 
-			employeeProjectDgv.Rows.Clear();
-			employeeProjectDgv.Columns.Clear();
+				employeeProjectDgv.AutoGenerateColumns = false;
+				employeeProjectDgv.AutoSize = true;
+				
+				employeeProjectDgv.ScrollBars = ScrollBars.Both;
+				employeeProjectDgv.Controls[0].Enabled = true;
+				employeeProjectDgv.Controls[1].Enabled = true;
 
-			employeeProjectDgv.AutoGenerateColumns = false;
-			employeeProjectDgv.AutoSize = true;
-			employeeProjectDgv.DataSource = bindingSource;
-			employeeProjectDgv.ScrollBars = ScrollBars.Both;
-			employeeProjectDgv.Controls[0].Enabled = true;
-			employeeProjectDgv.Controls[1].Enabled = true; 
+				employeeProjectDgv.DataSource = bindingSource;
+				{
+					var projectNameColumn = new DataGridViewTextBoxColumn();
+					projectNameColumn.DataPropertyName = nameof(EmployeeProjectModel.ProjectId);
+					projectNameColumn.Name = "Название проекта";
+					employeeProjectDgv.Columns.Add(projectNameColumn);
 
-			var projectNameColumn = new DataGridViewTextBoxColumn();
-			projectNameColumn.DataPropertyName = nameof(EmployeeProjectModel.ProjectId);
-			projectNameColumn.Name = "Название проекта";
-			employeeProjectDgv.Columns.Add(projectNameColumn);
+					var employeeSurname = new DataGridViewTextBoxColumn();
+					employeeSurname.DataPropertyName = nameof(EmployeeProjectModel.EmployeeId);
+					employeeSurname.Name = "Сотрудник";
+					employeeProjectDgv.Columns.Add(employeeSurname);
 
-			var employeeSurname = _employeeprojectService.GetAllEmployeesProjects();
-			var employeeSurnameColumn = new DataGridViewTextBoxColumn();
-			employeeSurnameColumn.DataPropertyName = nameof(employeeSurname);
-			employeeSurnameColumn.Name = "Фамилия";
-			employeeProjectDgv.Columns.Add(employeeSurnameColumn);
 
-			var employeeNameColumn = new DataGridViewTextBoxColumn();
-			employeeNameColumn.DataPropertyName = nameof(EmployeeProjectModel.Employee.Name);
-			employeeNameColumn.Name = "Имя";
-			employeeProjectDgv.Columns.Add(employeeNameColumn);
+					var rateColumn = new DataGridViewTextBoxColumn();
+					rateColumn.DataPropertyName = nameof(EmployeeProjectModel.Rate);
+					rateColumn.Name = "Ставка";
+					employeeProjectDgv.Columns.Add(rateColumn);
+				}
 
-			var middleNameColumn = new DataGridViewTextBoxColumn();
-			middleNameColumn.DataPropertyName = nameof(EmployeeProjectModel.Employee.MiddleName);
-			middleNameColumn.Name = "Отчество";
-			employeeProjectDgv.Columns.Add(middleNameColumn);
+				var allTasks = _employeeService.GetAllEmployee();
 
-			var rateColumn = new DataGridViewTextBoxColumn();
-			rateColumn.DataPropertyName = nameof(EmployeeProjectModel.Rate);
-			rateColumn.Name = "Ставка";
-			employeeProjectDgv.Columns.Add(rateColumn);
+				//var bindingSource1 = new BindingSource();
+				//bindingSource1.DataSource = allTasks;
+				//employeeProjectDgv.DataSource = bindingSource1;
+				//{
+
+				//	var employeeSurname = _employeeprojectService.GetAllEmployeesProjects();
+				//	var employeeSurnameColumn = new DataGridViewTextBoxColumn();
+				//	employeeSurnameColumn.DataPropertyName = nameof(EmployeeModel.Surname);
+				//	employeeSurnameColumn.Name = "Фамилия";
+				//	employeeProjectDgv.Columns.Add(employeeSurnameColumn);
+
+				//	var employeeNameColumn = new DataGridViewTextBoxColumn();
+				//	employeeNameColumn.DataPropertyName = nameof(EmployeeModel.Name);
+				//	employeeNameColumn.Name = "Имя";
+				//	employeeProjectDgv.Columns.Add(employeeNameColumn);
+
+				//	var middleNameColumn = new DataGridViewTextBoxColumn();
+				//	middleNameColumn.DataPropertyName = nameof(EmployeeModel.MiddleName);
+				//	middleNameColumn.Name = "Отчество";
+				//	employeeProjectDgv.Columns.Add(middleNameColumn);
+				//}
+			}
+			
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

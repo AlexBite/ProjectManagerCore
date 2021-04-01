@@ -13,6 +13,9 @@ using ProjectManagerCore.Models;
 using ProjectManagerCore.Services;
 using Курсовая;
 using NsExcel = Microsoft.Office.Interop.Excel;
+using CsvHelper;
+using System.Globalization;
+using CsvHelper.Configuration;
 
 namespace WorkingTimeTracker
 {
@@ -47,21 +50,21 @@ namespace WorkingTimeTracker
 			SetWorkersDgv();
 			SetTimeDgv();
 			MainPanel.Visible = true;
-			
+
 		}
 
 		private void SetNameLabel()
 		{
 			fioLabel.Text = _authenticatedUser.GetFullNameString();
 			fioLabel.Text += $" ({_authenticatedUser.GetPositionName()}) ";
-			if (_authenticatedUser.Position.ToString() == "Директор департамента"  || _authenticatedUser.Position.ToString() == "Руководитель проекта")
-            {
+			if (_authenticatedUser.Position.ToString() == "Директор департамента" || _authenticatedUser.Position.ToString() == "Руководитель проекта")
+			{
 				DeleteSessionbutton.Visible = true;
-            }
-				
+			}
+
 		}
 
-		
+
 		private void SetProjectsDgv()
 		{
 			projectsDgv.Rows.Clear();
@@ -103,7 +106,7 @@ namespace WorkingTimeTracker
 			var bindingSource = new BindingSource();
 			var allEmployee = _employeeService.GetAllEmployee();
 			bindingSource.DataSource = allEmployee;
-			
+
 			WorkersdataGridView.AutoGenerateColumns = false;
 			WorkersdataGridView.AutoSize = true;
 			WorkersdataGridView.DataSource = bindingSource;
@@ -139,36 +142,47 @@ namespace WorkingTimeTracker
 			employeeTasksDgv.Rows.Clear();
 			employeeTasksDgv.Columns.Clear();
 			var bindingSource = new BindingSource();
+			var bindingSource1 = new BindingSource();
 			var allTime = _timeService.GetAllTime();
+			var allTasks = _taskService.GetAllTasks();
 			bindingSource.DataSource = allTime;
+			bindingSource1.DataSource = allTasks;
 
 			employeeTasksDgv.AutoGenerateColumns = false;
 			employeeTasksDgv.AutoSize = true;
 			employeeTasksDgv.DataSource = bindingSource;
-			var IDnameColumn = new DataGridViewTextBoxColumn();
-						IDnameColumn.DataPropertyName = nameof(TimeRecordModel.Id);
-						IDnameColumn.Name = "ID";
-						employeeTasksDgv.Columns.Add(IDnameColumn);
-			
-			
-			
-			var nameColumn = new DataGridViewTextBoxColumn();
+			{
+				var IDnameColumn = new DataGridViewTextBoxColumn();
+				IDnameColumn.DataPropertyName = nameof(TimeRecordModel.Id);
+				IDnameColumn.Name = "ID";
+				employeeTasksDgv.Columns.Add(IDnameColumn);
 
-			nameColumn.DataPropertyName = nameof(TimeRecordModel.Task.Description.ToString);
-			nameColumn.Name = "Задача";
-			employeeTasksDgv.Columns.Add(nameColumn);
+				var surnameColumns = new DataGridViewTextBoxColumn();
+				surnameColumns.DataPropertyName = nameof(TimeRecordModel.StartDate);
+				surnameColumns.Name = "Дата";
+				employeeTasksDgv.Columns.Add(surnameColumns);
 
-			var surnameColumns = new DataGridViewTextBoxColumn();
-			surnameColumns.DataPropertyName = nameof(TimeRecordModel.StartDate);
-			surnameColumns.Name = "Дата";
-			employeeTasksDgv.Columns.Add(surnameColumns);
+				var middleNameColumn = new DataGridViewTextBoxColumn();
+				middleNameColumn.DataPropertyName = nameof(TimeRecordModel.DurationInMinutes);
+				middleNameColumn.Name = "Продолжительность";
+				employeeTasksDgv.Columns.Add(middleNameColumn);
 
-			var middleNameColumn = new DataGridViewTextBoxColumn();
-			middleNameColumn.DataPropertyName = nameof(TimeRecordModel.DurationInMinutes);
-			middleNameColumn.Name = "Продолжительность";
-			employeeTasksDgv.Columns.Add(middleNameColumn);
-			
-			
+				//var nameColumn = new DataGridViewTextBoxColumn();
+
+				//nameColumn.DataPropertyName = nameof(TaskModel.Description);
+				//nameColumn.Name = "Задача";
+				//employeeTasksDgv.Columns.Add(nameColumn);
+
+				var prnameColumn = new DataGridViewTextBoxColumn();
+
+				prnameColumn.DataPropertyName = nameof(TimeRecordModel.Title);
+				prnameColumn.Name = "Описание";
+				employeeTasksDgv.Columns.Add(prnameColumn);
+			}
+
+
+
+
 
 
 		}
@@ -186,18 +200,18 @@ namespace WorkingTimeTracker
 			//{
 			//button2.Enabled = false;			button3.Enabled = true;				button4.Enabled = true;				button7.Enabled = true;
 
-				//deleteProjectBtn.Enabled = false;				addProjectBtn.Enabled = false;				addEmployeeBtn.Enabled = false;
+			//deleteProjectBtn.Enabled = false;				addProjectBtn.Enabled = false;				addEmployeeBtn.Enabled = false;
 			//}
 			//else if (_authenticatedUser.Role != UserInfo.UserRole.Leader)// роль 4
 			//{
-				//button2.Enabled = false;
-				//button3.Enabled = false;
-				//button4.Enabled = true;
-				//button7.Enabled = false;
+			//button2.Enabled = false;
+			//button3.Enabled = false;
+			//button4.Enabled = true;
+			//button7.Enabled = false;
 
-				//deleteProjectBtn.Enabled = false;
-				//addProjectBtn.Enabled = false;
-				//addEmployeeBtn.Enabled = false;
+			//deleteProjectBtn.Enabled = false;
+			//addProjectBtn.Enabled = false;
+			//addEmployeeBtn.Enabled = false;
 			//}
 
 		}
@@ -237,13 +251,13 @@ namespace WorkingTimeTracker
 			button4.Font = new Font(button4.Font, FontStyle.Regular);
 			button7.Font = new Font(button7.Font, FontStyle.Regular);
 			button2.Font = new Font(button1.Font, FontStyle.Regular);
-            // Изменение панели:
+			// Изменение панели:
 
-            panelWorkers.Visible = false;
-            panelProjects.Visible = false;
-            panelDirectories.Visible = false;
-            panelReports.Visible = false;
-            MainPanel.Visible = false;
+			panelWorkers.Visible = false;
+			panelProjects.Visible = false;
+			panelDirectories.Visible = false;
+			panelReports.Visible = false;
+			MainPanel.Visible = false;
 			MainPanel.Visible = true;
 
 		}
@@ -378,37 +392,32 @@ namespace WorkingTimeTracker
 			comboBox.ValueMember = nameof(ProjectModel.Id);
 			comboBox.DisplayMember = nameof(ProjectModel.Name);
 			comboBox.DataSource = allProjects;
-			
+
 		}
 
 		private void AddWorkingSessionProcess()
 		{
-			bool notAllInfoInputed = (textBox1.Text == string.Empty || (comboBox1.Text == string.Empty && comboBox2.Text == string.Empty)|| comboBox3.Text == string.Empty);
+			bool notAllInfoInputed = (textBox1.Text == string.Empty || (comboBox1.Text == string.Empty && comboBox2.Text == string.Empty) || comboBox3.Text == string.Empty);
 
 			if (notAllInfoInputed)
 			{
 				MessageBox.Show("Необходимо заполнить все поля!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
-			//var employee = _authenticatedUser.ToString as EmployeeModel;
 			var description = textBox1.Text;
 			var project = this.comboBox1.SelectedItem as ProjectModel;
 			var task = this.comboBox2.SelectedItem as TaskModel;
 			var activity = this.comboBox3.SelectedItem as ActivityModel;
 			var date = dateTimePicker1.Value;
 			var time = dateTimePicker2.Value;
-			var duration = Convert.ToInt32 (numericUpDown1.Value);
+			var duration = Convert.ToInt32(numericUpDown1.Value);
 
 			_timeService.AddTime(description, task.Id, activity.Id, date, time, duration);
 			SetTimeDgv();
-			
+
 			MessageBox.Show("Сеанс успешно добавлен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			textBox1.Clear();
 			ShowUserWorkingSessionsInfo();
-			//numericUpDown1.Clear();
-			//comboBox1.Clear();
-
 		}
 
 		private void addWorkingSessionBt_Click(object sender, EventArgs e)//добавление записи о времени
@@ -417,50 +426,8 @@ namespace WorkingTimeTracker
 			ShowUserWorkingSessionsInfo();
 			ShowAllUsersWorkingSessionsInfo();
 			comboBox1.SelectedIndex = -1;
-
 		}
-		//private void comboBox1_Click(object sender, EventArgs e)
-		//{
-		//	var comboBox = sender as ComboBox;
-		//	var allProjects = _projectService.GetAllProjects();
-		//	comboBox.ValueMember = nameof(ProjectModel.Id);
-		//	comboBox.DisplayMember = nameof(ProjectModel.Name);
-		//	comboBox.DataSource = allProjects;
-		//}
 
-		private void deleteSession()
-		{
-			int deletedRow = Int32.Parse(NumRowTB.Text) - 1;
-			int deletedWSId;
-
-			try
-			{
-				if (employeeTasksDgv.RowCount <= deletedRow || deletedRow == -1)
-				{
-					MessageBox.Show("Удаление невозможно");
-				}
-				else
-				{
-					//object WSidobj = dataGridView1.Rows[deletedRow].Cells[4].Value;
-					//deletedWSId = Convert.ToInt32(WSidobj);
-					//var timeToDelete = (TimeRecordModel)projectsCB.SelectedItem;
-					var timeToDelete = deletedRow;
-					_timeService.DeleteTime(timeToDelete);
-					SetTimeDgv();
-					//this.Close();
-					//dataGridView1.Rows.RemoveAt(deletedRow);
-					//dataGridView1.Refresh();
-					//_workingDataBase.DeleteWS(deletedWSId);
-					//ShowUserWorkingSessionsInfo();
-					NumRowTB.Clear();
-					//ShowAllUsersWorkingSessionsInfo();
-				}
-
-
-			}
-			catch (InvalidOperationException)
-			{ }
-		}
 		private void DeleteSessionbutton_Click(object sender, EventArgs e)
 		{
 
@@ -474,68 +441,6 @@ namespace WorkingTimeTracker
 				MessageBox.Show("Error");
 		}
 
-		
-
-		private void HighliteByProject(string projectName, out bool evenOneDataSatisfy)
-		{
-			evenOneDataSatisfy = false;
-			foreach (DataGridViewRow row in projectsDgv.Rows)
-			{
-				string projectNameFromGrid = row.Cells[1].Value.ToString();
-				bool isDataSatisfy = projectNameFromGrid == projectName;
-
-				if (isDataSatisfy)
-				{
-					evenOneDataSatisfy = true;
-					HighliteRow(row.Index);
-				}
-			}
-		}
-
-		private void HighliteByUser(string userName, out bool evenOneDataSatisfy)
-		{
-			evenOneDataSatisfy = false;
-			foreach (DataGridViewRow row in projectsDgv.Rows)
-			{
-				string userNameFromGrid = row.Cells[0].Value.ToString();
-				bool isDataSatisfy = userNameFromGrid == userName;
-
-				if (isDataSatisfy)
-				{
-					evenOneDataSatisfy = true;
-					HighliteRow(row.Index);
-				}
-			}
-		}
-
-		private void HighliteByUserAndProject(string userName, string projectName, out bool evenOneDataSatisfy)
-		{
-			evenOneDataSatisfy = false;
-			foreach (DataGridViewRow row in projectsDgv.Rows)
-			{
-				string userNameFromGrid = row.Cells[0].Value.ToString();
-				string projectNameFromGrid = row.Cells[1].Value.ToString();
-
-				bool isDataSatisfy = userNameFromGrid == userName && projectNameFromGrid == projectName;
-
-				if (isDataSatisfy)
-				{
-					evenOneDataSatisfy = true;
-					HighliteRow(row.Index);
-				}
-			}
-		}
-
-		private void HighliteRow(int rowNum)
-		{
-			projectsDgv.Rows[rowNum].DefaultCellStyle.BackColor = Color.MediumTurquoise;
-		}
-
-		private void UserscomboBox_Click(object sender, EventArgs e)
-		{
-
-		}
-
 
 		private void ProjcomboBox_Click(object sender, EventArgs e)
 		{
@@ -544,28 +449,6 @@ namespace WorkingTimeTracker
 			comboBox.ValueMember = nameof(ProjectModel.Id);
 			comboBox.DisplayMember = nameof(ProjectModel.Name);
 			comboBox.DataSource = allPro;
-		}
-
-		private void ClearFilterbutton_Click(object sender, EventArgs e)
-		{
-			ShowAllUsersWorkingSessionsInfo();
-			//UsersComboBox.SelectedIndex = -1;
-			//ProjectsComboBox.SelectedIndex = -1;
-		}
-
-		private void label8_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label15_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void button14_Click(object sender, EventArgs e)//добавление сотрудника
@@ -577,14 +460,9 @@ namespace WorkingTimeTracker
 			SetWorkersDgv();
 		}
 
-		private void button12_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void button9_Click(object sender, EventArgs e)
 		{
-			Курсовая.AddUsersPro addUserProForm = new Курсовая.AddUsersPro();
+			var addUserProForm = new AddUsersPro();
 			addUserProForm.Show();
 		}
 
@@ -647,13 +525,13 @@ namespace WorkingTimeTracker
 			var projectStartDate = this.projectStartDateDTP.Value;
 			var projectEndDate = this.projectEndDateDTP.Value;
 			var projectLeader = this.projectLeadCB.SelectedItem as EmployeeModel;
-			var projectType = this.comboBox3.SelectedItem as ProjectTypeModel;
+			var projectType = this.projectTypeCbElement.SelectedItem as ProjectTypeModel;
 			_employeeProjectService.AddProjectWithLeader(projectName, projectStartDate, projectEndDate, projectLeader.Id, projectType.Id);
 			projectsDgv.Rows.Clear();
 			projectsDgv.Columns.Clear();
 			SetProjectsDgv();
 			projectNameTB.Clear();
-			
+
 
 		}
 
@@ -677,20 +555,20 @@ namespace WorkingTimeTracker
 			comboBox.DataSource = allEmployees;
 		}
 
-        private void comboBox2_Click(object sender, EventArgs e)//выбор задачи
-        {
-			
+		private void comboBox2_Click(object sender, EventArgs e)//выбор задачи
+		{
+
 			var comboBox = sender as ComboBox;
 			var allProjectTasks = _taskService.GetAllTasks();
 			comboBox.ValueMember = nameof(TaskModel.Id);
 
 			comboBox.DisplayMember = nameof(TaskModel.Description);
 			comboBox.DataSource = allProjectTasks;
-			
+
 		}
 
-        private void projectLeadCB_Click(object sender, MouseEventArgs e)
-        {
+		private void projectLeadCB_Click(object sender, MouseEventArgs e)
+		{
 			var comboBox = sender as ComboBox;
 			var allEmployees = _employeeService.GetAllEmployee();
 			comboBox.ValueMember = nameof(EmployeeModel.Id);
@@ -698,14 +576,14 @@ namespace WorkingTimeTracker
 			comboBox.DataSource = allEmployees;
 		}
 
-        private void button9_Click_1(object sender, EventArgs e)//сотрудники-депаартаменты
-        {
+		private void button9_Click_1(object sender, EventArgs e)//сотрудники-депаартаменты
+		{
 			DepartmentJobConnect addDepJob = new DepartmentJobConnect();
 			addDepJob.Show();
 		}
 
-        private void comboBox3_Click(object sender, EventArgs e)
-        {
+		private void comboBox3_Click(object sender, EventArgs e)
+		{
 			var comboBox = sender as ComboBox;
 			var allActivities = _activityService.GetAllActivities();
 			comboBox.ValueMember = nameof(ActivityModel.Id);
@@ -713,23 +591,18 @@ namespace WorkingTimeTracker
 			comboBox.DataSource = allActivities;
 		}
 
-        private void MainPanel_Paint(object sender, PaintEventArgs e)
-        {
+		private void MainPanel_Paint(object sender, PaintEventArgs e)
+		{
 
-        }
+		}
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-			
-        }
+		private void label10_Click(object sender, EventArgs e)
+		{
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
+		}
 
-        }
-
-        private void comboBox4_Click(object sender, EventArgs e)//тип проекта
-        {
+		private void comboBox4_Click(object sender, EventArgs e)//тип проекта
+		{
 			var comboBox = sender as ComboBox;
 			var allTypes = _projectTypeService.GetAllTypes();
 			comboBox.ValueMember = nameof(ProjectTypeModel.Id);
@@ -737,37 +610,37 @@ namespace WorkingTimeTracker
 			comboBox.DataSource = allTypes;
 		}
 
-        private void panelDirectories_Paint(object sender, PaintEventArgs e)
-        {
+		private void panelDirectories_Paint(object sender, PaintEventArgs e)
+		{
 
-        }
+		}
 
-        private void button10_Click_1(object sender, EventArgs e)//тип проекта
+		private void button10_Click_1(object sender, EventArgs e)//тип проекта
 		{
 			ProjectManagerCore.AddProjectType addPrTypeForm = new ProjectManagerCore.AddProjectType();
 			addPrTypeForm.Show();
 		}
 
-        private void NumRowTB_Validating(object sender, CancelEventArgs e)
-        {
+		private void NumRowTB_Validating(object sender, CancelEventArgs e)
+		{
 
-        }
+		}
 
-        private void button11_Click_1(object sender, EventArgs e)
-        {
-			
+		private void button11_Click_1(object sender, EventArgs e)
+		{
+
 			projectsDgv.Rows.Clear();
 			projectsDgv.Columns.Clear();
 			SetProjectsDgv();
 		}
 
-        private void createUtilReportBtn_Click(object sender, EventArgs e)
-        {
+		private void createUtilReportBtn_Click(object sender, EventArgs e)
+		{
 			PrintReviewUtil();
-        }
+		}
 
-		public void PrintReviewUtil ()
-        {
+		public void PrintReviewUtil()
+		{
 			var bindingSource = new BindingSource();
 			var utilizationReport = _utilizationReportService.GetUtilizationReport();
 			bindingSource.DataSource = utilizationReport;
@@ -802,8 +675,8 @@ namespace WorkingTimeTracker
 		}
 
 		private void button6_Click(object sender, EventArgs e)//отчет по выручке на проекте
-        {
-			bool notAllInfoInputed = (ProjectsComboBox.Text == string.Empty );
+		{
+			bool notAllInfoInputed = (ProjectsComboBox.Text == string.Empty);
 
 			if (notAllInfoInputed)
 			{
@@ -811,13 +684,16 @@ namespace WorkingTimeTracker
 				return;
 			}
 			// название проекта + размер выручки (сумма ставок на нем) 
+
+
+			MessageBox.Show("Отчет создан");
 			PrintReviewMoney();
-        }
+		}
 		public void PrintReviewMoney()
 		{
-			
-			dataGridView3.Rows[1].Cells[1].Value = "Проект";
-			dataGridView3.Rows[2].Cells[1].Value = "11700";
+
+			//dataGridView3.Rows[1].Cells[1].Value = "Проект";
+			//dataGridView3.Rows[2].Cells[1].Value = "11700";
 
 			//var surnameColumns = new DataGridViewTextBoxColumn();
 			//surnameColumns.DataPropertyName = "Проект 1";
@@ -835,6 +711,33 @@ namespace WorkingTimeTracker
 		}
 		private void applyFilterButton_Click(object sender, EventArgs e)//выгрузка отчетов в эксель
 		{
+			var fileName = $"UtilizationReport.csv";
+			var utilizationReport = _utilizationReportService.GetUtilizationReport();
+			SaveToCSV(utilizationReport, fileName);
+			MessageBox.Show("Отчет загружен на компьютер");
+		}
+
+		public void SaveToCSV(List<UtilizationReport> data, string fileName)
+		{
+			string destPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+			CsvConfiguration csvConfiguration = new CsvConfiguration(CultureInfo.CurrentCulture)
+			{
+				Delimiter = ",",
+				HasHeaderRecord = true,
+				LeaveOpen = false,
+				IncludePrivateMembers = true,
+				Encoding = Encoding.Default 
+			};
+
+			using (var writer = new StreamWriter(destPath))
+			using (var csvWriter = new CsvWriter(writer, csvConfiguration))
+			{
+				writer.WriteLine("sep=,");
+				csvWriter.WriteHeader<UtilizationReport>();
+				csvWriter.NextRecord();
+				csvWriter.WriteRecords(data);
+				writer.Flush();
+			}
 		}
 
 		private void createUtilReportBtn_Click_1(object sender, EventArgs e)
@@ -880,9 +783,23 @@ namespace WorkingTimeTracker
 		{
 		}
 
-        private void panelWorkers_Paint(object sender, PaintEventArgs e)
-        {
+		private void panelWorkers_Paint(object sender, PaintEventArgs e)
+		{
 
-        }
-    }
+		}
+
+		private void projectTypeCbElement_Click(object sender, EventArgs e)
+		{
+			var comboBox = sender as ComboBox;
+			var allPro = _projectTypeService.GetAllTypes();
+			comboBox.ValueMember = nameof(ProjectTypeModel.Id);
+			comboBox.DisplayMember = nameof(ProjectTypeModel.Name);
+			comboBox.DataSource = allPro;
+		}
+
+		private void projectTypeCbElement_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

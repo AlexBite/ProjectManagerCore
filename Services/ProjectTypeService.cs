@@ -10,28 +10,28 @@ namespace ProjectManagerCore.Services
 	{
 		public ProjectTypeModel AddType(string name)
 		{
-			var activity = new ProjectTypeModel()
+			var projectType = new ProjectTypeModel()
 			{
 				Name = name
 			};
 
 			using (var dbContext = new CoreDbContext())
 			{
-				dbContext.ProjectTypes.Add(activity);
+				dbContext.ProjectTypes.Add(projectType);
 				dbContext.SaveChanges();
 			}
 
-			return activity;
+			return projectType;
 		}        
 
         public List<ProjectTypeModel> GetAllTypes()
 		{
-			List<ProjectTypeModel> departments;
+			List<ProjectTypeModel> projectTypes;
 			using (var dbContext = new CoreDbContext())
 			{
-				departments = dbContext.ProjectTypes.ToList();
+				projectTypes = dbContext.ProjectTypes.ToList();
 			}
-			return departments;
+			return projectTypes;
 		}
         
     }

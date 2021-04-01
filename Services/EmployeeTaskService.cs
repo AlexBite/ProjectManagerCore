@@ -19,24 +19,39 @@ namespace ProjectManagerCore.Services
 		}
 		public EmployeeTaskModel AddTaskEmpoyee(int name, int employeeId)
 		{
-			var leaderEmployee = _employeeService.GetEmployee(employeeId);
-			if (leaderEmployee == null)
+			var employee = _employeeService.GetEmployee(employeeId);
+			if (employee == null)
 				throw new Exception("Пользователь с таким ID не найден");
 			var task = _taskService.GetTask(name);//int
 			if (task == null)
 				throw new Exception("Задача с таким ID не найдена");
+
+			EmployeeTaskModel employeeTask;
 			using (var dbContext = new CoreDbContext())
 			{
 				//var task = _taskService.AddTask(name);
-				var employeeTask = new EmployeeTaskModel()
+				employeeTask = new EmployeeTaskModel()
 				{
-					//EmployeeId = employeeLeaderId,						
+					EmployeeId = employee.Id,						
 					TaskId = task.Id
 
 				};
 				dbContext.EmployeeTasks.Add(employeeTask);
+				dbContext.SaveChanges();
 				return employeeTask;
+
 			}
+		}
+
+		public List<EmployeeTaskModel> GetAllTasks()
+		{
+			List<EmployeeTaskModel> projects;
+			using (var dbContext = new CoreDbContext())
+			{
+				projects = dbContext.EmployeeTasks.ToList();
+			}
+
+			return projects;
 		}
 
 		public List<EmployeeTaskModel> GetEmployeeTasksConnectedToProject(int employeeId, int projectId)

@@ -65,34 +65,34 @@ namespace Курсовая
         }
         private void SetTasksDgv()
         {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
             var bindingSource = new BindingSource();
-            var allTasks = _taskService.GetAllTasks();
+            var allTasks = _employeetaskService.GetAllTasks ();
             bindingSource.DataSource = allTasks;
+            
 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSize = true;
+
+          
+            dataGridView1.Controls[0].Enabled = true;
+            dataGridView1.Controls[1].Enabled = true;
+
             dataGridView1.DataSource = bindingSource;
+
             dataGridView1.ScrollBars = ScrollBars.Both;
 
             var nameColumn = new DataGridViewTextBoxColumn();
-            nameColumn.DataPropertyName = nameof(EmployeeTaskModel.Task);
+            nameColumn.DataPropertyName = nameof(EmployeeTaskModel.TaskId);
             nameColumn.Name = "Задача";
             dataGridView1.Columns.Add(nameColumn);
 
             DataGridViewColumn startDateColumn = new DataGridViewTextBoxColumn();
-            startDateColumn.DataPropertyName = nameof(EmployeeTaskModel.Employee);
-            startDateColumn.Name = "Фамилия";
+            startDateColumn.DataPropertyName = nameof(EmployeeTaskModel.EmployeeId);
+            startDateColumn.Name = "Сотрудник";
             dataGridView1.Columns.Add(startDateColumn);
-
-            DataGridViewColumn endDateColumn = new DataGridViewTextBoxColumn();
-            endDateColumn.DataPropertyName = nameof(EmployeeModel.Name);
-            endDateColumn.Name = "Имя";
-            dataGridView1.Columns.Add(endDateColumn);
-
-            DataGridViewColumn endDate1Column = new DataGridViewTextBoxColumn();
-            endDate1Column.DataPropertyName = nameof(EmployeeModel.MiddleName);
-            endDate1Column.Name = "Отчество";
-            dataGridView1.Columns.Add(endDate1Column);
+            
         }
     }
 }
