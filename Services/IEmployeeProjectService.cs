@@ -10,5 +10,6 @@ namespace ProjectManagerCore.Services
 		EmployeeProjectModel AddProjectWithLeader(string name, DateTime startDate, DateTime endDate, int employeeLeaderId, int typeId);
 		EmployeeProjectModel AttachDeveloperToProject(int taskId, int employeeId, double rate);
 		List<EmployeeProjectModel> GetAllEmployeesProjects();
+		List<ProjectModel> GetAvailableProjects(int employeeId);
 	}
 }

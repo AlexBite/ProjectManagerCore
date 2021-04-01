@@ -1,4 +1,5 @@
-﻿using ProjectManagerCore.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagerCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,8 @@ using System.Text;
 namespace ProjectManagerCore.Services
 {
 
-    internal class EmployeeDepartmentService : IEmployeeDepartmentService
-
-    {
+	internal class EmployeeDepartmentService : IEmployeeDepartmentService
+	{
 		private readonly IDepartmentService _departmentService;
 		private readonly IPositionService _positionService;
 		private readonly IEmployeeService _employeeService;
@@ -21,7 +21,7 @@ namespace ProjectManagerCore.Services
 		}
 
 		public EmployeeDepartmentModel AddEmployeeDepartment(int departmentId, int employeeId, int positionId, DateTime startDate, DateTime endDate)
-        {
+		{
 			var employee = _employeeService.GetEmployee(employeeId);
 			if (employee == null)
 				throw new Exception("Пользователь с таким ID не найден");
@@ -44,16 +44,16 @@ namespace ProjectManagerCore.Services
 					PositionId = position.Id,
 					StartWorkingDate = startDate,
 					EndWorkingDate = endDate
-                };
+				};
 				dbContext.EmployeeDepartments.Add(employeeDepartment);
 				dbContext.SaveChanges();
 			}
 
-			return employeeDepartment;			
-        }
+			return employeeDepartment;
+		}
 
-        public EmployeeDepartmentModel GetEmployeeDepartment(int taskId)
-        {
+		public EmployeeDepartmentModel GetEmployeeDepartment(int taskId)
+		{
 			EmployeeDepartmentModel depModel;
 			using (var dbContext = new CoreDbContext())
 			{
@@ -63,6 +63,20 @@ namespace ProjectManagerCore.Services
 
 			return depModel;
 		}
-    }
+
+		public PositionModel GetEmployeePosition(int employeeId)
+		{
+			PositionModel position;
+			using (var dbContext = new CoreDbContext())
+			{
+				var employeeDepartment = dbContext.EmployeeDepartments.Include(e => e.Position)
+					.FirstOrDefault(ed => ed.EmployeeId == employeeId);
+
+				position = employeeDepartment.Position;
+			}
+
+			return position;
+		}
+	}
 }
 

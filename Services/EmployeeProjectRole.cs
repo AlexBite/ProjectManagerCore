@@ -4,11 +4,9 @@ using System.Text;
 
 namespace ProjectManagerCore.Services
 {
-	public enum UserRole
+	public enum EmployeeProjectRole
 	{
-		Administrator = 0,
 		ProjectLeader = 1,
-		DepartmentDirector = 2,
-		Developer = 3
+		Developer = 2
 	}
 }

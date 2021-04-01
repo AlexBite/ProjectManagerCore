@@ -37,12 +37,9 @@ namespace WorkingTimeTracker
 			_activityService = new ActivityService();
 			_timeService = new TimeService();
 			_projectTypeService = new ProjectTypeService();
-			//panelReports.Visible = false;
-			//fioLabel.Text = _authenricatedUser.Fio;
-			//InitializeUi();
-			//ShowUserWorkingSessionsInfo();
-			//ShowAllUsersWorkingSessionsInfo();
+
 			InitializeComponent();
+
 			SetNameLabel();
 			SetProjectsDgv();
 			SetWorkersDgv();
@@ -53,6 +50,7 @@ namespace WorkingTimeTracker
 		private void SetNameLabel()
 		{
 			fioLabel.Text = _authenticatedUser.GetFullNameString();
+			fioLabel.Text += $" ({_authenticatedUser.GetPositionName()}) ";
 		}
 
 		private void SetProjectsDgv()

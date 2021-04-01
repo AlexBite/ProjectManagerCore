@@ -1,4 +1,5 @@
-﻿using ProjectManagerCore.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagerCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace ProjectManagerCore.Services
 				var employeeProject = new EmployeeProjectModel()
 				{
 					EmployeeId = employeeLeaderId,
-					RoleId = (int) UserRole.ProjectLeader,
+					RoleId = (int)EmployeeProjectRole.ProjectLeader,
 					ProjectId = project.Id,
 					//@TODO: Добавить ставку
 					Rate = 1,
@@ -45,34 +46,20 @@ namespace ProjectManagerCore.Services
 			var employee = _employeeService.GetEmployee(employeeId);
 			if (employee == null)
 				throw new Exception("Пользователь с таким ID не найден");
-			if (projectId==1)
-            {
 
-            }
-			else
-			if (projectId == 2 || projectId == 3 || projectId == 4)  
-			{
-				projectId= projectId + 2;
-
-			}
-			else 
-				if(projectId >= 5)
-            {
-				projectId = projectId + 9;
-			}
 			var project = _projectService.GetProject(projectId);
-            if (project == null)
-                throw new Exception("Проект с таким ID не найден");
+			if (project == null)
+				throw new Exception("Проект с таким ID не найден");
 
 
-            EmployeeProjectModel employeeProject;
+			EmployeeProjectModel employeeProject;
 			using (var dbContext = new CoreDbContext())
 			{
 				employeeProject = new EmployeeProjectModel()
 				{
 					EmployeeId = employee.Id,
-					RoleId = (int) UserRole.Developer,
-					ProjectId = project.Id,					
+					RoleId = (int) EmployeeProjectRole.Developer,
+					ProjectId = project.Id,
 					Rate = rate,
 					//StartDate = startDate,
 					//EndDate = endDate
@@ -93,6 +80,20 @@ namespace ProjectManagerCore.Services
 			}
 
 			return employeeProjects;
+		}
+
+		public List<ProjectModel> GetAvailableProjects(int employeeId)
+		{
+			List<ProjectModel> availableProjects;
+			using (var dbContext = new CoreDbContext())
+			{
+				availableProjects = dbContext.EmployeeProjects.Include(ep => ep.Project)
+					.Where(ep => ep.EmployeeId == employeeId)
+					.Select(ep => ep.Project)
+					.ToList();
+			}
+
+			return availableProjects;
 		}
 	}
 }

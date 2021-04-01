@@ -9,25 +9,35 @@ namespace ProjectManagerCore.Services
 {
 	internal class AuthenticationService : IAuthenticationService
 	{
+		private readonly IEmployeeDepartmentService _employeeDepartmentService;
+		public AuthenticationService()
+		{
+			_employeeDepartmentService = new EmployeeDepartmentService();
+		}
+
 		public UserInfo AuthenticateUser(string login, string password)
 		{
-			EmployeeModel employeeModel;
+			EmployeeModel employee;
 			using (var db = new CoreDbContext())
 			{
-				employeeModel = db.Employees.FirstOrDefault(user => user.Login == login && user.Password == password);
+				employee = db.Employees.FirstOrDefault(user => user.Login == login && user.Password == password);
 			};
 
-			if (employeeModel == null)
+			if (employee == null)
+				return null;
+
+			var position = _employeeDepartmentService.GetEmployeePosition(employee.Id);
+			if (position == null)
 				return null;
 
 			var userInfo = new UserInfo()
 			{
-				Name = employeeModel.Name,
-			    SecondName = employeeModel.Surname,
-			    MiddleName = employeeModel.MiddleName,
-			    Login = employeeModel.Login,
-			    Password = employeeModel.Password,
-				Role = UserRole.Administrator
+				Name = employee.Name,
+				SecondName = employee.Surname,
+				MiddleName = employee.MiddleName,
+				Login = employee.Login,
+				Password = employee.Password,
+				Position = position
 			};
 
 			return userInfo;
