@@ -635,6 +635,7 @@
 			this.button18.TabIndex = 52;
 			this.button18.Text = "Выгрузить отчет";
 			this.button18.UseVisualStyleBackColor = true;
+			this.button18.Click += new System.EventHandler(this.button18_Click);
 			// 
 			// Column18
 			// 

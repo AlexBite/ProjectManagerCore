@@ -12,6 +12,7 @@ using System.IO;
 using ProjectManagerCore.Models;
 using ProjectManagerCore.Services;
 using Курсовая;
+using NsExcel = Microsoft.Office.Interop.Excel;
 
 namespace WorkingTimeTracker
 {
@@ -63,7 +64,6 @@ namespace WorkingTimeTracker
 			projectsDgv.AutoGenerateColumns = false;
 			projectsDgv.AutoSize = true;
 			projectsDgv.DataSource = bindingSource;
-			projectsDgv.ScrollBars = ScrollBars.Both;
 
 			var nameColumn = new DataGridViewTextBoxColumn();
 			nameColumn.DataPropertyName = nameof(ProjectModel.Name);
@@ -810,6 +810,44 @@ namespace WorkingTimeTracker
 		private void createUtilReportBtn_Click_1(object sender, EventArgs e)
 		{
 			PrintReviewUtil();
+		}
+
+		private void button18_Click(object sender, EventArgs e)
+		{
+			Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+			// creating new WorkBook within Excel application  
+			Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+			// creating new Excelsheet in workbook  
+			Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+			// see the excel sheet behind the program  
+			app.Visible = true;
+			// get the reference of first sheet. By default its name is Sheet1.  
+			// store its reference to worksheet  
+			worksheet = (NsExcel._Worksheet)workbook.Sheets["Sheet1"];
+			worksheet = (NsExcel._Worksheet)workbook.ActiveSheet;
+			// changing the name of active sheet  
+			worksheet.Name = "Exported from gridview";
+			// storing header part in Excel  
+			for (int i = 1; i < utilizationDgv.Columns.Count + 1; i++)
+			{
+				worksheet.Cells[1, i] = utilizationDgv.Columns[i - 1].HeaderText;
+			}
+			// storing Each row and column value to excel sheet  
+			for (int i = 0; i < utilizationDgv.Rows.Count - 1; i++)
+			{
+				for (int j = 0; j < utilizationDgv.Columns.Count; j++)
+				{
+					worksheet.Cells[i + 2, j + 1] = utilizationDgv.Rows[i].Cells[j].Value.ToString();
+				}
+			}
+			// save the application  
+			workbook.SaveAs("c:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+			// Exit from the application  
+			app.Quit();
+		}
+
+		public void ListToExcel(List<string> list)
+		{
 		}
 	}
 }
