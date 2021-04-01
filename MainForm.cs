@@ -23,7 +23,7 @@ namespace WorkingTimeTracker
 		private readonly UserInfo _authenticatedUser;
 		private readonly ITaskService _taskService;
 		private readonly IActivityService _activityService;
-		private readonly ITimeService _timeService;
+		private readonly ITimeRecordService _timeService;
 		private readonly IProjectTypeService _projectTypeService;
 		
 
@@ -35,7 +35,7 @@ namespace WorkingTimeTracker
 			_authenticatedUser = authenticatedUser;
 			_taskService = new TaskService();
 			_activityService = new ActivityService();
-			_timeService = new TimeService();
+			_timeService = new TimeRecordService();
 			_projectTypeService = new ProjectTypeService();
 
 			InitializeComponent();
@@ -129,29 +129,29 @@ namespace WorkingTimeTracker
 			var allTime = _timeService.GetAllTime();
 			bindingSource.DataSource = allTime;
 
-			dataGridView1.AutoGenerateColumns = false;
-			dataGridView1.AutoSize = true;
-			dataGridView1.DataSource = bindingSource;
+			employeeTasksDgv.AutoGenerateColumns = false;
+			employeeTasksDgv.AutoSize = true;
+			employeeTasksDgv.DataSource = bindingSource;
 
 			var nameColumn = new DataGridViewTextBoxColumn();
 			nameColumn.DataPropertyName = nameof(TaskModel.Description);
 			nameColumn.Name = "Задача";
-			dataGridView1.Columns.Add(nameColumn);
+			employeeTasksDgv.Columns.Add(nameColumn);
 
 			var surnameColumns = new DataGridViewTextBoxColumn();
 			surnameColumns.DataPropertyName = nameof(TimeRecordModel.StartDate);
 			surnameColumns.Name = "Дата";
-			dataGridView1.Columns.Add(surnameColumns);
+			employeeTasksDgv.Columns.Add(surnameColumns);
 
 			var middleNameColumn = new DataGridViewTextBoxColumn();
 			middleNameColumn.DataPropertyName = nameof(TimeRecordModel.DurationInMinutes);
 			middleNameColumn.Name = "Продолжительность";
-			dataGridView1.Columns.Add(middleNameColumn);
+			employeeTasksDgv.Columns.Add(middleNameColumn);
 			
 			var IDnameColumn = new DataGridViewTextBoxColumn();
 			IDnameColumn.DataPropertyName = nameof(TimeRecordModel.Id);
 			IDnameColumn.Name = "ID";
-			dataGridView1.Columns.Add(IDnameColumn);
+			employeeTasksDgv.Columns.Add(IDnameColumn);
 
 
 		}
@@ -418,7 +418,7 @@ namespace WorkingTimeTracker
 
 			try
 			{
-				if (dataGridView1.RowCount <= deletedRow || deletedRow == -1)
+				if (employeeTasksDgv.RowCount <= deletedRow || deletedRow == -1)
 				{
 					MessageBox.Show("Удаление невозможно");
 				}

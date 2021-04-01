@@ -10,5 +10,6 @@ namespace ProjectManagerCore.Services
         EmployeeDepartmentModel AddEmployeeDepartment(int departmentId, int employeeId, int position, DateTime startDate, DateTime endDate);
         EmployeeDepartmentModel GetEmployeeDepartment(int taskId);
         PositionModel GetEmployeePosition(int employeeId);
+        List<EmployeeModel> GetEmployeesFromDepartment(int departmentId);
     }
 }

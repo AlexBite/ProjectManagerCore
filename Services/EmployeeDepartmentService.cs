@@ -52,16 +52,16 @@ namespace ProjectManagerCore.Services
 			return employeeDepartment;
 		}
 
-		public EmployeeDepartmentModel GetEmployeeDepartment(int taskId)
+		public EmployeeDepartmentModel GetEmployeeDepartment(int departmentId)
 		{
-			EmployeeDepartmentModel depModel;
+			EmployeeDepartmentModel department;
 			using (var dbContext = new CoreDbContext())
 			{
-				depModel = dbContext.EmployeeDepartments.Where(e => e.Id == taskId)
+				department = dbContext.EmployeeDepartments.Where(e => e.Id == departmentId)
 					.FirstOrDefault();
 			}
 
-			return depModel;
+			return department;
 		}
 
 		public PositionModel GetEmployeePosition(int employeeId)
@@ -76,6 +76,20 @@ namespace ProjectManagerCore.Services
 			}
 
 			return position;
+		}
+
+		public List<EmployeeModel> GetEmployeesFromDepartment(int departmentId)
+		{
+			List<EmployeeModel> employees;
+			using (var dbContext = new CoreDbContext())
+			{
+				employees = dbContext.EmployeeDepartments.Include(e => e.Employee)
+					.Where(ed => ed.DepartmentId == departmentId)
+					.Select(ed => ed.Employee)
+					.ToList();
+			}
+
+			return employees;
 		}
 	}
 }
