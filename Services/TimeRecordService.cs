@@ -14,7 +14,6 @@ namespace ProjectManagerCore.Services
 			var timerec = new TimeRecordModel()
 			{
 				Title = description,
-				//Name = projectId,
 				TaskId = taskId,
 				ActivityId = activityId,
 				StartDate = date,
@@ -48,6 +47,20 @@ namespace ProjectManagerCore.Services
 			{
 				timeRecords = dbContext.TimeRecords.ToList();
 			}
+
+			return timeRecords;
+		}
+
+		public List<TimeRecordModel> GetEmployeeTimeRecordsConnectedToTask(int employeeId, int taskId)
+		{
+			List<TimeRecordModel> timeRecords;
+			using (var dbContext = new CoreDbContext())
+			{
+				timeRecords = dbContext.TimeRecords.Where(tr => tr.EmployeeId == employeeId)
+					.Where(tr => tr.TaskId == taskId)
+					.ToList();
+			}
+
 			return timeRecords;
 		}
 	}

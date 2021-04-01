@@ -25,7 +25,7 @@ namespace WorkingTimeTracker
 		private readonly IActivityService _activityService;
 		private readonly ITimeRecordService _timeService;
 		private readonly IProjectTypeService _projectTypeService;
-		
+		private readonly IUtilizationReportService _utilizationReportService;
 
 		public MainForm(UserInfo authenticatedUser)
 		{
@@ -37,6 +37,7 @@ namespace WorkingTimeTracker
 			_activityService = new ActivityService();
 			_timeService = new TimeRecordService();
 			_projectTypeService = new ProjectTypeService();
+			_utilizationReportService = new UtilizationReportService();
 
 			InitializeComponent();
 
@@ -744,15 +745,45 @@ namespace WorkingTimeTracker
 			SetProjectsDgv();
 		}
 
-        private void button5_Click(object sender, EventArgs e)// вывод отчета по утилизации
-        {//фио + показатель утилизации (кол-во часов на внешних проектах/колво часов на всех проектах)
+        private void createUtilReportBtn_Click(object sender, EventArgs e)
+        {
 			PrintReviewUtil();
         }
 
 		public void PrintReviewUtil ()
         {
-			// теоретически : собрать все записанное время у этого пользователя + собрать время на внешних проектах и поделить
-        }
+			var bindingSource = new BindingSource();
+			var utilizationReport = _utilizationReportService.GetUtilizationReport();
+			bindingSource.DataSource = utilizationReport;
+			var columnCount = utilizationDgv.ColumnCount;
+			utilizationDgv.DataSource = bindingSource;
+			if (columnCount != 0)
+				return;
+
+
+			utilizationDgv.AutoGenerateColumns = false;
+			utilizationDgv.AutoSize = true;
+
+			var nameColumn = new DataGridViewTextBoxColumn();
+			nameColumn.DataPropertyName = nameof(UtilizationReport.EmployeeName);
+			nameColumn.Name = "Имя";
+			utilizationDgv.Columns.Add(nameColumn);
+
+			var surnameColumns = new DataGridViewTextBoxColumn();
+			surnameColumns.DataPropertyName = nameof(UtilizationReport.EmployeeSurname);
+			surnameColumns.Name = "Фамилия";
+			utilizationDgv.Columns.Add(surnameColumns);
+
+			var middleNameColumn = new DataGridViewTextBoxColumn();
+			middleNameColumn.DataPropertyName = nameof(UtilizationReport.EmployeeMiddleName);
+			middleNameColumn.Name = "Отчество";
+			utilizationDgv.Columns.Add(middleNameColumn);
+
+			var utilValue = new DataGridViewTextBoxColumn();
+			utilValue.DataPropertyName = nameof(UtilizationReport.UtilizationValue);
+			utilValue.Name = "Утилизация";
+			utilizationDgv.Columns.Add(utilValue);
+		}
 
 		private void button6_Click(object sender, EventArgs e)//отчет по выручке на проекте
         {
@@ -774,6 +805,11 @@ namespace WorkingTimeTracker
 		{
 			//ссылки, надеюсь, помогут https://habr.com/en/sandbox/40189/
 			//https://www.cyberforum.ru/windows-forms/thread196357.html
+		}
+
+		private void createUtilReportBtn_Click_1(object sender, EventArgs e)
+		{
+			PrintReviewUtil();
 		}
 	}
 }

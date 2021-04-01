@@ -11,5 +11,6 @@ namespace ProjectManagerCore.Services
 		EmployeeProjectModel AttachDeveloperToProject(int taskId, int employeeId, double rate);
 		List<EmployeeProjectModel> GetAllEmployeesProjects();
 		List<ProjectModel> GetAvailableProjects(int employeeId);
+		List<ProjectModel> GetEmployeeProjectsWithType(int employeeId, ProjectType projectType);
 	}
 }

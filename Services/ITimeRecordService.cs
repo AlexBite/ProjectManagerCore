@@ -10,5 +10,6 @@ namespace ProjectManagerCore.Services
 		TimeRecordModel AddTime(string description, int taskId, int activityId, DateTime date, DateTime time, int duration);
 		List<TimeRecordModel> GetAllTime();
 		void DeleteTime(int id);
+		List<TimeRecordModel> GetEmployeeTimeRecordsConnectedToTask(int employeeId, int taskId);
 	}
 }

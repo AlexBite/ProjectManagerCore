@@ -95,5 +95,20 @@ namespace ProjectManagerCore.Services
 
 			return availableProjects;
 		}
+
+		public List<ProjectModel> GetEmployeeProjectsWithType(int employeeId, ProjectType projectType)
+		{
+			List<ProjectModel> projects;
+			using (var dbContext = new CoreDbContext())
+			{
+				projects = dbContext.EmployeeProjects.Include(ep => ep.Project)
+					.Where(ep => ep.EmployeeId == employeeId)
+					.Where(ep => ep.Project.ProjectTypeId == (int) projectType)
+					.Select(ep => ep.Project)
+					.ToList();
+			}
+
+			return projects;
+		}
 	}
 }
